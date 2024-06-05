@@ -6,6 +6,7 @@ const {
   ActionRowBuilder,
   TextInputStyle,
 } = require('discord.js')
+const axios = require('axios')
 const moment = require('moment')
 
 module.exports = {
@@ -99,6 +100,24 @@ module.exports = {
         }
 
         const formattedDateTime = dateTime.format('YYYY-MM-DD HH:mm')
+
+        // Send the event data to the backend
+        try {
+          await axios.post(process.env.BASE_URL + '/event', {
+            title: title,
+            description: description,
+            creator: interaction.user.id,
+            participants: [interaction.user.id],
+            participantLimit: participantLimit,
+            startTime: dateTime.toDate(),
+          })
+        } catch (error) {
+          console.error('Error creating event:', error)
+          return modalInteraction.reply({
+            content: 'There was an error creating the event. Please try again later.',
+            ephemeral: true,
+          })
+        }
 
         const eventEmbed = new EmbedBuilder()
           .setTitle(`Event created: ${title}`)
