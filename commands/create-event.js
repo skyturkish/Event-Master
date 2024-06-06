@@ -7,7 +7,7 @@ const {
   TextInputStyle,
 } = require('discord.js')
 const moment = require('moment')
-const { createEvent } = require('./services/eventService')
+const { createEvent } = require('../services/eventService')
 
 module.exports = {
   data: new SlashCommandBuilder()
