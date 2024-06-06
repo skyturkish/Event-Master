@@ -6,8 +6,8 @@ const {
   ActionRowBuilder,
   TextInputStyle,
 } = require('discord.js')
-const axios = require('axios')
 const moment = require('moment')
+const { createEvent } = require('./services/eventService')
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -103,7 +103,7 @@ module.exports = {
 
         // Send the event data to the backend
         try {
-          await axios.post(process.env.BASE_URL + 'event', {
+          await createEvent({
             title: title,
             description: description,
             creator: interaction.user.id,
