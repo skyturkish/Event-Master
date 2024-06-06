@@ -103,10 +103,11 @@ module.exports = {
 
         // Send the event data to the backend
         try {
-          await axios.post(process.env.BASE_URL + '/event', {
+          await axios.post(process.env.BASE_URL + 'event', {
             title: title,
             description: description,
             creator: interaction.user.id,
+            guild: interaction.guild.id,
             participants: [interaction.user.id],
             participantLimit: participantLimit,
             startTime: dateTime.toDate(),
