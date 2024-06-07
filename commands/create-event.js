@@ -108,7 +108,7 @@ module.exports = {
             description: description,
             creator: interaction.user.id,
             guild: interaction.guild.id,
-            participants: [interaction.user.id],
+            participants: [{ discordID: interaction.user.id, status: 'accepted' }],
             participantLimit: participantLimit,
             startTime: dateTime.toDate(),
           })
