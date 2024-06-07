@@ -1,10 +1,10 @@
 const { SlashCommandBuilder, ActionRowBuilder, StringSelectMenuBuilder } = require('discord.js')
-const { fetchEvents } = require('../services/eventService')
+const { fetchEventsByGuild } = require('../services/eventService')
 
 module.exports = {
   data: new SlashCommandBuilder().setName('invite').setDescription('Replies with event invitations!'),
   async execute(interaction) {
-    const events = await fetchEvents()
+    const events = await fetchEventsByGuild()
 
     if (events.length === 0) {
       await interaction.reply({ content: 'No events available.', ephemeral: true })

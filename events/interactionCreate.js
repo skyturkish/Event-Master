@@ -1,5 +1,5 @@
 const { Events, EmbedBuilder, ActionRowBuilder, ButtonBuilder, UserSelectMenuBuilder } = require('discord.js')
-const { fetchEvents, fetchEvent } = require('../services/eventService')
+const { fetchEventsByGuild, fetchEvent } = require('../services/eventService')
 
 module.exports = {
   name: Events.InteractionCreate,
@@ -21,7 +21,7 @@ module.exports = {
     if (!interaction.isStringSelectMenu() && !interaction.isButton() && !interaction.isUserSelectMenu()) return
 
     if (interaction.customId === 'select-event') {
-      const events = await fetchEvents()
+      const events = await fetchEventsByGuild()
       const selectedEvent = events.find((event) => event._id === interaction.values[0])
 
       const participantLimit = selectedEvent.participantLimit

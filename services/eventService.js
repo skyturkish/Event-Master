@@ -2,13 +2,12 @@ const axios = require('axios')
 
 const BASE_URL = process.env.BASE_URL || 'http://localhost:3000/'
 
-async function fetchEvents() {
+async function fetchEventsByGuild(guild) {
   try {
-    const response = await axios.get(`${BASE_URL}event`)
-
+    const response = await axios.get(`${BASE_URL}event?guild=${guild}`)
     return response.data
   } catch (error) {
-    console.error('Error fetching events:', error)
+    console.error('Error fetching events by guild:', error)
     return []
   }
 }
@@ -34,7 +33,7 @@ async function createEvent(eventData) {
 }
 
 module.exports = {
-  fetchEvents,
   createEvent,
   fetchEvent,
+  fetchEventsByGuild,
 }
