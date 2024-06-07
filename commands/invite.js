@@ -4,7 +4,7 @@ const { fetchEventsByGuild } = require('../services/eventService')
 module.exports = {
   data: new SlashCommandBuilder().setName('invite').setDescription('Replies with event invitations!'),
   async execute(interaction) {
-    const events = await fetchEventsByGuild()
+    const events = await fetchEventsByGuild(interaction.guildId)
 
     if (events.length === 0) {
       await interaction.reply({ content: 'No events available.', ephemeral: true })
