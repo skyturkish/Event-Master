@@ -1,5 +1,5 @@
 const { Events, EmbedBuilder, ActionRowBuilder, ButtonBuilder, UserSelectMenuBuilder } = require('discord.js')
-const { fetchEventsByGuild, fetchEvent } = require('../services/eventService')
+const { fetchEventsByGuild, fetchEvent, addOrUpdateParticipant } = require('../services/eventService')
 
 module.exports = {
   name: Events.InteractionCreate,
@@ -44,26 +44,43 @@ module.exports = {
 
     if (interaction.customId.startsWith('select-users:')) {
       const selectedUsers = interaction.values
-      const mentionUsers = selectedUsers.map((userId) => `<@${userId}>`).join(', ')
       const eventId = interaction.customId.split(':')[1]
-      console.log('Event ID:', eventId)
-
-      // Add custom metadata to the message
       const selectedEvent = await fetchEvent(eventId)
+
+      // Extract participants from the event and group by status
+      const existingParticipants = selectedEvent.participants.reduce((acc, participant) => {
+        acc[participant.status] = acc[participant.status] || []
+        acc[participant.status].push(participant.discordID)
+        return acc
+      }, {})
+
+      // Filter out users who are already participants
+      const newParticipants = selectedUsers.filter(
+        (userId) => !selectedEvent.participants.some((participant) => participant.discordID === userId)
+      )
+
+      // Update participants in the event
+      for (const userId of newParticipants) {
+        await addOrUpdateParticipant(eventId, userId, 'invited')
+      }
+
+      const mentionUsers = newParticipants.map((userId) => `<@${userId}>`).join(', ')
 
       const embedDescription = `You have been invited to the event ${selectedEvent.title} by ${interaction.user}.`
 
       const buttons = new ActionRowBuilder().addComponents(
-        new ButtonBuilder().setCustomId('accept').setLabel('Accept').setStyle('Success'),
-        new ButtonBuilder().setCustomId('decline').setLabel('Decline').setStyle('Danger'),
+        new ButtonBuilder().setCustomId('accepted').setLabel('Accept').setStyle('Success'),
+        new ButtonBuilder().setCustomId('declined').setLabel('Decline').setStyle('Danger'),
         new ButtonBuilder().setCustomId('maybe').setLabel('Maybe').setStyle('Secondary')
       )
 
       const responses = {
-        accepted: [],
-        declined: [],
-        maybe: [],
-        unanswered: [...selectedUsers],
+        accepted: existingParticipants.accepted || [],
+        declined: existingParticipants.declined || [],
+        maybe: existingParticipants.maybe || [],
+        unanswered: existingParticipants.invited
+          ? existingParticipants.invited.concat(newParticipants)
+          : [...newParticipants],
       }
 
       const generateResponseText = () => {
@@ -101,8 +118,7 @@ module.exports = {
         components: [buttons],
       })
 
-      const buttonFilter = (i) =>
-        ['accept', 'decline', 'maybe'].includes(i.customId) && selectedUsers.includes(i.user.id)
+      const buttonFilter = (i) => ['accepted', 'declined', 'maybe'].includes(i.customId) // Remove the restriction to newParticipants
 
       const buttonCollector = inviteMessage.createMessageComponentCollector({
         filter: buttonFilter,
@@ -120,6 +136,7 @@ module.exports = {
           })
           return
         }
+        await addOrUpdateParticipant(eventId, i.user.id, i.customId)
 
         // Remove the user from all response categories before adding them to the new one
         responses.accepted = responses.accepted.filter((userId) => userId !== i.user.id)
@@ -127,9 +144,9 @@ module.exports = {
         responses.maybe = responses.maybe.filter((userId) => userId !== i.user.id)
         responses.unanswered = responses.unanswered.filter((userId) => userId !== i.user.id)
 
-        if (i.customId === 'accept') {
+        if (i.customId === 'accepted') {
           responses.accepted.push(i.user.id)
-        } else if (i.customId === 'decline') {
+        } else if (i.customId === 'declined') {
           responses.declined.push(i.user.id)
         } else if (i.customId === 'maybe') {
           responses.maybe.push(i.user.id)
@@ -149,8 +166,8 @@ module.exports = {
         console.log(`Collected ${collected.size} button interactions.`)
         if (responses.unanswered.length > 0) {
           const newButtons = new ActionRowBuilder().addComponents(
-            new ButtonBuilder().setCustomId('accept').setLabel('Accept').setStyle('Success'),
-            new ButtonBuilder().setCustomId('decline').setLabel('Decline').setStyle('Danger'),
+            new ButtonBuilder().setCustomId('accepted').setLabel('Accept').setStyle('Success'),
+            new ButtonBuilder().setCustomId('declined').setLabel('Decline').setStyle('Danger'),
             new ButtonBuilder().setCustomId('maybe').setLabel('Maybe').setStyle('Secondary')
           )
 
