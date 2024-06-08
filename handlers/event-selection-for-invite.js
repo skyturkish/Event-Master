@@ -2,8 +2,11 @@ const { ActionRowBuilder, UserSelectMenuBuilder } = require('discord.js')
 const { fetchEventsByGuild } = require('../services/eventService')
 
 const handleEventSelection = async (interaction) => {
+  const eventId = interaction.values[0]
+
   const events = await fetchEventsByGuild(interaction.guildId)
-  const selectedEvent = events.find((event) => event._id === interaction.values[0])
+
+  const selectedEvent = events.find((event) => event._id === eventId)
 
   const participantLimit = selectedEvent.participantLimit
   const maxValues = Math.min(participantLimit, 25)
