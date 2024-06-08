@@ -120,9 +120,11 @@ module.exports = {
 
       const buttonFilter = (i) => ['accepted', 'declined', 'maybe'].includes(i.customId) // Remove the restriction to newParticipants
 
+      const threeDaysInMilliseconds = 3 * 24 * 60 * 60 * 1000 // 2 gün
+
       const buttonCollector = inviteMessage.createMessageComponentCollector({
         filter: buttonFilter,
-        time: 15 * 60 * 1000,
+        time: threeDaysInMilliseconds,
       })
 
       buttonCollector.on('collect', async (i) => {
