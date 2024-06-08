@@ -30,6 +30,16 @@ const handleUserSelection = async (interaction) => {
     .map((userId) => `<@${userId}>`)
     .join(', ')
 
+  const alreadyRespondedUsers = selectedUsers
+    .filter(
+      (userId) =>
+        existingParticipants.attending?.includes(userId) ||
+        existingParticipants.declined?.includes(userId) ||
+        existingParticipants.considering?.includes(userId)
+    )
+    .map((userId) => `<@${userId}>`)
+    .join(', ')
+
   const embedDescription = `You have been invited to the event ${selectedEvent.title} by ${interaction.user}.`
 
   const buttons = new ActionRowBuilder().addComponents(
@@ -78,19 +88,26 @@ const handleUserSelection = async (interaction) => {
 
   if (!mentionUsers) {
     await interaction.reply({
-      content: 'Everyone invited to this event has already made a decision.',
+      content: `The following users have already responded to the invitation and were not re-invited: ${alreadyRespondedUsers}. Please check the list below for the current status.`,
       embeds: [embed],
       components: [],
       ephemeral: true,
     })
     return
   }
+
   const inviteMessage = await interaction.channel.send({
     content: `${mentionUsers}, ${embedDescription}.`,
-
     embeds: [embed],
     components: [buttons],
   })
+
+  if (alreadyRespondedUsers) {
+    await interaction.reply({
+      content: `The following users have already responded to the invitation and were not re-invited: ${alreadyRespondedUsers}. Please check the list above for the current status.`,
+      ephemeral: true,
+    })
+  }
 
   const buttonFilter = (i) => ['attending', 'declined', 'considering'].includes(i.customId)
 
