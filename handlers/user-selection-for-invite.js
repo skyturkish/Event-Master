@@ -1,46 +1,31 @@
 const { EmbedBuilder, ActionRowBuilder, ButtonBuilder } = require('discord.js')
 const { fetchEvent, addOrUpdateParticipant } = require('../services/eventService')
 
+function getMentionUsersString(participantsIds) {
+  const mentionUsers = participantsIds.map((discordID) => `<@${discordID}>`).join(', ')
+
+  return mentionUsers
+}
+
 const handleUserSelection = async (interaction) => {
   const selectedUsers = interaction.values
   const eventId = interaction.customId.split(':')[1]
   const selectedEvent = await fetchEvent(eventId)
 
-  const existingParticipants = selectedEvent.participants.reduce((acc, participant) => {
-    acc[participant.status] = acc[participant.status] || []
-    acc[participant.status].push(participant.discordID)
-    return acc
-  }, {})
+  const embedDescription = `You have been invited to the event ${selectedEvent.title} by ${interaction.user}.`
+  const participantIDs = selectedEvent.participants.map((participant) => participant.discordID)
+  const uniqueUsers = selectedUsers.filter((user) => !participantIDs.includes(user))
 
-  const newParticipants = selectedUsers.filter(
-    (userId) => !selectedEvent.participants.some((participant) => participant.discordID === userId)
-  )
-
-  for (const userId of newParticipants) {
-    await addOrUpdateParticipant(eventId, userId, 'invited')
+  for (const uniqueUser of uniqueUsers) {
+    await addOrUpdateParticipant(eventId, uniqueUser, 'invited')
   }
 
-  const mentionUsers = newParticipants
-    .filter(
-      (userId) =>
-        !existingParticipants.attending?.includes(userId) &&
-        !existingParticipants.declined?.includes(userId) &&
-        !existingParticipants.considering?.includes(userId)
-    )
-    .map((userId) => `<@${userId}>`)
-    .join(', ')
+  selectedEvent = await fetchEvent(eventId)
+  participants = selectedEvent.participants
 
-  const alreadyRespondedUsers = selectedUsers
-    .filter(
-      (userId) =>
-        existingParticipants.attending?.includes(userId) ||
-        existingParticipants.declined?.includes(userId) ||
-        existingParticipants.considering?.includes(userId)
-    )
-    .map((userId) => `<@${userId}>`)
-    .join(', ')
-
-  const embedDescription = `You have been invited to the event ${selectedEvent.title} by ${interaction.user}.`
+  const matchedParticipants = participants.filter((participant) => selectedUsers.includes(participant.discordID))
+  const allUsersProcessed = matchedParticipants.length === selectedUsers.length
+  const allSelectedUsersHaveResponded = matchedParticipants.every((participant) => participant.status !== 'invited')
 
   const buttons = new ActionRowBuilder().addComponents(
     new ButtonBuilder().setCustomId('attending').setLabel('Attend').setStyle('Success'),
@@ -48,34 +33,24 @@ const handleUserSelection = async (interaction) => {
     new ButtonBuilder().setCustomId('considering').setLabel('Considering').setStyle('Secondary')
   )
 
-  const responses = {
-    attending: existingParticipants.attending || [],
-    declined: existingParticipants.declined || [],
-    considering: existingParticipants.considering || [],
-    unanswered: existingParticipants.invited
-      ? existingParticipants.invited.concat(newParticipants)
-      : [...newParticipants],
-  }
-
   const generateResponseText = () => {
-    let responseText = `Event ID: ${eventId}\n\nAttending ✅:\n`
-    responses.attending.forEach((userId) => {
-      responseText += `<@${userId}>\n`
-    })
+    const statuses = [
+      { label: 'Attending ✅:', status: 'attending' },
+      { label: 'Declined ❌:', status: 'declined' },
+      { label: 'Considering 🤔:', status: 'considering' },
+      { label: 'Invited - awaiting response 🕐:', status: 'invited' },
+    ]
 
-    responseText += '\nDeclined ❌:\n'
-    responses.declined.forEach((userId) => {
-      responseText += `<@${userId}>\n`
-    })
+    let responseText = `Event ID: ${eventId}\n\n`
 
-    responseText += '\nConsidering 🤔:\n'
-    responses.considering.forEach((userId) => {
-      responseText += `<@${userId}>\n`
-    })
-
-    responseText += '\nInvited - awaiting response 🕐:\n'
-    responses.unanswered.forEach((userId) => {
-      responseText += `<@${userId}>\n`
+    statuses.forEach(({ label, status }) => {
+      responseText += `${label}\n`
+      participants
+        .filter((participant) => participant.status === status)
+        .forEach((participant) => {
+          responseText += `<@${participant.discordID}>\n`
+        })
+      responseText += '\n'
     })
 
     return responseText
@@ -86,9 +61,11 @@ const handleUserSelection = async (interaction) => {
     .setDescription(embedDescription)
     .addFields({ name: 'Responses', value: generateResponseText() })
 
-  if (!mentionUsers) {
-    await interaction.reply({
-      content: `The following users have already responded to the invitation and were not re-invited: ${alreadyRespondedUsers}. Please check the list below for the current status.`,
+  if (allUsersProcessed && allSelectedUsersHaveResponded) {
+    await interaction.update({
+      content: `All the users you invited have already responded and were not re-invited: ${getMentionUsersString(
+        selectedUsers
+      )}. Please check the list below for the current status.`,
       embeds: [embed],
       components: [],
       ephemeral: true,
@@ -96,15 +73,25 @@ const handleUserSelection = async (interaction) => {
     return
   }
 
+  const invitedUsers = participants
+    .filter((participant) => selectedUsers.includes(participant.discordID) && participant.status === 'invited')
+    .map((participant) => participant.discordID)
+
+  const notInvitedUsers = participants
+    .filter((participant) => selectedUsers.includes(participant.discordID) && participant.status !== 'invited')
+    .map((participant) => participant.discordID)
+
   const inviteMessage = await interaction.channel.send({
-    content: `${mentionUsers}, ${embedDescription}.`,
+    content: `${getMentionUsersString(invitedUsers)}, ${embedDescription}.`,
     embeds: [embed],
     components: [buttons],
   })
 
-  if (alreadyRespondedUsers) {
+  if (notInvitedUsers.length > 0) {
     await interaction.reply({
-      content: `The following users have already responded to the invitation and were not re-invited: ${alreadyRespondedUsers}. Please check the list above for the current status.`,
+      content: `The following users have already responded to the invitation and were not re-invited: ${getMentionUsersString(
+        notInvitedUsers
+      )}. Please check the list above for the current status.`,
       ephemeral: true,
     })
   }
@@ -129,20 +116,11 @@ const handleUserSelection = async (interaction) => {
       })
       return
     }
+
     await addOrUpdateParticipant(eventId, i.user.id, i.customId)
 
-    responses.attending = responses.attending.filter((userId) => userId !== i.user.id)
-    responses.declined = responses.declined.filter((userId) => userId !== i.user.id)
-    responses.considering = responses.considering.filter((userId) => userId !== i.user.id)
-    responses.unanswered = responses.unanswered.filter((userId) => userId !== i.user.id)
-
-    if (i.customId === 'attending') {
-      responses.attending.push(i.user.id)
-    } else if (i.customId === 'declined') {
-      responses.declined.push(i.user.id)
-    } else if (i.customId === 'considering') {
-      responses.considering.push(i.user.id)
-    }
+    selectedEvent = await fetchEvent(eventId)
+    participants = selectedEvent.participants
 
     const updatedEmbed = new EmbedBuilder()
       .setTitle('Event Invitation')
@@ -156,7 +134,7 @@ const handleUserSelection = async (interaction) => {
 
   buttonCollector.on('end', async (collected) => {
     console.log(`Collected ${collected.size} button interactions.`)
-    if (responses.unanswered.length > 0) {
+    if (participants.unanswered.length > 0) {
       const newButtons = new ActionRowBuilder().addComponents(
         new ButtonBuilder().setCustomId('attending').setLabel('Attend').setStyle('Success'),
         new ButtonBuilder().setCustomId('declined').setLabel('Decline').setStyle('Danger'),
