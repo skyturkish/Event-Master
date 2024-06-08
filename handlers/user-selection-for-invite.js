@@ -21,15 +21,15 @@ function createEventEmbed(eventId, embedDescription, participants, eventTitle, s
     { label: 'Invited - awaiting response 🕐:', status: 'invited' },
   ]
 
-  let responseText = `Event ID: ${eventId}\n\n`
-  responseText += `Event Title: ${eventTitle}\n`
-  responseText += `Start Time: ${new Date(startTime).toLocaleString()}\n`
-  responseText += `Participants: ${
+  let responseText = `**Event ID:** ${eventId}\n\n`
+  responseText += `**Event Title:** ${eventTitle}\n`
+  responseText += `**Start Time:** ${new Date(startTime).toLocaleString()}\n`
+  responseText += `**Participants:** ${
     participants.filter((participant) => participant.status === 'attending').length
   }/${participantLimit}\n\n`
 
   statuses.forEach(({ label, status }) => {
-    responseText += `${label}\n`
+    responseText += `**${label}**\n`
     const participantsString = participants
       .filter((participant) => participant.status === status)
       .map((participant) => `<@${participant.discordID}>`)
@@ -42,6 +42,7 @@ function createEventEmbed(eventId, embedDescription, participants, eventTitle, s
     .setTitle('Event Invitation')
     .setDescription(embedDescription)
     .addFields({ name: 'Responses', value: responseText })
+    .setColor('#00FF00')
 }
 
 function createButtons() {
