@@ -20,7 +20,7 @@ module.exports = {
 
     if (!interaction.isStringSelectMenu() && !interaction.isButton() && !interaction.isUserSelectMenu()) return
 
-    if (interaction.customId === 'select-event') {
+    if (interaction.customId === 'select-event-for-invite') {
       const events = await fetchEventsByGuild(interaction.guildId)
       const selectedEvent = events.find((event) => event._id === interaction.values[0])
 

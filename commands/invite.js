@@ -19,7 +19,7 @@ module.exports = {
 
     const eventRow = new ActionRowBuilder().addComponents(
       new StringSelectMenuBuilder()
-        .setCustomId('select-event')
+        .setCustomId('select-event-for-invite')
         .setPlaceholder('Select an event')
         .addOptions(eventOptions)
     )
