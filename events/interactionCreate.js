@@ -1,5 +1,6 @@
-const handleUserSelection = require('../handlers/user-selection-for-invite')
-const handleEventSelection = require('../handlers/event-selection-for-invite')
+const handleUserSelectionForInvite = require('../handlers/user-selection-for-invite')
+const handleEventSelectionForInvite = require('../handlers/event-selection-for-invite')
+const { handleEventSelection } = require('../utils/event')
 const { Events } = require('discord.js')
 
 module.exports = {
@@ -22,11 +23,13 @@ module.exports = {
     if (!interaction.isStringSelectMenu() && !interaction.isButton() && !interaction.isUserSelectMenu()) return
 
     if (interaction.customId === 'select-event-for-invite') {
-      await handleEventSelection(interaction)
-    }
-
-    if (interaction.customId.startsWith('select-users-for-invite:')) {
-      await handleUserSelection(interaction)
+      await handleEventSelectionForInvite(interaction)
+    } else if (interaction.customId.startsWith('select-users-for-invite:')) {
+      await handleUserSelectionForInvite(interaction)
+    } else if (interaction.customId === 'select-event-for-join-event') {
+      await handleEventSelection(interaction, 'join-event')
+    } else if (interaction.customId === 'select-event-for-leave-event') {
+      await handleEventSelection(interaction, 'leave-event')
     }
   },
 }
