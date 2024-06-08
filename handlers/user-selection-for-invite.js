@@ -48,20 +48,28 @@ const handleUserSelection = async (interaction) => {
       .filter((participant) => selectedUsers.includes(participant.discordID) && participant.status !== 'invited')
       .map((participant) => participant.discordID)
 
+    let content = `The following users have been successfully invited to the event: ${getMentionUsersString(
+      invitedUsers
+    )}.`
+
+    if (notInvitedUsers.length > 0) {
+      content += ` However, the following users had already responded to the invitation and were not re-invited: ${getMentionUsersString(
+        notInvitedUsers
+      )}. Please check the list below for their current status.`
+    }
+
+    await interaction.update({
+      content: content,
+      embeds: [],
+      components: [],
+      ephemeral: true,
+    })
+
     const inviteMessage = await interaction.channel.send({
       content: `${getMentionUsersString(invitedUsers)}, ${embedDescription}.`,
       embeds: [embed],
       components: [buttons],
     })
-
-    if (notInvitedUsers.length > 0) {
-      await interaction.reply({
-        content: `The following users have already responded to the invitation and were not re-invited: ${getMentionUsersString(
-          notInvitedUsers
-        )}. Please check the list above for the current status.`,
-        ephemeral: true,
-      })
-    }
 
     const buttonFilter = (i) => ['attending', 'declined', 'considering'].includes(i.customId)
 
