@@ -36,21 +36,9 @@ async function addOrUpdateParticipant(eventId, participantId, status = 'invited'
   try {
     const event = await fetchEvent(eventId)
 
-    if (!event) {
-      throw new Error('Event not found')
-    }
+    if (!event) throw new Error('Event not found')
 
-    let participant = event.participants.find((p) => p.discordID === participantId)
-
-    if (participant) {
-      participant.status = status
-    } else {
-      event.participants.push({ discordID: participantId, status })
-    }
-
-    const response = await axios.put(`${BASE_URL}event/${eventId}/participants/${participantId}`, {
-      status,
-    })
+    await axios.put(`${BASE_URL}event/${eventId}/participants/${participantId}`, { status })
   } catch (error) {
     console.error('Error adding or updating participant:', error)
     throw error
