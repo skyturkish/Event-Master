@@ -13,7 +13,12 @@ async function getUpdatedEvent(eventId) {
   return await fetchEvent(eventId)
 }
 
-function createEventEmbed(eventId, embedDescription, participants, eventTitle, startTime, participantLimit) {
+async function createEventEmbed(event, client) {
+  const creator = await client.users.fetch(event.creator)
+  const creatorAvatarUrl = creator.displayAvatarURL()
+  const botUser = client.user
+  const botAvatarUrl = botUser.displayAvatarURL()
+
   const statuses = [
     { label: 'Attending ✅:', status: 'attending' },
     { label: 'Declined ❌:', status: 'declined' },
@@ -21,16 +26,22 @@ function createEventEmbed(eventId, embedDescription, participants, eventTitle, s
     { label: 'Invited - awaiting response 🕐:', status: 'invited' },
   ]
 
-  let responseText = `**Event ID:** ${eventId}\n\n`
-  responseText += `**Event Title:** ${eventTitle}\n`
-  responseText += `**Start Time:** ${new Date(startTime).toLocaleString()}\n`
+  let responseText = `**Event ID:** ${event._id}\n`
+  responseText += `**Start Time:** ${new Date(event.startTime).toLocaleString('en-GB', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false,
+  })}\n`
   responseText += `**Participants:** ${
-    participants.filter((participant) => participant.status === 'attending').length
-  }/${participantLimit}\n\n`
+    event.participants.filter((participant) => participant.status === 'attending').length
+  }/${event.participantLimit}\n\n`
 
   statuses.forEach(({ label, status }) => {
     responseText += `**${label}**\n`
-    const participantsString = participants
+    const participantsString = event.participants
       .filter((participant) => participant.status === status)
       .map((participant) => `<@${participant.discordID}>`)
       .join(', ')
@@ -38,11 +49,15 @@ function createEventEmbed(eventId, embedDescription, participants, eventTitle, s
     responseText += `${participantsString}\n\n`
   })
 
+  responseText += '\u200B\n'
   return new EmbedBuilder()
-    .setTitle('Event Invitation')
-    .setDescription(embedDescription)
-    .addFields({ name: 'Responses', value: responseText })
-    .setColor('#00FF00')
+    .setColor(0x0099ff)
+    .setTitle(event.title)
+    .setDescription(event.description)
+    .setThumbnail(botAvatarUrl)
+    .addFields({ name: 'Details', value: responseText })
+    .setTimestamp()
+    .setFooter({ text: `This event is created by ${creator.username}`, iconURL: creatorAvatarUrl })
 }
 
 function createButtons() {
@@ -72,14 +87,7 @@ const handleUserSelection = async (interaction) => {
     const allUsersProcessed = matchedParticipants.length === selectedUsers.length
     const allSelectedUsersHaveResponded = matchedParticipants.every((participant) => participant.status !== 'invited')
 
-    const embed = createEventEmbed(
-      eventId,
-      embedDescription,
-      participants,
-      selectedEvent.title,
-      selectedEvent.startTime,
-      selectedEvent.participantLimit
-    )
+    const embed = await createEventEmbed(selectedEvent, interaction.client)
     const buttons = createButtons()
 
     if (allUsersProcessed && allSelectedUsersHaveResponded) {
@@ -142,14 +150,7 @@ const handleUserSelection = async (interaction) => {
       selectedEvent = await getUpdatedEvent(eventId)
       const participants = selectedEvent.participants
 
-      const updatedEmbed = createEventEmbed(
-        eventId,
-        embedDescription,
-        participants,
-        selectedEvent.title,
-        selectedEvent.startTime,
-        selectedEvent.participantLimit
-      )
+      const updatedEmbed = await createEventEmbed(selectedEvent, interaction.client)
       await inviteMessage.edit({ embeds: [updatedEmbed] })
       await i.deferUpdate()
     })
