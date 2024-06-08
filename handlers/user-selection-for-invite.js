@@ -25,23 +25,23 @@ const handleUserSelection = async (interaction) => {
   const embedDescription = `You have been invited to the event ${selectedEvent.title} by ${interaction.user}.`
 
   const buttons = new ActionRowBuilder().addComponents(
-    new ButtonBuilder().setCustomId('accepted').setLabel('Accept').setStyle('Success'),
+    new ButtonBuilder().setCustomId('attending').setLabel('Attend').setStyle('Success'),
     new ButtonBuilder().setCustomId('declined').setLabel('Decline').setStyle('Danger'),
-    new ButtonBuilder().setCustomId('maybe').setLabel('Maybe').setStyle('Secondary')
+    new ButtonBuilder().setCustomId('considering').setLabel('Considering').setStyle('Secondary')
   )
 
   const responses = {
-    accepted: existingParticipants.accepted || [],
+    attending: existingParticipants.attending || [],
     declined: existingParticipants.declined || [],
-    maybe: existingParticipants.maybe || [],
+    considering: existingParticipants.considering || [],
     unanswered: existingParticipants.invited
       ? existingParticipants.invited.concat(newParticipants)
       : [...newParticipants],
   }
 
   const generateResponseText = () => {
-    let responseText = `Event ID: ${eventId}\n\nAccepted ✅:\n`
-    responses.accepted.forEach((userId) => {
+    let responseText = `Event ID: ${eventId}\n\nAttending ✅:\n`
+    responses.attending.forEach((userId) => {
       responseText += `<@${userId}>\n`
     })
 
@@ -50,12 +50,12 @@ const handleUserSelection = async (interaction) => {
       responseText += `<@${userId}>\n`
     })
 
-    responseText += '\nMaybe 🤔:\n'
-    responses.maybe.forEach((userId) => {
+    responseText += '\nConsidering 🤔:\n'
+    responses.considering.forEach((userId) => {
       responseText += `<@${userId}>\n`
     })
 
-    responseText += '\nUnanswered 🕐:\n'
+    responseText += '\nInvited - awaiting response 🕐:\n'
     responses.unanswered.forEach((userId) => {
       responseText += `<@${userId}>\n`
     })
@@ -74,7 +74,7 @@ const handleUserSelection = async (interaction) => {
     components: [buttons],
   })
 
-  const buttonFilter = (i) => ['accepted', 'declined', 'maybe'].includes(i.customId)
+  const buttonFilter = (i) => ['attending', 'declined', 'considering'].includes(i.customId)
 
   const threeDaysInMilliseconds = 3 * 24 * 60 * 60 * 1000
 
@@ -96,17 +96,17 @@ const handleUserSelection = async (interaction) => {
     }
     await addOrUpdateParticipant(eventId, i.user.id, i.customId)
 
-    responses.accepted = responses.accepted.filter((userId) => userId !== i.user.id)
+    responses.attending = responses.attending.filter((userId) => userId !== i.user.id)
     responses.declined = responses.declined.filter((userId) => userId !== i.user.id)
-    responses.maybe = responses.maybe.filter((userId) => userId !== i.user.id)
+    responses.considering = responses.considering.filter((userId) => userId !== i.user.id)
     responses.unanswered = responses.unanswered.filter((userId) => userId !== i.user.id)
 
-    if (i.customId === 'accepted') {
-      responses.accepted.push(i.user.id)
+    if (i.customId === 'attending') {
+      responses.attending.push(i.user.id)
     } else if (i.customId === 'declined') {
       responses.declined.push(i.user.id)
-    } else if (i.customId === 'maybe') {
-      responses.maybe.push(i.user.id)
+    } else if (i.customId === 'considering') {
+      responses.considering.push(i.user.id)
     }
 
     const updatedEmbed = new EmbedBuilder()
@@ -123,9 +123,9 @@ const handleUserSelection = async (interaction) => {
     console.log(`Collected ${collected.size} button interactions.`)
     if (responses.unanswered.length > 0) {
       const newButtons = new ActionRowBuilder().addComponents(
-        new ButtonBuilder().setCustomId('accepted').setLabel('Accept').setStyle('Success'),
+        new ButtonBuilder().setCustomId('attending').setLabel('Attend').setStyle('Success'),
         new ButtonBuilder().setCustomId('declined').setLabel('Decline').setStyle('Danger'),
-        new ButtonBuilder().setCustomId('maybe').setLabel('Maybe').setStyle('Secondary')
+        new ButtonBuilder().setCustomId('considering').setLabel('Considering').setStyle('Secondary')
       )
 
       await inviteMessage.edit({ components: [newButtons] })
