@@ -13,7 +13,7 @@ async function getUpdatedEvent(eventId) {
   return await fetchEvent(eventId)
 }
 
-function createEventEmbed(eventId, embedDescription, participants) {
+function createEventEmbed(eventId, embedDescription, participants, eventTitle, startTime, participantLimit) {
   const statuses = [
     { label: 'Attending ✅:', status: 'attending' },
     { label: 'Declined ❌:', status: 'declined' },
@@ -22,15 +22,20 @@ function createEventEmbed(eventId, embedDescription, participants) {
   ]
 
   let responseText = `Event ID: ${eventId}\n\n`
+  responseText += `Event Title: ${eventTitle}\n`
+  responseText += `Start Time: ${new Date(startTime).toLocaleString()}\n`
+  responseText += `Participants: ${
+    participants.filter((participant) => participant.status === 'attending').length
+  }/${participantLimit}\n\n`
 
   statuses.forEach(({ label, status }) => {
     responseText += `${label}\n`
-    participants
+    const participantsString = participants
       .filter((participant) => participant.status === status)
-      .forEach((participant) => {
-        responseText += `<@${participant.discordID}>\n`
-      })
-    responseText += '\n'
+      .map((participant) => `<@${participant.discordID}>`)
+      .join(', ')
+
+    responseText += `${participantsString}\n\n`
   })
 
   return new EmbedBuilder()
@@ -66,7 +71,14 @@ const handleUserSelection = async (interaction) => {
     const allUsersProcessed = matchedParticipants.length === selectedUsers.length
     const allSelectedUsersHaveResponded = matchedParticipants.every((participant) => participant.status !== 'invited')
 
-    const embed = createEventEmbed(eventId, embedDescription, participants)
+    const embed = createEventEmbed(
+      eventId,
+      embedDescription,
+      participants,
+      selectedEvent.title,
+      selectedEvent.startTime,
+      selectedEvent.participantLimit
+    )
     const buttons = createButtons()
 
     if (allUsersProcessed && allSelectedUsersHaveResponded) {
@@ -129,7 +141,14 @@ const handleUserSelection = async (interaction) => {
       selectedEvent = await getUpdatedEvent(eventId)
       const participants = selectedEvent.participants
 
-      const updatedEmbed = createEventEmbed(eventId, embedDescription, participants)
+      const updatedEmbed = createEventEmbed(
+        eventId,
+        embedDescription,
+        participants,
+        selectedEvent.title,
+        selectedEvent.startTime,
+        selectedEvent.participantLimit
+      )
       await inviteMessage.edit({ embeds: [updatedEmbed] })
       await i.deferUpdate()
     })
