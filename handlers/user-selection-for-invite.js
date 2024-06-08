@@ -20,7 +20,15 @@ const handleUserSelection = async (interaction) => {
     await addOrUpdateParticipant(eventId, userId, 'invited')
   }
 
-  const mentionUsers = newParticipants.map((userId) => `<@${userId}>`).join(', ')
+  const mentionUsers = newParticipants
+    .filter(
+      (userId) =>
+        !existingParticipants.attending?.includes(userId) &&
+        !existingParticipants.declined?.includes(userId) &&
+        !existingParticipants.considering?.includes(userId)
+    )
+    .map((userId) => `<@${userId}>`)
+    .join(', ')
 
   const embedDescription = `You have been invited to the event ${selectedEvent.title} by ${interaction.user}.`
 
@@ -68,8 +76,18 @@ const handleUserSelection = async (interaction) => {
     .setDescription(embedDescription)
     .addFields({ name: 'Responses', value: generateResponseText() })
 
+  if (!mentionUsers) {
+    await interaction.reply({
+      content: 'Everyone invited to this event has already made a decision.',
+      embeds: [embed],
+      components: [],
+      ephemeral: true,
+    })
+    return
+  }
   const inviteMessage = await interaction.channel.send({
     content: `${mentionUsers}, ${embedDescription}.`,
+
     embeds: [embed],
     components: [buttons],
   })
