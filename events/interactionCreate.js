@@ -25,7 +25,7 @@ module.exports = {
       await handleEventSelection(interaction)
     }
 
-    if (interaction.customId.startsWith('select-users:')) {
+    if (interaction.customId === 'select-users-for-invite') {
       await handleUserSelection(interaction)
     }
   },
