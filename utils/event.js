@@ -1,15 +1,33 @@
-const { fetchEventsByCriteria, fetchEvent, addOrUpdateParticipant } = require('../services/eventService')
+const { fetchEventsByCriteria, fetchEvent, addOrUpdateParticipant } = require('../services/event-service')
 const { createEventEmbed } = require('../embeds/event')
 const { createButtons } = require('../components/buttons')
 const { ActionRowBuilder, StringSelectMenuBuilder, UserSelectMenuBuilder } = require('discord.js')
 
 async function prepareEventSelection(interaction, commandName) {
-  // commandName'e göre listeyi daraltacaksın
-  const events = await fetchEventsByCriteria({ guild: interaction.guildId })
+  let events
 
-  if (events.length === 0) {
-    await interaction.reply({ content: 'No events available.', ephemeral: true })
-    return
+  if (commandName === 'invite-event') {
+    events = await fetchEventsByCriteria({ guild: interaction.guild.id, status: 'not-started' })
+    if (events.length === 0) {
+      await interaction.reply({ content: 'No events available to invite to.', ephemeral: true })
+      return
+    }
+  } else if (commandName === 'join-event') {
+    events = await fetchEventsByCriteria({ guild: interaction.guild.id, status: 'not-started' })
+    if (events.length === 0) {
+      await interaction.reply({ content: 'No events available to join.', ephemeral: true })
+      return
+    }
+  } else if (commandName === 'leave-event') {
+    events = await fetchEventsByCriteria({
+      guild: interaction.guild.id,
+      status: 'not-started',
+      participantDiscordID: interaction.user.id,
+    })
+    if (events.length === 0) {
+      await interaction.reply({ content: 'You are not participating in any events to leave.', ephemeral: true })
+      return
+    }
   }
 
   const eventOptions = events.map((event) => ({
