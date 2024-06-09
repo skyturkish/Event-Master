@@ -135,12 +135,17 @@ async function handleEventSelection(interaction, action, eventId) {
   }) // 3 days
 
   buttonCollector.on('collect', async (i) => {
-    const currentTime = new Date()
-    const eventStartTime = new Date(selectedEvent.startTime)
+    if (event.status !== 'not-started') {
+      const statusMessages = {
+        ongoing: 'This event is currently ongoing, you can no longer make a decision.',
+        finished: 'This event has already finished, you can no longer make a decision.',
+        canceled: 'This event has been canceled, you can no longer make a decision.',
+      }
 
-    if (currentTime > eventStartTime) {
+      const messageContent = statusMessages[event.status] || 'You can no longer make a decision for this event.'
+
       await i.reply({
-        content: 'This event has already started, you can no longer make a decision.',
+        content: messageContent,
         ephemeral: true,
       })
       return
