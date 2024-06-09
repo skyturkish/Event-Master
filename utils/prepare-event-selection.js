@@ -10,7 +10,11 @@ async function prepareEventSelection(interaction, commandName) {
       status: 'not-started',
     })
     if (events.length === 0) {
-      await interaction.reply({ content: 'No events available to invite to.', ephemeral: true })
+      await interaction.reply({
+        content:
+          'No events available to invite to. You can create an event with /create-event. For more information, use /help.',
+        ephemeral: true,
+      })
       return
     }
   } else if (commandName === 'join-event') {
@@ -19,7 +23,11 @@ async function prepareEventSelection(interaction, commandName) {
       status: 'not-started',
     })
     if (events.length === 0) {
-      await interaction.reply({ content: 'No events available to join.', ephemeral: true })
+      await interaction.reply({
+        content:
+          'No events available to join. You can create an event with /create-event. For more information, use /help.',
+        ephemeral: true,
+      })
       return
     }
   } else if (commandName === 'leave-event') {
@@ -30,7 +38,11 @@ async function prepareEventSelection(interaction, commandName) {
       participantStatus: 'attending',
     })
     if (events.length === 0) {
-      await interaction.reply({ content: 'You are not participating in any events to leave.', ephemeral: true })
+      await interaction.reply({
+        content:
+          'You are not participating in any events to leave. Check available events with /events. For more information, use /help.',
+        ephemeral: true,
+      })
       return
     }
   } else if (commandName === 'update-event') {
@@ -40,7 +52,11 @@ async function prepareEventSelection(interaction, commandName) {
       creator: interaction.user.id,
     })
     if (events.length === 0) {
-      await interaction.reply({ content: 'You are not hosting any events to update.', ephemeral: true })
+      await interaction.reply({
+        content:
+          'You can only update events that have not started yet. Maybe your events have already started or finished. Check with /events. For more information, use /help.',
+        ephemeral: true,
+      })
       return
     }
   }
