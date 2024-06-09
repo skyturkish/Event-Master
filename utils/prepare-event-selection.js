@@ -54,7 +54,7 @@ async function prepareEventSelection(interaction, commandName) {
       hour: '2-digit',
       minute: '2-digit',
       hour12: false,
-    })} - ${event.description}`,
+    })} - ${event.description}`.substring(0, 100),
     value: event._id,
     emoji: '📅',
   }))
