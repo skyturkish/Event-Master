@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require('discord.js')
-const { fetchAndSelectEvent, handleEventSelection } = require('../utils/event')
+const { fetchAndSelectEvent } = require('../utils/event')
 
 module.exports = {
   data: new SlashCommandBuilder()
