@@ -7,13 +7,19 @@ async function prepareEventSelection(interaction, commandName) {
   let events
 
   if (commandName === 'invite-event') {
-    events = await fetchEventsByCriteria({ guild: interaction.guild.id, status: 'not-started' })
+    events = await fetchEventsByCriteria({
+      guild: interaction.guild.id,
+      status: 'not-started',
+    })
     if (events.length === 0) {
       await interaction.reply({ content: 'No events available to invite to.', ephemeral: true })
       return
     }
   } else if (commandName === 'join-event') {
-    events = await fetchEventsByCriteria({ guild: interaction.guild.id, status: 'not-started' })
+    events = await fetchEventsByCriteria({
+      guild: interaction.guild.id,
+      status: 'not-started',
+    })
     if (events.length === 0) {
       await interaction.reply({ content: 'No events available to join.', ephemeral: true })
       return
@@ -23,6 +29,7 @@ async function prepareEventSelection(interaction, commandName) {
       guild: interaction.guild.id,
       status: 'not-started',
       participantDiscordID: interaction.user.id,
+      participantStatus: 'attending',
     })
     if (events.length === 0) {
       await interaction.reply({ content: 'You are not participating in any events to leave.', ephemeral: true })
