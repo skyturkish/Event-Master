@@ -1,8 +1,6 @@
-const { fetchEvent, addOrUpdateParticipant } = require('../services/event-service')
 
-function getMentionUsersString(participantsIds) {
-  return participantsIds.map((discordID) => `<@${discordID}>`).join(', ')
-}
+const { fetchEvent, addOrUpdateParticipant } = require('../services/event-service')
+const { getMentionUsersString } = require('../utils/mentionUtils')
 
 const handleUserSelection = async (interaction, eventId) => {
   const selectedUsers = interaction.values
