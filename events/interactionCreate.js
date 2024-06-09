@@ -1,5 +1,7 @@
-const { handleEventSelection, prepareUserSelection, handleUserSelection } = require('../utils/event')
 const { addOrUpdateParticipant } = require('../services/event-service')
+const { prepareUserSelection } = require('../utils/prepare-user-selection')
+const { handleEventSelection } = require('../utils/handle-event-selection')
+const { handleUserSelection } = require('../utils/handle-user-selection')
 
 const { Events } = require('discord.js')
 
