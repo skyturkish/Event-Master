@@ -39,8 +39,16 @@ async function prepareEventSelection(interaction, commandName) {
 
   const eventOptions = events.map((event) => ({
     label: event.title,
-    description: event.description,
+    description: `Start: ${new Date(event.startTime).toLocaleString('en-GB', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false,
+    })} - ${event.description}`,
     value: event._id,
+    emoji: '📅',
   }))
 
   const eventRow = new ActionRowBuilder().addComponents(
