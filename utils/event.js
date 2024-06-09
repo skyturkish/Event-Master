@@ -3,7 +3,7 @@ const { createEventEmbed } = require('../embeds/event')
 const { createButtons } = require('../components/buttons')
 const { ActionRowBuilder, StringSelectMenuBuilder, UserSelectMenuBuilder } = require('discord.js')
 
-async function fetchAndSelectEvent(interaction, commandName) {
+async function prepareEventSelection(interaction, commandName) {
   // commandName'e göre listeyi daraltacaksın
   const events = await fetchEventsByGuild(interaction.guildId)
 
@@ -162,7 +162,7 @@ async function handleEventSelection(interaction, action, eventId) {
 }
 
 module.exports = {
-  fetchAndSelectEvent,
+  prepareEventSelection,
   handleEventSelection,
   prepareUserSelection,
   handleUserSelection,

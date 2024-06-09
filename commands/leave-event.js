@@ -1,11 +1,11 @@
 const { SlashCommandBuilder } = require('discord.js')
-const { fetchAndSelectEvent } = require('../utils/event')
+const { prepareEventSelection } = require('../utils/event')
 
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('leave-event')
     .setDescription('Exit an event by selecting from the list of available events'),
   async execute(interaction) {
-    await fetchAndSelectEvent(interaction, 'leave-event')
+    await prepareEventSelection(interaction, 'leave-event')
   },
 }
