@@ -1,4 +1,3 @@
-const { addOrUpdateParticipant } = require('../services/event-service')
 const { prepareUserSelection } = require('../utils/prepare-user-selection')
 const { handleEventSelection } = require('../utils/handle-event-selection')
 const { handleUserSelection } = require('../utils/handle-user-selection')
@@ -33,10 +32,8 @@ module.exports = {
       if (commandName === 'invite-event') {
         await prepareUserSelection(interaction, eventId)
       } else if (commandName === 'join-event') {
-        await addOrUpdateParticipant(eventId, interaction.user.id, 'attending')
         await handleEventSelection(interaction, 'join-event', eventId)
       } else if (commandName === 'leave-event') {
-        await addOrUpdateParticipant(eventId, interaction.user.id, 'declined')
         await handleEventSelection(interaction, 'leave-event', eventId)
       } else if (commandName === 'update-event') {
         await handleEventUpdate(interaction, eventId)
