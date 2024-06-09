@@ -29,23 +29,21 @@ async function prepareEventSelection(interaction, commandName) {
 }
 
 async function prepareUserSelection(interaction, eventId) {
-  const events = await fetchEventsByGuild(interaction.guildId)
+  const event = await fetchEvent(eventId)
 
-  const selectedEvent = events.find((event) => event._id === eventId)
-
-  const participantLimit = selectedEvent.participantLimit
+  const participantLimit = event.participantLimit
   const maxValues = Math.min(participantLimit, 25)
 
   const userRow = new ActionRowBuilder().addComponents(
     new UserSelectMenuBuilder()
-      .setCustomId(`select-users-for-invite:${selectedEvent._id}`)
+      .setCustomId(`select-users-for-invite:${event._id}`)
       .setPlaceholder('Select users to invite')
       .setMinValues(1)
       .setMaxValues(maxValues)
   )
 
   await interaction.update({
-    content: `Event "${selectedEvent.title}" selected. Now, select users to invite:`,
+    content: `Event "${event.title}" selected. Now, select users to invite:`,
     components: [userRow],
     ephemeral: true,
   })
@@ -57,9 +55,9 @@ function getMentionUsersString(participantsIds) {
 
 const handleUserSelection = async (interaction, eventId) => {
   const selectedUsers = interaction.values
-  let selectedEvent = await fetchEvent(eventId)
-  const embedDescription = `You have been invited to the event ${selectedEvent.title} by ${interaction.user}.`
-  const participantIDs = selectedEvent.participants.map((participant) => participant.discordID)
+  let event = await fetchEvent(eventId)
+  const embedDescription = `You have been invited to the event ${event.title} by ${interaction.user}.`
+  const participantIDs = event.participants.map((participant) => participant.discordID)
   const uniqueUsers = selectedUsers.filter((user) => !participantIDs.includes(user))
 
   try {
@@ -67,8 +65,8 @@ const handleUserSelection = async (interaction, eventId) => {
       await addOrUpdateParticipant(eventId, uniqueUser, 'invited')
     }
 
-    selectedEvent = await fetchEvent(eventId)
-    const participants = selectedEvent.participants
+    event = await fetchEvent(eventId)
+    const participants = event.participants
     const matchedParticipants = participants.filter((participant) => selectedUsers.includes(participant.discordID))
     const allUsersProcessed = matchedParticipants.length === selectedUsers.length
     const allSelectedUsersHaveResponded = matchedParticipants.every((participant) => participant.status !== 'invited')
@@ -114,13 +112,13 @@ const handleUserSelection = async (interaction, eventId) => {
 }
 
 async function handleEventSelection(interaction, action, eventId) {
-  let selectedEvent = await fetchEvent(eventId)
+  let event = await fetchEvent(eventId)
 
-  const embed = await createEventEmbed(selectedEvent, interaction.client)
+  const embed = await createEventEmbed(event, interaction.client)
   const buttons = createButtons()
 
   const responseMessage = await interaction.reply({
-    content: `You have ${action}ed the event "${selectedEvent.title}". Please confirm your participation status below.`,
+    content: `You have ${action}ed the event "${event.title}". Please confirm your participation status below.`,
     embeds: [embed],
     components: [buttons],
     ephemeral: action == 'invite-event' ? false : true,
@@ -152,15 +150,15 @@ async function handleEventSelection(interaction, action, eventId) {
     }
 
     await addOrUpdateParticipant(eventId, i.user.id, i.customId)
-    selectedEvent = await fetchEvent(eventId)
-    const updatedEmbed = await createEventEmbed(selectedEvent, interaction.client)
+    event = await fetchEvent(eventId)
+    const updatedEmbed = await createEventEmbed(event, interaction.client)
 
     await i.update({ embeds: [updatedEmbed], components: [buttons], ephemeral: true })
   })
 
   buttonCollector.on('end', async () => {
-    selectedEvent = await fetchEvent(eventId)
-    const updatedEmbed = await createEventEmbed(selectedEvent, interaction.client)
+    event = await fetchEvent(eventId)
+    const updatedEmbed = await createEventEmbed(event, interaction.client)
 
     await responseMessage.edit({ embeds: [updatedEmbed], components: [], ephemeral: true })
   })
