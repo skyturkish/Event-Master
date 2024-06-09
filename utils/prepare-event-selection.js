@@ -33,6 +33,16 @@ async function prepareEventSelection(interaction, commandName) {
       await interaction.reply({ content: 'You are not participating in any events to leave.', ephemeral: true })
       return
     }
+  } else if (commandName === 'update-event') {
+    events = await fetchEventsByCriteria({
+      guild: interaction.guild.id,
+      status: 'not-started',
+      creator: interaction.user.id,
+    })
+    if (events.length === 0) {
+      await interaction.reply({ content: 'You are not hosting any events to update.', ephemeral: true })
+      return
+    }
   }
 
   const eventOptions = events.map((event) => ({
