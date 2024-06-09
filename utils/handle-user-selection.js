@@ -1,6 +1,6 @@
-
 const { fetchEvent, addOrUpdateParticipant } = require('../services/event-service')
 const { getMentionUsersString } = require('../utils/mentionUtils')
+const { handleEventSelection } = require('./handle-event-selection')
 
 const handleUserSelection = async (interaction, eventId) => {
   const selectedUsers = interaction.values
