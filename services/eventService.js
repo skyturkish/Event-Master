@@ -2,12 +2,17 @@ const axios = require('axios')
 
 const BASE_URL = process.env.BASE_URL || 'http://localhost:3000/'
 
-async function fetchEventsByGuild(guild) {
+async function fetchEventsByCriteria({ guild, status, participantDiscordID }) {
   try {
-    const response = await axios.get(`${BASE_URL}event?guild=${guild}`)
+    const queryParams = new URLSearchParams()
+    if (guild) queryParams.append('guild', guild)
+    if (status) queryParams.append('status', status)
+    if (participantDiscordID) queryParams.append('participantDiscordID', participantDiscordID)
+
+    const response = await axios.get(`${BASE_URL}event?${queryParams.toString()}`)
     return response.data
   } catch (error) {
-    console.error('Error fetching events by guild:', error)
+    console.error('Error fetching events by criteria:', error)
     return []
   }
 }
@@ -48,6 +53,6 @@ async function addOrUpdateParticipant(eventId, participantId, status = 'invited'
 module.exports = {
   createEvent,
   fetchEvent,
-  fetchEventsByGuild,
+  fetchEventsByCriteria,
   addOrUpdateParticipant,
 }

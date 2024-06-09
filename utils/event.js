@@ -1,11 +1,11 @@
-const { fetchEventsByGuild, fetchEvent, addOrUpdateParticipant } = require('../services/eventService')
+const { fetchEventsByCriteria, fetchEvent, addOrUpdateParticipant } = require('../services/eventService')
 const { createEventEmbed } = require('../embeds/event')
 const { createButtons } = require('../components/buttons')
 const { ActionRowBuilder, StringSelectMenuBuilder, UserSelectMenuBuilder } = require('discord.js')
 
 async function prepareEventSelection(interaction, commandName) {
   // commandName'e göre listeyi daraltacaksın
-  const events = await fetchEventsByGuild(interaction.guildId)
+  const events = await fetchEventsByCriteria({ guild: interaction.guildId })
 
   if (events.length === 0) {
     await interaction.reply({ content: 'No events available.', ephemeral: true })
