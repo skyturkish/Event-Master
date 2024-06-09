@@ -1,6 +1,5 @@
-const { createEventEmbed } = require('../embeds/event')
-const { createButtons } = require('../components/buttons')
 const { fetchEvent, addOrUpdateParticipant } = require('../services/eventService')
+const { handleEventSelection } = require('../utils/event')
 
 function getMentionUsersString(participantsIds) {
   return participantsIds.map((discordID) => `<@${discordID}>`).join(', ')
@@ -24,9 +23,6 @@ const handleUserSelection = async (interaction) => {
     const matchedParticipants = participants.filter((participant) => selectedUsers.includes(participant.discordID))
     const allUsersProcessed = matchedParticipants.length === selectedUsers.length
     const allSelectedUsersHaveResponded = matchedParticipants.every((participant) => participant.status !== 'invited')
-
-    const embed = await createEventEmbed(selectedEvent, interaction.client)
-    const buttons = createButtons()
 
     if (allUsersProcessed && allSelectedUsersHaveResponded) {
       await interaction.update({
@@ -58,58 +54,7 @@ const handleUserSelection = async (interaction) => {
       )}. Please check the list below for their current status.`
     }
 
-    await interaction.update({
-      content: content,
-      embeds: [],
-      components: [],
-      ephemeral: true,
-    })
-
-    const inviteMessage = await interaction.channel.send({
-      content: `${getMentionUsersString(invitedUsers)}, ${embedDescription}.`,
-      embeds: [embed],
-      components: [buttons],
-    })
-
-    const buttonFilter = (i) => ['attending', 'declined', 'considering'].includes(i.customId)
-
-    const threeDaysInMilliseconds = 3 * 24 * 60 * 60 * 1000
-
-    const buttonCollector = inviteMessage.createMessageComponentCollector({
-      filter: buttonFilter,
-      time: threeDaysInMilliseconds,
-    })
-
-    buttonCollector.on('collect', async (i) => {
-      const currentTime = new Date()
-      const eventStartTime = new Date(selectedEvent.startTime)
-
-      if (currentTime > eventStartTime) {
-        await i.reply({
-          content: 'This event has already started, you can no longer make a decision.',
-          ephemeral: true,
-        })
-        return
-      }
-
-      await addOrUpdateParticipant(eventId, i.user.id, i.customId)
-      selectedEvent = await fetchEvent(eventId)
-      const participants = selectedEvent.participants
-
-      const updatedEmbed = await createEventEmbed(selectedEvent, interaction.client)
-      await inviteMessage.edit({ embeds: [updatedEmbed] })
-      await i.deferUpdate()
-    })
-
-    buttonCollector.on('end', async () => {
-      selectedEvent = await fetchEvent(eventId)
-      const participants = selectedEvent.participants
-
-      if (participants.some((participant) => participant.status === 'invited')) {
-        const newButtons = createButtons()
-        await inviteMessage.edit({ components: [newButtons] })
-      }
-    })
+    await handleEventSelection(interaction, 'invite-event', eventId)
   } catch (error) {
     console.error('Error handling user selection:', error)
     await interaction.reply({

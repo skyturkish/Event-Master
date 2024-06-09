@@ -27,9 +27,9 @@ module.exports = {
     } else if (interaction.customId.startsWith('select-users-for-invite:')) {
       await handleUserSelectionForInvite(interaction)
     } else if (interaction.customId === 'select-event-for-join-event') {
-      await handleEventSelection(interaction, 'join-event')
+      await handleEventSelection(interaction, 'join-event', interaction.values[0])
     } else if (interaction.customId === 'select-event-for-leave-event') {
-      await handleEventSelection(interaction, 'leave-event')
+      await handleEventSelection(interaction, 'leave-event', interaction.values[0])
     }
   },
 }

@@ -27,8 +27,7 @@ async function fetchAndSelectEvent(interaction, commandName) {
   await interaction.reply({ content: 'Please select an event:', components: [eventRow], ephemeral: true })
 }
 
-async function handleEventSelection(interaction, action) {
-  const eventId = interaction.values[0]
+async function handleEventSelection(interaction, action, eventId) {
   let selectedEvent = await fetchEvent(eventId)
 
   const embed = await createEventEmbed(selectedEvent, interaction.client)
@@ -38,7 +37,7 @@ async function handleEventSelection(interaction, action) {
     content: `You have ${action}ed the event "${selectedEvent.title}". Please confirm your participation status below.`,
     embeds: [embed],
     components: [buttons],
-    ephemeral: true,
+    ephemeral: action == 'invite-event' ? false : true,
     fetchReply: true,
   })
 
@@ -50,6 +49,17 @@ async function handleEventSelection(interaction, action) {
   }) // 3 days
 
   buttonCollector.on('collect', async (i) => {
+    const currentTime = new Date()
+    const eventStartTime = new Date(selectedEvent.startTime)
+
+    if (currentTime > eventStartTime) {
+      await i.reply({
+        content: 'This event has already started, you can no longer make a decision.',
+        ephemeral: true,
+      })
+      return
+    }
+
     await addOrUpdateParticipant(eventId, i.user.id, i.customId)
     selectedEvent = await fetchEvent(eventId)
     const updatedEmbed = await createEventEmbed(selectedEvent, interaction.client)
