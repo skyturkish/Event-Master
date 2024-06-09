@@ -8,13 +8,20 @@ async function handleEventSelection(interaction, action, eventId) {
   const embed = await createEventEmbed(event, interaction.client)
   const buttons = createButtons()
 
-  const responseMessage = await interaction.reply({
+  let responseMessage
+  const messageOptions = {
     content: `You have ${action}ed the event "${event.title}". Please confirm your participation status below.`,
     embeds: [embed],
     components: [buttons],
     ephemeral: action == 'invite-event' ? false : true,
     fetchReply: true,
-  })
+  }
+
+  if (!interaction.replied) {
+    responseMessage = await interaction.reply(messageOptions)
+  } else {
+    responseMessage = await interaction.followUp(messageOptions)
+  }
 
   const buttonFilter = (i) =>
     ['attending', 'declined', 'considering'].includes(i.customId) && i.user.id === interaction.user.id

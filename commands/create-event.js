@@ -8,6 +8,7 @@ const {
 } = require('discord.js')
 const moment = require('moment')
 const { createEvent } = require('../services/event-service')
+const { handleEventSelection } = require('../utils/handle-event-selection')
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -103,7 +104,7 @@ module.exports = {
 
         // Send the event data to the backend
         try {
-          await createEvent({
+          const event = await createEvent({
             title: title,
             description: description,
             creator: interaction.user.id,
@@ -112,6 +113,15 @@ module.exports = {
             participantLimit: participantLimit,
             startTime: dateTime.toDate(),
           })
+
+          if (!modalInteraction.replied) {
+            await handleEventSelection(modalInteraction, 'update-event', event._id)
+          } else {
+            await modalInteraction.followUp({
+              content: 'Event updated successfully.',
+              ephemeral: true,
+            })
+          }
         } catch (error) {
           console.error('Error creating event:', error)
           return modalInteraction.reply({
@@ -119,17 +129,6 @@ module.exports = {
             ephemeral: true,
           })
         }
-
-        const eventEmbed = new EmbedBuilder()
-          .setTitle(`Event created: ${title}`)
-          .setDescription(description)
-          .addFields(
-            { name: 'Start Date and Time', value: formattedDateTime, inline: true },
-            { name: 'Participant Limit', value: participantLimit.toString(), inline: true }
-          )
-          .setTimestamp()
-
-        await modalInteraction.reply({ embeds: [eventEmbed] })
       })
       .catch(console.error)
   },

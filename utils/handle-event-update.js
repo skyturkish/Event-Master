@@ -8,6 +8,7 @@ const {
 } = require('discord.js')
 const moment = require('moment')
 const { updateEvent, fetchEvent } = require('../services/event-service')
+const { handleEventSelection } = require('./handle-event-selection')
 
 const handleEventUpdate = async (interaction, eventId) => {
   let event = await fetchEvent(eventId)
@@ -119,16 +120,14 @@ const handleEventUpdate = async (interaction, eventId) => {
         })
       }
 
-      const eventEmbed = new EmbedBuilder()
-        .setTitle(`Event updated: ${title}`)
-        .setDescription(description)
-        .addFields(
-          { name: 'Start Date and Time', value: formattedDateTime, inline: true },
-          { name: 'Participant Limit', value: participantLimit.toString(), inline: true }
-        )
-        .setTimestamp()
-
-      await modalInteraction.reply({ embeds: [eventEmbed] })
+      if (!modalInteraction.replied) {
+        await handleEventSelection(modalInteraction, 'update-event', eventId)
+      } else {
+        await modalInteraction.followUp({
+          content: 'Event updated successfully.',
+          ephemeral: true,
+        })
+      }
     })
     .catch(console.error)
 }
