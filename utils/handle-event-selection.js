@@ -9,8 +9,27 @@ async function handleEventSelection(interaction, action, eventId) {
   const buttons = createButtons()
 
   let responseMessage
+  let actionMessage
+
+  switch (action) {
+    case 'join-event':
+      actionMessage = `You have joined the event "${event.title}". Please confirm your participation status below.`
+      break
+    case 'leave-event':
+      actionMessage = `You have left the event "${event.title}". Please confirm your participation status below.`
+      break
+    case 'update-event':
+      actionMessage = `You have updated the event "${event.title}". Please confirm your participation status below.`
+      break
+    case 'invite-event':
+      actionMessage = `You have invited others to the event "${event.title}". Please confirm your participation status below.`
+      break
+    default:
+      actionMessage = `You have ${action}ed the event "${event.title}". Please confirm your participation status below.`
+  }
+
   const messageOptions = {
-    content: `You have ${action}ed the event "${event.title}". Please confirm your participation status below.`,
+    content: actionMessage,
     embeds: [embed],
     components: [buttons],
     ephemeral: action == 'invite-event' ? false : true,
