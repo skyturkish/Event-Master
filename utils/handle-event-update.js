@@ -29,7 +29,7 @@ const handleEventUpdate = async (interaction, eventId) => {
       }
 
       if (!modalInteraction.replied) {
-        await handleEventSelection(modalInteraction, 'update-event', eventId)
+        await handleEventSelection(interaction, 'update-event', eventId)
       } else {
         await modalInteraction.followUp({ content: 'Event updated successfully.', ephemeral: true })
       }

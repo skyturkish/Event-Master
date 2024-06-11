@@ -10,6 +10,14 @@ async function handleEventSelection(interaction, action, eventId) {
     await addOrUpdateParticipant(eventId, interaction.user.id, 'declined')
   }
 
+  const isEpemeralByAction = {
+    'join-event': true,
+    'leave-event': true,
+    'update-event': false,
+    invite: false,
+    'create-event': false,
+  }[action]
+
   let event = await fetchEvent(eventId)
 
   const attendingParticipants = event.participants.filter((p) => p.status === 'attending')
@@ -46,20 +54,17 @@ async function handleEventSelection(interaction, action, eventId) {
     default:
       actionMessage = `You have ${action}ed the event "${event.title}". Please confirm your participation status below.`
   }
+  // TODO commitler de geriye gide gide nerede bozulduğunu bul
 
   const messageOptions = {
     content: actionMessage,
     embeds: [embed],
     components: [buttons],
-    ephemeral: action == 'invite-event' ? false : true,
+    ephemeral: isEpemeralByAction,
     fetchReply: true,
   }
 
-  if (!interaction.replied) {
-    responseMessage = await interaction.reply(messageOptions)
-  } else {
-    responseMessage = await interaction.followUp(messageOptions)
-  }
+  responseMessage = await interaction.channel.send(messageOptions)
 
   const buttonFilter = (i) =>
     ['attending', 'declined', 'considering'].includes(i.customId) && i.user.id === interaction.user.id
@@ -67,8 +72,9 @@ async function handleEventSelection(interaction, action, eventId) {
     filter: buttonFilter,
     time: 3 * 24 * 60 * 60 * 1000,
   }) // 3 days
-
+  console.log('Button Collector Created:', buttonCollector)
   buttonCollector.on('collect', async (i) => {
+    console.log('Button Clicked:', i.customId)
     if (event.status !== 'not-started' && event.status !== 'ready-to-start') {
       const statusMessages = {
         ongoing: 'This event is currently ongoing, you can no longer make a decision.',
@@ -84,12 +90,27 @@ async function handleEventSelection(interaction, action, eventId) {
       })
       return
     }
+    // print the user id and custom id to the
+    console.log(
+      'User ID:',
+      i.user.id,
+      'Custom ID:',
+      i.customId,
+      'Event ID:',
+      eventId,
+      'Action:',
+      action,
+      'Event:',
+      event,
+      'Event Status:',
+      event.status
+    )
 
     await addOrUpdateParticipant(eventId, i.user.id, i.customId)
     event = await fetchEvent(eventId)
     const updatedEmbed = await createEventEmbed(event, interaction.client)
 
-    // TODO burası burada çalışmıyor ortak bir yere koymalısın,
+    // TODO burası burada çalışıyor fakat kod tekrarı oluyor
     const attendingParticipants = event.participants.filter((p) => p.status === 'attending')
     if (event.status === 'not-started' && attendingParticipants.length >= event.participantLimit) {
       await updateEvent(eventId, { status: 'ready-to-start' })
@@ -101,7 +122,7 @@ async function handleEventSelection(interaction, action, eventId) {
       event = await fetchEvent(eventId)
     }
 
-    await i.update({ embeds: [updatedEmbed], components: [buttons], ephemeral: true })
+    await i.update({ embeds: [updatedEmbed], components: [buttons], ephemeral: isEpemeralByAction })
   })
 
   buttonCollector.on('end', async () => {
@@ -109,7 +130,7 @@ async function handleEventSelection(interaction, action, eventId) {
     const updatedEmbed = await createEventEmbed(event, interaction.client)
     // TODO Eğer bitmişse bilgi verici bir mesaj ile değiştir ve kalsın
 
-    await responseMessage.edit({ embeds: [updatedEmbed], components: [], ephemeral: true })
+    await responseMessage.edit({ embeds: [updatedEmbed], components: [], ephemeral: isEpemeralByAction })
   })
 }
 
