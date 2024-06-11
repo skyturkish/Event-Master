@@ -25,7 +25,7 @@ module.exports = {
             ...eventData,
             creator: interaction.user.id,
             guild: interaction.guild.id,
-            participants: [{ discordID: interaction.user.id, status: 'attending' }],
+            participants: [],
           })
 
           if (!modalInteraction.replied) {
