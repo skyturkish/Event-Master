@@ -61,8 +61,7 @@ async function handleEventSelection(interaction, action, eventId) {
     responseMessage = await interaction.followUp(messageOptions)
   }
 
-  const buttonFilter = (i) =>
-    ['attending', 'declined', 'considering'].includes(i.customId) && i.user.id === interaction.user.id
+  const buttonFilter = (i) => ['attending', 'declined', 'considering'].includes(i.customId)
   const buttonCollector = responseMessage.createMessageComponentCollector({
     filter: buttonFilter,
     time: 3 * 24 * 60 * 60 * 1000,
