@@ -10,6 +10,14 @@ async function handleEventSelection(interaction, action, eventId) {
     await addOrUpdateParticipant(eventId, interaction.user.id, 'declined')
   }
 
+  const isEpemeralByAction = {
+    'join-event': true,
+    'leave-event': true,
+    'update-event': false,
+    invite: false,
+    'create-event': false,
+  }[action]
+
   let event = await fetchEvent(eventId)
 
   const attendingParticipants = event.participants.filter((p) => p.status === 'attending')
@@ -51,7 +59,7 @@ async function handleEventSelection(interaction, action, eventId) {
     content: actionMessage,
     embeds: [embed],
     components: [buttons],
-    ephemeral: action == 'invite-event' ? false : true,
+    ephemeral: isEpemeralByAction,
     fetchReply: true,
   }
 
@@ -100,7 +108,7 @@ async function handleEventSelection(interaction, action, eventId) {
       event = await fetchEvent(eventId)
     }
 
-    await i.update({ embeds: [updatedEmbed], components: [buttons], ephemeral: true })
+    await i.update({ embeds: [updatedEmbed], components: [buttons], ephemeral: isEpemeralByAction })
   })
 
   buttonCollector.on('end', async () => {
@@ -108,7 +116,7 @@ async function handleEventSelection(interaction, action, eventId) {
     const updatedEmbed = await createEventEmbed(event, interaction.client)
     // TODO Eğer bitmişse bilgi verici bir mesaj ile değiştir ve kalsın
 
-    await responseMessage.edit({ embeds: [updatedEmbed], components: [], ephemeral: true })
+    await responseMessage.edit({ embeds: [updatedEmbed], components: [], ephemeral: isEpemeralByAction })
   })
 }
 
