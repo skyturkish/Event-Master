@@ -1,7 +1,7 @@
 // utils/mentionUtils.js
 
-function getMentionUsersString(participantsIds) {
-  return participantsIds.map((discordID) => `<@${discordID}>`).join(', ')
+function getMentionUsersString(usersIds) {
+  return usersIds.map((discordID) => `<@${discordID}>`).join(', ')
 }
 
 module.exports = {

@@ -1,13 +1,13 @@
-const { fetchEvent, addOrUpdateParticipant, updateEvent } = require('../services/event-service')
+const { fetchEvent, addOrUpdateUser, updateEvent } = require('../services/event-service')
 const { createEventEmbed } = require('../embeds/event')
 const { createButtons } = require('../components/buttons')
 const { getMentionUsersString } = require('../utils/mentionUtils')
 
 async function handleEventSelection(interaction, action, eventId) {
   if (action === 'join-event') {
-    await addOrUpdateParticipant(eventId, interaction.user.id, 'attending')
+    await addOrUpdateUser(eventId, interaction.user.id, 'attending')
   } else if (action === 'leave-event') {
-    await addOrUpdateParticipant(eventId, interaction.user.id, 'declined')
+    await addOrUpdateUser(eventId, interaction.user.id, 'declined')
   }
 
   const isEpemeralByAction = {
@@ -20,13 +20,13 @@ async function handleEventSelection(interaction, action, eventId) {
 
   let event = await fetchEvent(eventId)
 
-  const attendingParticipants = event.participants.filter((p) => p.status === 'attending')
+  const attendingUsers = event.users.filter((p) => p.status === 'attending')
 
-  if (event.status === 'not-started' && attendingParticipants.length >= event.participantLimit) {
+  if (event.status === 'not-started' && attendingUsers.length >= event.participantLimit) {
     await updateEvent(eventId, { status: 'ready-to-start' })
     await interaction.channel.send({
       content: `We've hit the magic number of participants! 🎉 The event can kick off as soon as the time arrives! Here are the awesome attendees: ${getMentionUsersString(
-        attendingParticipants.map((p) => p.discordID)
+        attendingUsers.map((p) => p.discordID)
       )}`,
     })
     event = await fetchEvent(eventId)
@@ -92,16 +92,16 @@ async function handleEventSelection(interaction, action, eventId) {
       return
     }
 
-    await addOrUpdateParticipant(eventId, i.user.id, i.customId)
+    await addOrUpdateUser(eventId, i.user.id, i.customId)
     event = await fetchEvent(eventId)
     const updatedEmbed = await createEventEmbed(event, interaction.client)
 
-    const attendingParticipants = event.participants.filter((p) => p.status === 'attending')
-    if (event.status === 'not-started' && attendingParticipants.length >= event.participantLimit) {
+    const attendingUsers = event.users.filter((p) => p.status === 'attending')
+    if (event.status === 'not-started' && attendingUsers.length >= event.participantLimit) {
       await updateEvent(eventId, { status: 'ready-to-start' })
       await interaction.channel.send({
         content: `We've hit the magic number of participants! 🎉 The event can kick off as soon as the time arrives! Here are the awesome attendees: ${getMentionUsersString(
-          attendingParticipants.map((p) => p.discordID)
+          attendingUsers.map((p) => p.discordID)
         )}`,
       })
       event = await fetchEvent(eventId)

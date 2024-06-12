@@ -1,4 +1,4 @@
-const { fetchEvent, addOrUpdateParticipant } = require('../services/event-service')
+const { fetchEvent, addOrUpdateUser } = require('../services/event-service')
 const { getMentionUsersString } = require('../utils/mentionUtils')
 const { handleEventSelection } = require('./handle-event-selection')
 
@@ -6,19 +6,19 @@ const handleUserSelection = async (interaction, eventId) => {
   const selectedUsers = interaction.values
   let event = await fetchEvent(eventId)
   const embedDescription = `You have been invited to the event ${event.title} by ${interaction.user}.`
-  const participantIDs = event.participants.map((participant) => participant.discordID)
-  const uniqueUsers = selectedUsers.filter((user) => !participantIDs.includes(user))
+  const userIDs = event.users.map((user) => user.discordID)
+  const uniqueUsers = selectedUsers.filter((user) => !userIDs.includes(user))
 
   try {
     for (const uniqueUser of uniqueUsers) {
-      await addOrUpdateParticipant(eventId, uniqueUser, 'invited')
+      await addOrUpdateUser(eventId, uniqueUser, 'invited')
     }
 
     event = await fetchEvent(eventId)
-    const participants = event.participants
-    const matchedParticipants = participants.filter((participant) => selectedUsers.includes(participant.discordID))
-    const allUsersProcessed = matchedParticipants.length === selectedUsers.length
-    const allSelectedUsersHaveResponded = matchedParticipants.every((participant) => participant.status !== 'invited')
+    const users = event.users
+    const matchedUsers = users.filter((user) => selectedUsers.includes(user.discordID))
+    const allUsersProcessed = matchedUsers.length === selectedUsers.length
+    const allSelectedUsersHaveResponded = matchedUsers.every((user) => user.status !== 'invited')
 
     if (allUsersProcessed && allSelectedUsersHaveResponded) {
       await interaction.update({
@@ -32,13 +32,13 @@ const handleUserSelection = async (interaction, eventId) => {
       return
     }
 
-    const invitedUsers = participants
-      .filter((participant) => selectedUsers.includes(participant.discordID) && participant.status === 'invited')
-      .map((participant) => participant.discordID)
+    const invitedUsers = users
+      .filter((user) => selectedUsers.includes(user.discordID) && user.status === 'invited')
+      .map((user) => user.discordID)
 
-    const notInvitedUsers = participants
-      .filter((participant) => selectedUsers.includes(participant.discordID) && participant.status !== 'invited')
-      .map((participant) => participant.discordID)
+    const notInvitedUsers = users
+      .filter((user) => selectedUsers.includes(user.discordID) && user.status !== 'invited')
+      .map((user) => user.discordID)
 
     let content = `The following users have been successfully invited to the event: ${getMentionUsersString(
       invitedUsers

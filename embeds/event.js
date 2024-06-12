@@ -22,15 +22,15 @@ async function createEventEmbed(event, client) {
     minute: '2-digit',
     hour12: false,
   })}\n`
-  responseText += `**Participants:** ${
-    event.participants.filter((participant) => participant.status === 'attending').length
-  }/${event.participantLimit}\n\n`
+  responseText += `**Participants:** ${event.users.filter((user) => user.status === 'attending').length}/${
+    event.participantLimit
+  }\n\n`
 
   statuses.forEach(({ label, status }) => {
     responseText += `**${label}**\n`
-    const participantsString = event.participants
-      .filter((participant) => participant.status === status)
-      .map((participant) => `<@${participant.discordID}>`)
+    const participantsString = event.users
+      .filter((user) => user.status === status)
+      .map((user) => `<@${user.discordID}>`)
       .join(', ')
 
     responseText += `${participantsString}\n\n`

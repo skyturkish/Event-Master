@@ -7,7 +7,7 @@ const { showModalWithInputs, handleModalSubmit } = require('../utils/modal-utils
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('create-event')
-    .setDescription('Create an event with a title, description, participant limit, and start time'),
+    .setDescription('Create an event with a title, description, user limit, and start time'),
   async execute(interaction) {
     await showModalWithInputs(interaction, 'eventModal', 'Create Event')
 
@@ -25,7 +25,7 @@ module.exports = {
             ...eventData,
             creator: interaction.user.id,
             guild: interaction.guild.id,
-            participants: [],
+            users: [],
           })
 
           if (!modalInteraction.replied) {

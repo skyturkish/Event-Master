@@ -1,7 +1,7 @@
 {
   "name": "event-master",
   "version": "1.0.0",
-  "description": "EventMaster is a versatile bot designed to help you create and manage events on Discord servers. With simple commands, you can create events, invite participants, track RSVPs, and even conduct polls. EventMaster streamlines event planning and management on your server, making it easier and more enjoyable to stay organized.\"",
+  "description": "EventMaster is a versatile bot designed to help you create and manage events on Discord servers. With simple commands, you can create events, invite users, track RSVPs, and even conduct polls. EventMaster streamlines event planning and management on your server, making it easier and more enjoyable to stay organized.\"",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

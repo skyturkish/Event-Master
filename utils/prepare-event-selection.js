@@ -34,8 +34,8 @@ async function prepareEventSelection(interaction, commandName) {
     events = await fetchEventsByCriteria({
       guild: interaction.guild.id,
       status: 'not-started',
-      participantDiscordID: interaction.user.id,
-      participantStatus: 'attending',
+      userDiscordID: interaction.user.id,
+      userStatus: 'attending',
     })
     if (events.length === 0) {
       await interaction.reply({

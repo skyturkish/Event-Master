@@ -2,13 +2,13 @@ const axios = require('axios')
 
 const BASE_URL = process.env.BASE_URL || 'http://localhost:3000/'
 
-async function fetchEventsByCriteria({ guild, status, participantDiscordID, participantStatus, creator }) {
+async function fetchEventsByCriteria({ guild, status, userDiscordID, userStatus, creator }) {
   try {
     const queryParams = new URLSearchParams()
     if (guild) queryParams.append('guild', guild)
     if (status) queryParams.append('status', status)
-    if (participantDiscordID) queryParams.append('participantDiscordID', participantDiscordID)
-    if (participantStatus) queryParams.append('participantStatus', participantStatus)
+    if (userDiscordID) queryParams.append('userDiscordID', userDiscordID)
+    if (userStatus) queryParams.append('userStatus', userStatus)
     if (creator) queryParams.append('creator', creator)
 
     const response = await axios.get(`${BASE_URL}event?${queryParams.toString()}`)
@@ -39,15 +39,15 @@ async function createEvent(eventData) {
   }
 }
 
-async function addOrUpdateParticipant(eventId, participantId, status = 'invited') {
+async function addOrUpdateUser(eventId, userId, status = 'invited') {
   try {
     const event = await fetchEvent(eventId)
 
     if (!event) throw new Error('Event not found')
 
-    await axios.put(`${BASE_URL}event/${eventId}/participants/${participantId}`, { status })
+    await axios.put(`${BASE_URL}event/${eventId}/users/${userId}`, { status })
   } catch (error) {
-    console.error('Error adding or updating participant:', error)
+    console.error('Error adding or updating user:', error)
     throw error
   }
 }
@@ -65,6 +65,6 @@ module.exports = {
   createEvent,
   fetchEvent,
   fetchEventsByCriteria,
-  addOrUpdateParticipant,
+  addOrUpdateUser,
   updateEvent,
 }
