@@ -45,7 +45,7 @@ async function prepareEventSelection(interaction, commandName) {
       })
       return
     }
-  } else if (commandName === 'update-event') {
+  } else if (commandName === 'update-event' || commandName === 'cancel-event') {
     events = await fetchEventsByCriteria({
       guild: interaction.guild.id,
       status: 'not-started',

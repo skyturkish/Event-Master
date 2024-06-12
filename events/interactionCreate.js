@@ -1,9 +1,9 @@
 const { prepareUserSelection } = require('../utils/prepare-user-selection')
 const { handleEventSelection } = require('../utils/handle-event-selection')
 const { handleUserSelection } = require('../utils/handle-user-selection')
-
-const { Events } = require('discord.js')
 const { handleEventUpdate } = require('../utils/handle-event-update')
+const { handleEventCancel } = require('../utils/handle-event-cancel')
+const { Events } = require('discord.js')
 
 module.exports = {
   name: Events.InteractionCreate,
@@ -37,6 +37,8 @@ module.exports = {
         await handleEventSelection(interaction, 'leave-event', eventId)
       } else if (commandName === 'update-event') {
         await handleEventUpdate(interaction, eventId)
+      } else if (commandName === 'cancel-event') {
+        await handleEventCancel(interaction, eventId)
       }
     } else if (interaction.customId.startsWith('select-users-for-invite:')) {
       const eventId = interaction.customId.split(':')[1]
