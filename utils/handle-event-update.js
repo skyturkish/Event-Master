@@ -1,5 +1,3 @@
-const { ModalBuilder, TextInputBuilder, ActionRowBuilder, TextInputStyle } = require('discord.js')
-const moment = require('moment')
 const { updateEvent, fetchEvent } = require('../services/event-service')
 const { handleEventSelection } = require('./handle-event-selection')
 const { showModalWithInputs, handleModalSubmit } = require('../utils/modal-utils')
