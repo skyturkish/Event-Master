@@ -96,7 +96,6 @@ async function handleEventSelection(interaction, action, eventId) {
     event = await fetchEvent(eventId)
     const updatedEmbed = await createEventEmbed(event, interaction.client)
 
-    // TODO burası burada çalışmıyor ortak bir yere koymalısın,
     const attendingParticipants = event.participants.filter((p) => p.status === 'attending')
     if (event.status === 'not-started' && attendingParticipants.length >= event.participantLimit) {
       await updateEvent(eventId, { status: 'ready-to-start' })
@@ -114,7 +113,6 @@ async function handleEventSelection(interaction, action, eventId) {
   buttonCollector.on('end', async () => {
     event = await fetchEvent(eventId)
     const updatedEmbed = await createEventEmbed(event, interaction.client)
-    // TODO Eğer bitmişse bilgi verici bir mesaj ile değiştir ve kalsın
 
     await responseMessage.edit({ embeds: [updatedEmbed], components: [], ephemeral: isEpemeralByAction })
   })
