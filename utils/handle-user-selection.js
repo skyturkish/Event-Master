@@ -1,6 +1,6 @@
 const { fetchEvent, addOrUpdateUser } = require('../services/event-service')
 const { getMentionUsersString } = require('../utils/mentionUtils')
-const { handleEventSelection } = require('./handle-event-selection')
+const { handleEventAction } = require('./handle-event-selection')
 
 const handleUserSelection = async (interaction, eventId) => {
   const selectedUsers = interaction.values
@@ -50,7 +50,7 @@ const handleUserSelection = async (interaction, eventId) => {
       )}. Please check the list below for their current status.`
     }
 
-    await handleEventSelection(interaction, 'invite-event', eventId)
+    await handleEventAction(interaction, 'invite-event', eventId)
   } catch (error) {
     console.error('Error handling user selection:', error)
     await interaction.reply({

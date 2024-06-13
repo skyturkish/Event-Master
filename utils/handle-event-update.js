@@ -1,5 +1,5 @@
 const { updateEvent, fetchEvent } = require('../services/event-service')
-const { handleEventSelection } = require('./handle-event-selection')
+const { handleEventAction } = require('./handle-event-selection')
 const { showModalWithInputs, handleModalSubmit } = require('../utils/modal-utils')
 
 const handleEventUpdate = async (interaction, eventId) => {
@@ -27,7 +27,7 @@ const handleEventUpdate = async (interaction, eventId) => {
       }
 
       if (!modalInteraction.replied) {
-        await handleEventSelection(modalInteraction, 'update-event', eventId)
+        await handleEventAction(modalInteraction, 'update-event', eventId)
       } else {
         await modalInteraction.followUp({ content: 'Event updated successfully.', ephemeral: true })
       }

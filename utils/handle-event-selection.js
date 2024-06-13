@@ -3,7 +3,7 @@ const { createEventEmbed } = require('../embeds/event')
 const { createButtons } = require('../components/buttons')
 const { getMentionUsersString } = require('../utils/mentionUtils')
 
-async function handleEventSelection(interaction, action, eventId) {
+async function handleEventAction(interaction, action, eventId) {
   if (action === 'join-event') {
     await addOrUpdateUser(eventId, interaction.user.id, 'attending')
   } else if (action === 'leave-event') {
@@ -119,5 +119,5 @@ async function handleEventSelection(interaction, action, eventId) {
 }
 
 module.exports = {
-  handleEventSelection,
+  handleEventAction,
 }

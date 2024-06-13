@@ -1,7 +1,7 @@
 const { SlashCommandBuilder, ModalBuilder, TextInputBuilder, ActionRowBuilder, TextInputStyle } = require('discord.js')
 const moment = require('moment')
 const { createEvent } = require('../services/event-service')
-const { handleEventSelection } = require('../utils/handle-event-selection')
+const { handleEventAction } = require('../utils/handle-event-selection')
 const { showModalWithInputs, handleModalSubmit } = require('../utils/modal-utils')
 
 module.exports = {
@@ -29,7 +29,7 @@ module.exports = {
           })
 
           if (!modalInteraction.replied) {
-            await handleEventSelection(modalInteraction, 'update-event', event._id)
+            await handleEventAction(modalInteraction, 'update-event', event._id)
           } else {
             await modalInteraction.followUp({ content: 'Event updated successfully.', ephemeral: true })
           }

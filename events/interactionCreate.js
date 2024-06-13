@@ -1,5 +1,5 @@
 const { prepareUserSelection } = require('../utils/prepare-user-selection')
-const { handleEventSelection } = require('../utils/handle-event-selection')
+const { handleEventAction } = require('../utils/handle-event-selection')
 const { handleUserSelection } = require('../utils/handle-user-selection')
 const { handleEventUpdate } = require('../utils/handle-event-update')
 const { handleEventCancel } = require('../utils/handle-event-cancel')
@@ -32,9 +32,9 @@ module.exports = {
       if (commandName === 'invite-event') {
         await prepareUserSelection(interaction, eventId)
       } else if (commandName === 'join-event') {
-        await handleEventSelection(interaction, 'join-event', eventId)
+        await handleEventAction(interaction, 'join-event', eventId)
       } else if (commandName === 'leave-event') {
-        await handleEventSelection(interaction, 'leave-event', eventId)
+        await handleEventAction(interaction, 'leave-event', eventId)
       } else if (commandName === 'update-event') {
         await handleEventUpdate(interaction, eventId)
       } else if (commandName === 'cancel-event') {
