@@ -1,4 +1,4 @@
-const { fetchEventsByCriteria, fetchEvent } = require('../services/event-service')
+const { fetchEventsByCriteria } = require('../services/event-service')
 const { ActionRowBuilder, StringSelectMenuBuilder } = require('discord.js')
 
 async function prepareEventSelection(interaction, commandName) {
@@ -55,6 +55,28 @@ async function prepareEventSelection(interaction, commandName) {
       await interaction.reply({
         content:
           'You can only update events that have not started yet. Maybe your events have already started or finished. Check with /events. For more information, use /help.',
+        ephemeral: true,
+      })
+      return
+    }
+  } else if (commandName === 'start-event') {
+    events = await fetchEventsByCriteria({
+      guild: interaction.guild.id,
+      status: 'not-started',
+      creator: interaction.user.id,
+    })
+    const readyEvents = await fetchEventsByCriteria({
+      guild: interaction.guild.id,
+      status: 'ready-to-start',
+      creator: interaction.user.id,
+    })
+    // merge ready events with events
+    events = events.concat(readyEvents)
+
+    if (events.length === 0) {
+      await interaction.reply({
+        content:
+          'You can only start events that have not started yet. Maybe your events have already started or finished. Check with /events. For more information, use /help.',
         ephemeral: true,
       })
       return

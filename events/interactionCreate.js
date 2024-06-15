@@ -39,6 +39,8 @@ module.exports = {
         await handleEventUpdate(interaction, eventId)
       } else if (commandName === 'cancel-event') {
         await handleEventCancel(interaction, eventId)
+      } else if (commandName === 'start-event') {
+        await handleEventAction(interaction, 'start-event', eventId)
       }
     } else if (interaction.customId.startsWith('select-users-for-invite:')) {
       const eventId = interaction.customId.split(':')[1]
