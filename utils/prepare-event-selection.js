@@ -81,6 +81,20 @@ async function prepareEventSelection(interaction, commandName) {
       })
       return
     }
+  } else if (commandName === 'finish-event') {
+    events = await fetchEventsByCriteria({
+      guild: interaction.guild.id,
+      status: 'ongoing',
+      creator: interaction.user.id,
+    })
+    if (events.length === 0) {
+      await interaction.reply({
+        content:
+          'You can only finish events that are ongoing. Maybe your events have not started yet or have already finished. Check with /events. For more information, use /help.',
+        ephemeral: true,
+      })
+      return
+    }
   }
 
   const eventOptions = events.map((event) => ({

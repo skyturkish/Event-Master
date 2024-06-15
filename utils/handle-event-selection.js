@@ -10,6 +10,8 @@ async function handleEventAction(interaction, action, eventId) {
     await addOrUpdateUser(eventId, interaction.user.id, 'declined')
   } else if (action === 'start-event') {
     await updateEvent(eventId, { status: 'ongoing' })
+  } else if (action === 'finish-event') {
+    await updateEvent(eventId, { status: 'finished' })
   }
 
   const isEpemeralByAction = {
@@ -19,6 +21,7 @@ async function handleEventAction(interaction, action, eventId) {
     invite: false,
     'create-event': false,
     'start-event': false,
+    'finish-event': false,
   }[action]
 
   let event = await fetchEvent(eventId)
