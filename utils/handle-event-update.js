@@ -16,19 +16,13 @@ const handleEventUpdate = async (interaction, eventId) => {
         return modalInteraction.reply({ content: eventData.error, ephemeral: true })
       }
 
-      if (eventData.participantLimit < event.users.filter((p) => p.status === 'attending').length) {
-        return modalInteraction.reply({
-          content: 'The participant limit cannot be less than the number of participants already attending',
-          ephemeral: true,
-        })
-      }
-
       try {
         await updateEvent(event._id, eventData)
       } catch (error) {
         console.error('Error updating event:', error)
+
         return modalInteraction.reply({
-          content: 'There was an error updating the event. Please try again later.',
+          content: error.response.data.error,
           ephemeral: true,
         })
       }
