@@ -50,10 +50,10 @@ const handleUserSelection = async (interaction, eventId) => {
       )}. Please check the list below for their current status.`
     }
 
-    await handleEventAction(interaction, 'invite-event', eventId)
+    await handleEventAction(interaction, 'invite-event', eventId, content)
   } catch (error) {
     await interaction.reply({
-      content: error.response.data.error,
+      content: error.response.data.error || 'An error occurred while processing your request.',
       ephemeral: true,
     })
   }
