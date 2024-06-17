@@ -29,7 +29,7 @@ module.exports = {
           })
 
           if (!modalInteraction.replied) {
-            await handleEventAction(modalInteraction, 'update-event', event._id)
+            await handleEventAction(modalInteraction, 'create-event', event._id)
           } else {
             await modalInteraction.followUp({ content: 'Event updated successfully.', ephemeral: true })
           }
