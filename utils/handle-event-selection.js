@@ -14,7 +14,7 @@ async function handleEventAction(interaction, action, eventId) {
     await updateEvent(eventId, { status: 'finished' })
   }
 
-  const isEpemeralByAction = {
+  const isEphemeralByAction = {
     'join-event': true,
     'leave-event': true,
     'update-event': false,
@@ -42,7 +42,6 @@ async function handleEventAction(interaction, action, eventId) {
   const embed = await createEventEmbed(event, interaction.client)
   const buttons = createButtons()
 
-  let responseMessage
   let actionMessage
 
   switch (action) {
@@ -58,6 +57,18 @@ async function handleEventAction(interaction, action, eventId) {
     case 'invite-event':
       actionMessage = `You have invited others to the event "${event.title}". Please confirm your participation status below.`
       break
+    case 'create-event':
+      actionMessage = `You have created the event "${event.title}". Please confirm your participation status below.`
+      break
+    case 'start-event':
+      actionMessage = `You have started the event "${event.title}". Please confirm your participation status below.`
+      break
+    case 'finish-event':
+      actionMessage = `You have finished the event "${event.title}". Please confirm your participation status below.`
+      break
+    case 'cancel-event':
+      actionMessage = `You have canceled the event "${event.title}". Please confirm your participation status below.`
+      break
     default:
       actionMessage = `You have ${action}ed the event "${event.title}". Please confirm your participation status below.`
   }
@@ -66,9 +77,11 @@ async function handleEventAction(interaction, action, eventId) {
     content: actionMessage,
     embeds: [embed],
     components: [buttons],
-    ephemeral: isEpemeralByAction,
+    ephemeral: isEphemeralByAction,
     fetchReply: true,
   }
+
+  let responseMessage
 
   if (!interaction.replied) {
     responseMessage = await interaction.reply(messageOptions)
@@ -99,7 +112,7 @@ async function handleEventAction(interaction, action, eventId) {
         event = await fetchEvent(eventId)
       }
 
-      await i.update({ embeds: [updatedEmbed], components: [buttons], ephemeral: isEpemeralByAction })
+      await i.update({ embeds: [updatedEmbed], components: [buttons], ephemeral: isEphemeralByAction })
     } catch (error) {
       await i.reply({
         content: error.response.data.error,
@@ -112,7 +125,7 @@ async function handleEventAction(interaction, action, eventId) {
     event = await fetchEvent(eventId)
     const updatedEmbed = await createEventEmbed(event, interaction.client)
 
-    await responseMessage.edit({ embeds: [updatedEmbed], components: [], ephemeral: isEpemeralByAction })
+    await responseMessage.edit({ embeds: [updatedEmbed], components: [], ephemeral: isEphemeralByAction })
   })
 }
 
