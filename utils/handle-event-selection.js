@@ -3,7 +3,7 @@ const { createEventEmbed } = require('../embeds/event')
 const { createButtons } = require('../components/buttons')
 const { getMentionUsersString } = require('../utils/mentionUtils')
 
-async function handleEventAction(interaction, action, eventId) {
+async function handleEventAction(interaction, action, eventId, actionMessage) {
   if (action === 'join-event') {
     await addOrUpdateUser(eventId, interaction.user.id, 'attending')
   } else if (action === 'leave-event') {
@@ -42,35 +42,35 @@ async function handleEventAction(interaction, action, eventId) {
   const embed = await createEventEmbed(event, interaction.client)
   const buttons = createButtons()
 
-  let actionMessage
-
-  switch (action) {
-    case 'join-event':
-      actionMessage = `You have joined the event "${event.title}". Please confirm your participation status below.`
-      break
-    case 'leave-event':
-      actionMessage = `You have left the event "${event.title}". Please confirm your participation status below.`
-      break
-    case 'update-event':
-      actionMessage = `You have updated the event "${event.title}". Please confirm your participation status below.`
-      break
-    case 'invite-event':
-      actionMessage = `You have invited others to the event "${event.title}". Please confirm your participation status below.`
-      break
-    case 'create-event':
-      actionMessage = `You have created the event "${event.title}". Please confirm your participation status below.`
-      break
-    case 'start-event':
-      actionMessage = `You have started the event "${event.title}". Please confirm your participation status below.`
-      break
-    case 'finish-event':
-      actionMessage = `You have finished the event "${event.title}". Please confirm your participation status below.`
-      break
-    case 'cancel-event':
-      actionMessage = `You have canceled the event "${event.title}". Please confirm your participation status below.`
-      break
-    default:
-      actionMessage = `You have ${action}ed the event "${event.title}". Please confirm your participation status below.`
+  if (!actionMessage) {
+    switch (action) {
+      case 'join-event':
+        actionMessage = `You have joined the event "${event.title}". Please confirm your participation status below.`
+        break
+      case 'leave-event':
+        actionMessage = `You have left the event "${event.title}". Please confirm your participation status below.`
+        break
+      case 'update-event':
+        actionMessage = `You have updated the event "${event.title}". Please confirm your participation status below.`
+        break
+      case 'invite-event':
+        actionMessage = `You have invited others to the event "${event.title}". Please confirm your participation status below.`
+        break
+      case 'create-event':
+        actionMessage = `You have created the event "${event.title}". Please confirm your participation status below.`
+        break
+      case 'start-event':
+        actionMessage = `You have started the event "${event.title}". Please confirm your participation status below.`
+        break
+      case 'finish-event':
+        actionMessage = `You have finished the event "${event.title}". Please confirm your participation status below.`
+        break
+      case 'cancel-event':
+        actionMessage = `You have canceled the event "${event.title}". Please confirm your participation status below.`
+        break
+      default:
+        actionMessage = `You have ${action}ed the event "${event.title}". Please confirm your participation status below.`
+    }
   }
 
   const messageOptions = {
