@@ -1,100 +1,74 @@
 const { fetchEventsByCriteria } = require('../services/event-service')
 const { ActionRowBuilder, StringSelectMenuBuilder } = require('discord.js')
 
+async function getEventsByCommand(commandName, guildId, userId) {
+  const criteriaMap = {
+    'invite-event': { guild: guildId, status: 'not-started' },
+    'join-event': { guild: guildId, status: 'not-started' },
+    'leave-event': { guild: guildId, status: 'not-started', userDiscordID: userId, userStatus: 'attending' },
+    'update-event': { guild: guildId, status: 'not-started', creator: userId },
+    'cancel-event': { guild: guildId, status: 'not-started', creator: userId },
+    'start-event': [
+      { guild: guildId, status: 'not-started', creator: userId },
+      { guild: guildId, status: 'ready-to-start', creator: userId },
+    ],
+    'finish-event': { guild: guildId, status: 'ongoing', creator: userId },
+  }
+
+  if (commandName === 'start-event') {
+    const [notStartedEvents, readyEvents] = await Promise.all(
+      criteriaMap[commandName].map((criteria) => fetchEventsByCriteria(criteria))
+    )
+    return notStartedEvents.concat(readyEvents)
+  }
+
+  return fetchEventsByCriteria(criteriaMap[commandName])
+}
+
+function getEmptyEventMessage(commandName) {
+  const messageMap = {
+    'invite-event':
+      'No events available to invite to. You can create an event with /create-event. For more information, use /help.',
+    'join-event':
+      'No events available to join. You can create an event with /create-event. For more information, use /help.',
+    'leave-event':
+      'You are not participating in any events to leave. Check available events with /events. For more information, use /help.',
+    'update-event':
+      'You can only update events that have not started yet. Maybe your events have already started or finished. Check with /events. For more information, use /help.',
+    'cancel-event':
+      'You can only update events that have not started yet. Maybe your events have already started or finished. Check with /events. For more information, use /help.',
+    'start-event':
+      'You can only start events that have not started yet. Maybe your events have already started or finished. Check with /events. For more information, use /help.',
+    'finish-event':
+      'You can only finish events that are ongoing. Maybe your events have not started yet or have already finished. Check with /events. For more information, use /help.',
+  }
+
+  return messageMap[commandName]
+}
+
+function getSelectionPromptMessage(commandName) {
+  const messageMap = {
+    'invite-event': 'Please select an event to invite others to:',
+    'join-event': 'Please select an event to join:',
+    'leave-event': 'Please select an event to leave:',
+    'update-event': 'Please select an event to update:',
+    'cancel-event': 'Please select an event to cancel:',
+    'start-event': 'Please select an event to start:',
+    'finish-event': 'Please select an event to finish:',
+  }
+
+  return messageMap[commandName]
+}
+
 async function prepareEventSelection(interaction, commandName) {
-  let events
+  const events = await getEventsByCommand(commandName, interaction.guild.id, interaction.user.id)
 
-  if (commandName === 'invite-event') {
-    events = await fetchEventsByCriteria({
-      guild: interaction.guild.id,
-      status: 'not-started',
+  if (events.length === 0) {
+    await interaction.reply({
+      content: getEmptyEventMessage(commandName),
+      ephemeral: true,
     })
-    if (events.length === 0) {
-      await interaction.reply({
-        content:
-          'No events available to invite to. You can create an event with /create-event. For more information, use /help.',
-        ephemeral: true,
-      })
-      return
-    }
-  } else if (commandName === 'join-event') {
-    events = await fetchEventsByCriteria({
-      guild: interaction.guild.id,
-      status: 'not-started',
-    })
-    if (events.length === 0) {
-      await interaction.reply({
-        content:
-          'No events available to join. You can create an event with /create-event. For more information, use /help.',
-        ephemeral: true,
-      })
-      return
-    }
-  } else if (commandName === 'leave-event') {
-    events = await fetchEventsByCriteria({
-      guild: interaction.guild.id,
-      status: 'not-started',
-      userDiscordID: interaction.user.id,
-      userStatus: 'attending',
-    })
-    if (events.length === 0) {
-      await interaction.reply({
-        content:
-          'You are not participating in any events to leave. Check available events with /events. For more information, use /help.',
-        ephemeral: true,
-      })
-      return
-    }
-  } else if (commandName === 'update-event' || commandName === 'cancel-event') {
-    events = await fetchEventsByCriteria({
-      guild: interaction.guild.id,
-      status: 'not-started',
-      creator: interaction.user.id,
-    })
-    if (events.length === 0) {
-      await interaction.reply({
-        content:
-          'You can only update events that have not started yet. Maybe your events have already started or finished. Check with /events. For more information, use /help.',
-        ephemeral: true,
-      })
-      return
-    }
-  } else if (commandName === 'start-event') {
-    events = await fetchEventsByCriteria({
-      guild: interaction.guild.id,
-      status: 'not-started',
-      creator: interaction.user.id,
-    })
-    const readyEvents = await fetchEventsByCriteria({
-      guild: interaction.guild.id,
-      status: 'ready-to-start',
-      creator: interaction.user.id,
-    })
-    // merge ready events with events
-    events = events.concat(readyEvents)
-
-    if (events.length === 0) {
-      await interaction.reply({
-        content:
-          'You can only start events that have not started yet. Maybe your events have already started or finished. Check with /events. For more information, use /help.',
-        ephemeral: true,
-      })
-      return
-    }
-  } else if (commandName === 'finish-event') {
-    events = await fetchEventsByCriteria({
-      guild: interaction.guild.id,
-      status: 'ongoing',
-      creator: interaction.user.id,
-    })
-    if (events.length === 0) {
-      await interaction.reply({
-        content:
-          'You can only finish events that are ongoing. Maybe your events have not started yet or have already finished. Check with /events. For more information, use /help.',
-        ephemeral: true,
-      })
-      return
-    }
+    return
   }
 
   const eventOptions = events.map((event) => ({
@@ -118,7 +92,11 @@ async function prepareEventSelection(interaction, commandName) {
       .addOptions(eventOptions)
   )
 
-  await interaction.reply({ content: 'Please select an event:', components: [eventRow], ephemeral: true })
+  await interaction.reply({
+    content: getSelectionPromptMessage(commandName),
+    components: [eventRow],
+    ephemeral: true,
+  })
 }
 
 module.exports = {
