@@ -52,9 +52,8 @@ const handleUserSelection = async (interaction, eventId) => {
 
     await handleEventAction(interaction, 'invite-event', eventId)
   } catch (error) {
-    console.error('Error handling user selection:', error)
     await interaction.reply({
-      content: 'There was an error handling your selection. Please try again later.',
+      content: error.response.data.error,
       ephemeral: true,
     })
   }

@@ -69,9 +69,6 @@ const handleModalSubmit = (modalInteraction) => {
 
   // Participant limit validation
   participantLimit = parseInt(participantLimit, 10)
-  if (isNaN(participantLimit) || participantLimit < 0 || participantLimit > 1000) {
-    return { error: 'Participant limit must be a number between 0 and 1000.' }
-  }
 
   // Normalize date and time format
   startDate = startDate.replace(/:/g, '-')
@@ -79,11 +76,6 @@ const handleModalSubmit = (modalInteraction) => {
 
   // Date and time formatting
   const dateTime = moment(`${startDate} ${startTime}`, 'YYYY-MM-DD HH:mm')
-
-  // Check if the date is in the past
-  if (dateTime.isBefore(moment())) {
-    return { error: 'You cannot create an event in the past.' }
-  }
 
   return {
     title,

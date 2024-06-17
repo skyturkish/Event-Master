@@ -34,9 +34,8 @@ module.exports = {
             await modalInteraction.followUp({ content: 'Event updated successfully.', ephemeral: true })
           }
         } catch (error) {
-          console.error('Error creating event:', error)
           return modalInteraction.reply({
-            content: 'There was an error creating the event. Please try again later.',
+            content: error.response.data.error,
             ephemeral: true,
           })
         }

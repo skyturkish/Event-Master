@@ -19,8 +19,6 @@ const handleEventUpdate = async (interaction, eventId) => {
       try {
         await updateEvent(event._id, eventData)
       } catch (error) {
-        console.error('Error updating event:', error)
-
         return modalInteraction.reply({
           content: error.response.data.error,
           ephemeral: true,
