@@ -22,6 +22,7 @@ async function handleEventAction(interaction, action, eventId) {
     'create-event': false,
     'start-event': false,
     'finish-event': false,
+    'cancel-event': false,
   }[action]
 
   let event = await fetchEvent(eventId)
@@ -82,38 +83,29 @@ async function handleEventAction(interaction, action, eventId) {
   }) // 3 days
 
   buttonCollector.on('collect', async (i) => {
-    if (event.status !== 'not-started' && event.status !== 'ready-to-start') {
-      const statusMessages = {
-        ongoing: 'This event is currently ongoing, you can no longer make a decision.',
-        finished: 'This event has already finished, you can no longer make a decision.',
-        canceled: 'This event has been canceled, you can no longer make a decision.',
+    try {
+      await addOrUpdateUser(eventId, i.user.id, i.customId)
+      event = await fetchEvent(eventId)
+      const updatedEmbed = await createEventEmbed(event, interaction.client)
+
+      const attendingUsers = event.users.filter((p) => p.status === 'attending')
+      if (event.status === 'not-started' && attendingUsers.length >= event.participantLimit) {
+        await updateEvent(eventId, { status: 'ready-to-start' })
+        await interaction.channel.send({
+          content: `We've hit the magic number of participants! 🎉 The event can kick off as soon as the time arrives! Here are the awesome attendees: ${getMentionUsersString(
+            attendingUsers.map((p) => p.discordID)
+          )}`,
+        })
+        event = await fetchEvent(eventId)
       }
 
-      const messageContent = statusMessages[event.status] || 'You can no longer make a decision for this event.'
-
+      await i.update({ embeds: [updatedEmbed], components: [buttons], ephemeral: isEpemeralByAction })
+    } catch (error) {
       await i.reply({
-        content: messageContent,
+        content: error.response.data.error,
         ephemeral: true,
       })
-      return
     }
-
-    await addOrUpdateUser(eventId, i.user.id, i.customId)
-    event = await fetchEvent(eventId)
-    const updatedEmbed = await createEventEmbed(event, interaction.client)
-
-    const attendingUsers = event.users.filter((p) => p.status === 'attending')
-    if (event.status === 'not-started' && attendingUsers.length >= event.participantLimit) {
-      await updateEvent(eventId, { status: 'ready-to-start' })
-      await interaction.channel.send({
-        content: `We've hit the magic number of participants! 🎉 The event can kick off as soon as the time arrives! Here are the awesome attendees: ${getMentionUsersString(
-          attendingUsers.map((p) => p.discordID)
-        )}`,
-      })
-      event = await fetchEvent(eventId)
-    }
-
-    await i.update({ embeds: [updatedEmbed], components: [buttons], ephemeral: isEpemeralByAction })
   })
 
   buttonCollector.on('end', async () => {
