@@ -44,7 +44,7 @@ module.exports = {
       } else if (commandName === 'finish-event') {
         await handleEventAction(interaction, 'finish-event', eventId)
       }
-    } else if (interaction.customId.startsWith('select-users-for-invite:')) {
+    } else if (interaction.customId.startsWith('select-users-for-invite-event:')) {
       const eventId = interaction.customId.split(':')[1]
       await handleUserSelection(interaction, eventId)
     }

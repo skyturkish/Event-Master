@@ -9,7 +9,7 @@ async function prepareUserSelection(interaction, eventId) {
 
   const userRow = new ActionRowBuilder().addComponents(
     new UserSelectMenuBuilder()
-      .setCustomId(`select-users-for-invite:${event._id}`)
+      .setCustomId(`select-users-for-invite-event:${event._id}`)
       .setPlaceholder('Select users to invite')
       .setMinValues(1)
       .setMaxValues(maxValues)

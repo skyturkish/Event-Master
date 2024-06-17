@@ -18,7 +18,7 @@ async function handleEventAction(interaction, action, eventId) {
     'join-event': true,
     'leave-event': true,
     'update-event': false,
-    invite: false,
+    'invite-event': false,
     'create-event': false,
     'start-event': false,
     'finish-event': false,
