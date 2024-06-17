@@ -41,10 +41,6 @@ async function createEvent(eventData) {
 
 async function addOrUpdateUser(eventId, userId, status = 'invited') {
   try {
-    const event = await fetchEvent(eventId)
-
-    if (!event) throw new Error('Event not found')
-
     await axios.put(`${BASE_URL}event/${eventId}/users/${userId}`, { status })
   } catch (error) {
     console.error('Error adding or updating user:', error)
