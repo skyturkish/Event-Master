@@ -1,7 +1,7 @@
 const { SlashCommandBuilder, ModalBuilder, TextInputBuilder, ActionRowBuilder, TextInputStyle } = require('discord.js')
 const moment = require('moment')
 const { createEvent } = require('../services/event-service')
-const { handleEventAction } = require('../utils/handle-event-selection')
+const { handleEventAction } = require('../utils/handle-event-action')
 const { showModalWithInputs, handleModalSubmit } = require('../utils/modal-utils')
 
 module.exports = {

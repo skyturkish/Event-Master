@@ -1,8 +1,8 @@
 const { fetchEvent, addOrUpdateUser, updateEvent } = require('../services/event-service')
 const { createEventEmbed } = require('../embeds/event')
 const { createButtons } = require('../components/buttons')
-const { getMentionUsersString } = require('../utils/mentionUtils')
-const { handleEventUpdate } = require('../utils/handle-event-update')
+const { getMentionUsersString } = require('./mentionUtils')
+const { handleEventUpdate } = require('./handle-event-update')
 
 async function handleEventAction(interaction, action, eventId, actionMessage) {
   try {
@@ -44,6 +44,7 @@ async function handleEventAction(interaction, action, eventId, actionMessage) {
     } else if (action == 'cancel-event') {
       actionMessage = `You have canceled the event "${event.title}". Please confirm your participation status below.`
     }
+    event = await fetchEvent(eventId)
 
     const attendingUsers = event.users.filter((p) => p.status === 'attending')
 
