@@ -13,14 +13,14 @@ for (const file of commandFiles) {
   commands.push(command.data.toJSON())
 }
 
-const rest = new REST({ version: '10' }).setToken(process.env.DISCORD_TOKEN)
+const rest = new REST({ version: '10' }).setToken(process.env.DISCORD_TEST_TOKEN)
 
 ;(async () => {
   try {
     console.log(`Started refreshing ${commands.length} application (/) commands.`)
 
     // Global command deployment
-    const data = await rest.put(Routes.applicationCommands(process.env.CLIENT_ID), {
+    const data = await rest.put(Routes.applicationCommands(process.env.CLIENT_TEST_ID), {
       body: commands,
     })
 
