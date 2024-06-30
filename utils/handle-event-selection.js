@@ -2,131 +2,124 @@ const { fetchEvent, addOrUpdateUser, updateEvent } = require('../services/event-
 const { createEventEmbed } = require('../embeds/event')
 const { createButtons } = require('../components/buttons')
 const { getMentionUsersString } = require('../utils/mentionUtils')
+const { handleEventUpdate } = require('../utils/handle-event-update')
 
 async function handleEventAction(interaction, action, eventId, actionMessage) {
-  if (action === 'join-event') {
-    await addOrUpdateUser(eventId, interaction.user.id, 'attending')
-  } else if (action === 'leave-event') {
-    await addOrUpdateUser(eventId, interaction.user.id, 'declined')
-  } else if (action === 'start-event') {
-    await updateEvent(eventId, { status: 'ongoing' })
-  } else if (action === 'finish-event') {
-    await updateEvent(eventId, { status: 'finished' })
-  }
+  try {
+    let event = await fetchEvent(eventId)
 
-  const isEphemeralByAction = {
-    'join-event': true,
-    'leave-event': true,
-    'update-event': false,
-    'invite-event': false,
-    'create-event': false,
-    'start-event': false,
-    'finish-event': false,
-    'cancel-event': false,
-  }[action]
-
-  let event = await fetchEvent(eventId)
-
-  const attendingUsers = event.users.filter((p) => p.status === 'attending')
-
-  if (event.status === 'not-started' && attendingUsers.length >= event.participantLimit) {
-    await updateEvent(eventId, { status: 'ready-to-start' })
-    await interaction.channel.send({
-      content: `We've hit the magic number of participants! 🎉 The event can kick off as soon as the time arrives! Here are the awesome attendees: ${getMentionUsersString(
-        attendingUsers.map((p) => p.discordID)
-      )}`,
-    })
-    event = await fetchEvent(eventId)
-  }
-
-  const embed = await createEventEmbed(event, interaction.client)
-  const buttons = createButtons()
-
-  if (!actionMessage) {
-    switch (action) {
-      case 'join-event':
-        actionMessage = `You have joined the event "${event.title}". Please confirm your participation status below.`
-        break
-      case 'leave-event':
-        actionMessage = `You have left the event "${event.title}". Please confirm your participation status below.`
-        break
-      case 'update-event':
-        actionMessage = `You have updated the event "${event.title}". Please confirm your participation status below.`
-        break
-      case 'invite-event':
-        actionMessage = `You have invited others to the event "${event.title}". Please confirm your participation status below.`
-        break
-      case 'create-event':
-        actionMessage = `You have created the event "${event.title}". Please confirm your participation status below.`
-        break
-      case 'start-event':
-        actionMessage = `You have started the event "${event.title}". Please confirm your participation status below.`
-        break
-      case 'finish-event':
-        actionMessage = `You have finished the event "${event.title}". Please confirm your participation status below.`
-        break
-      case 'cancel-event':
-        actionMessage = `You have canceled the event "${event.title}". Please confirm your participation status below.`
-        break
-      default:
-        actionMessage = `You have ${action}ed the event "${event.title}". Please confirm your participation status below.`
+    if (!event) {
+      return interaction.reply({
+        content: `Event with ID ${eventId} not found.`,
+      })
     }
-  }
 
-  const messageOptions = {
-    content: actionMessage,
-    embeds: [embed],
-    components: [buttons],
-    ephemeral: isEphemeralByAction,
-    fetchReply: true,
-  }
+    let isEphemeral = false
 
-  let responseMessage
+    if (action == 'join-event') {
+      await addOrUpdateUser(eventId, interaction.user.id, 'attending')
 
-  if (!interaction.replied) {
-    responseMessage = await interaction.reply(messageOptions)
-  } else {
-    responseMessage = await interaction.followUp(messageOptions)
-  }
+      actionMessage = `You have joined the event "${event.title}". Please confirm your participation status below.`
+      isEphemeral = true
+    } else if (action == 'leave-event') {
+      await addOrUpdateUser(eventId, interaction.user.id, 'declined')
 
-  const buttonFilter = (i) => ['attending', 'declined', 'considering'].includes(i.customId)
-  const buttonCollector = responseMessage.createMessageComponentCollector({
-    filter: buttonFilter,
-    time: 3 * 24 * 60 * 60 * 1000,
-  }) // 3 days
+      actionMessage = `You have left the event "${event.title}". Please confirm your participation status below.`
+      isEphemeral = true
+    } else if (action == 'update-event') {
+      await handleEventUpdate(interaction, eventId)
 
-  buttonCollector.on('collect', async (i) => {
-    try {
-      await addOrUpdateUser(eventId, i.user.id, i.customId)
+      actionMessage = `You have updated the event "${event.title}". Please confirm your participation status below.`
+    } else if (action == 'invite-event') {
+    } else if (action == 'create-event') {
+      actionMessage = `You have created the event "${event.title}". Please confirm your participation status below.`
+    } else if (action == 'start-event') {
+      await updateEvent(eventId, { status: 'ongoing' })
+
+      actionMessage = `You have started the event "${event.title}". Please confirm your participation status below.`
+    } else if (action == 'finish-event') {
+      await updateEvent(eventId, { status: 'finished' })
+
+      actionMessage = `You have finished the event "${event.title}". Please confirm your participation status below.`
+    } else if (action == 'cancel-event') {
+      actionMessage = `You have canceled the event "${event.title}". Please confirm your participation status below.`
+    }
+
+    const attendingUsers = event.users.filter((p) => p.status === 'attending')
+
+    if (event.status === 'not-started' && attendingUsers.length >= event.participantLimit) {
+      await updateEvent(eventId, { status: 'ready-to-start' })
+      await interaction.channel.send({
+        content: `We've hit the magic number of participants! 🎉 The event can kick off as soon as the time arrives! Here are the awesome attendees: ${getMentionUsersString(
+          attendingUsers.map((p) => p.discordID)
+        )}`,
+      })
+      event = await fetchEvent(eventId)
+    }
+
+    const embed = await createEventEmbed(event, interaction.client)
+    const buttons = createButtons()
+
+    const messageOptions = {
+      content: actionMessage,
+      embeds: [embed],
+      components: [buttons],
+      ephemeral: isEphemeral,
+      fetchReply: true,
+    }
+
+    let responseMessage
+
+    if (!interaction.replied) {
+      responseMessage = await interaction.reply(messageOptions)
+    } else {
+      responseMessage = await interaction.followUp(messageOptions)
+    }
+
+    const buttonFilter = (i) => ['attending', 'declined', 'considering'].includes(i.customId)
+    const buttonCollector = responseMessage.createMessageComponentCollector({
+      filter: buttonFilter,
+      time: 3 * 24 * 60 * 60 * 1000,
+    }) // 3 days
+
+    buttonCollector.on('collect', async (i) => {
+      try {
+        await addOrUpdateUser(eventId, i.user.id, i.customId)
+        event = await fetchEvent(eventId)
+        const updatedEmbed = await createEventEmbed(event, interaction.client)
+
+        const attendingUsers = event.users.filter((p) => p.status === 'attending')
+        if (event.status === 'not-started' && attendingUsers.length >= event.participantLimit) {
+          await updateEvent(eventId, { status: 'ready-to-start' })
+          await interaction.channel.send({
+            content: `We've hit the magic number of participants! 🎉 The event can kick off as soon as the time arrives! Here are the awesome attendees: ${getMentionUsersString(
+              attendingUsers.map((p) => p.discordID)
+            )}`,
+          })
+          event = await fetchEvent(eventId)
+        }
+
+        await i.update({ embeds: [updatedEmbed], components: [buttons], ephemeral: isEphemeral })
+      } catch (error) {
+        await i.reply({
+          content: error.response.data.error,
+          ephemeral: true,
+        })
+      }
+    })
+
+    buttonCollector.on('end', async () => {
       event = await fetchEvent(eventId)
       const updatedEmbed = await createEventEmbed(event, interaction.client)
 
-      const attendingUsers = event.users.filter((p) => p.status === 'attending')
-      if (event.status === 'not-started' && attendingUsers.length >= event.participantLimit) {
-        await updateEvent(eventId, { status: 'ready-to-start' })
-        await interaction.channel.send({
-          content: `We've hit the magic number of participants! 🎉 The event can kick off as soon as the time arrives! Here are the awesome attendees: ${getMentionUsersString(
-            attendingUsers.map((p) => p.discordID)
-          )}`,
-        })
-        event = await fetchEvent(eventId)
-      }
-
-      await i.update({ embeds: [updatedEmbed], components: [buttons], ephemeral: isEphemeralByAction })
-    } catch (error) {
-      await i.reply({
-        content: error.response.data.error,
-        ephemeral: true,
-      })
-    }
-  })
-
-  buttonCollector.on('end', async () => {
-    event = await fetchEvent(eventId)
-    const updatedEmbed = await createEventEmbed(event, interaction.client)
-
-    await responseMessage.edit({ embeds: [updatedEmbed], components: [], ephemeral: isEphemeralByAction })
-  })
+      await responseMessage.edit({ embeds: [updatedEmbed], components: [], ephemeral: isEphemeral })
+    })
+  } catch (error) {
+    return interaction.reply({
+      content: error.response.data.error || error.message || 'An error occurred.',
+      ephemeral: true,
+    })
+  }
 }
 
 module.exports = {

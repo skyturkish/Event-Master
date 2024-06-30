@@ -1,7 +1,6 @@
 const { prepareUserSelection } = require('../utils/prepare-user-selection')
 const { handleEventAction } = require('../utils/handle-event-selection')
 const { handleUserSelection } = require('../utils/handle-user-selection')
-const { handleEventUpdate } = require('../utils/handle-event-update')
 const { handleEventCancel } = require('../utils/handle-event-cancel')
 const { Events } = require('discord.js')
 
@@ -36,7 +35,7 @@ module.exports = {
       } else if (commandName === 'leave-event') {
         await handleEventAction(interaction, 'leave-event', eventId)
       } else if (commandName === 'update-event') {
-        await handleEventUpdate(interaction, eventId)
+        await handleEventAction(interaction, 'update-event', eventId)
       } else if (commandName === 'cancel-event') {
         await handleEventCancel(interaction, eventId)
       } else if (commandName === 'start-event') {

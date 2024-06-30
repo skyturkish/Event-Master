@@ -1,9 +1,9 @@
 const { fetchEvent, addOrUpdateUser } = require('../services/event-service')
-const { getMentionUsersString } = require('../utils/mentionUtils')
+const { getMentionUsersString, getUsersName } = require('../utils/mentionUtils')
 const { handleEventAction } = require('./handle-event-selection')
 
 const handleUserSelection = async (interaction, eventId) => {
-  const selectedUsers = interaction.values
+  let selectedUsers = interaction.values
   let event = await fetchEvent(eventId)
   const embedDescription = `You have been invited to the event ${event.title} by ${interaction.user}.`
   const userIDs = event.users.map((user) => user.discordID)
@@ -21,14 +21,15 @@ const handleUserSelection = async (interaction, eventId) => {
     const allSelectedUsersHaveResponded = matchedUsers.every((user) => user.status !== 'invited')
 
     if (allUsersProcessed && allSelectedUsersHaveResponded) {
-      await interaction.update({
-        content: `All the users you invited have already responded and were not re-invited: ${getMentionUsersString(
-          selectedUsers
-        )}. Please check the list below for the current status.`,
-        embeds: [embed],
-        components: [],
-        ephemeral: true,
-      })
+      selectedUsers = await getUsersName(selectedUsers, interaction.client)
+
+      await handleEventAction(
+        interaction,
+        'invite-event',
+        eventId,
+        `All the users you invited have already responded and were not re-invited: ${selectedUsers}. Please check the list below for the current status.`
+      )
+
       return
     }
 
@@ -36,22 +37,24 @@ const handleUserSelection = async (interaction, eventId) => {
       .filter((user) => selectedUsers.includes(user.discordID) && user.status === 'invited')
       .map((user) => user.discordID)
 
-    const notInvitedUsers = users
-      .filter((user) => selectedUsers.includes(user.discordID) && user.status !== 'invited')
-      .map((user) => user.discordID)
+    const notInvitedUsers = await getUsersName(
+      users
+        .filter((user) => selectedUsers.includes(user.discordID) && user.status !== 'invited')
+        .map((user) => user.discordID),
+      interaction.client
+    )
 
     let content = `The following users have been successfully invited to the event: ${getMentionUsersString(
       invitedUsers
     )}.`
 
     if (notInvitedUsers.length > 0) {
-      content += ` However, the following users had already responded to the invitation and were not re-invited: ${getMentionUsersString(
-        notInvitedUsers
-      )}. Please check the list below for their current status.`
+      content += ` However, the following users had already responded to the invitation and were not re-invited: ${notInvitedUsers}. Please check the list below for their current status.`
     }
 
     await handleEventAction(interaction, 'invite-event', eventId, content)
   } catch (error) {
+    console.log('Error inviting users to event', error)
     await interaction.reply({
       content: error.response.data.error || 'An error occurred while processing your request.',
       ephemeral: true,
