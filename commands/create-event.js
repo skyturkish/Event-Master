@@ -35,7 +35,7 @@ module.exports = {
           }
         } catch (error) {
           return modalInteraction.reply({
-            content: error.response.data.error,
+            content: error.response.data.error || 'An error occurred while creating the event.',
             ephemeral: true,
           })
         }
