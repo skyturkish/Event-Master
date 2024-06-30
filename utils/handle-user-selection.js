@@ -5,7 +5,6 @@ const { handleEventAction } = require('./handle-event-action')
 const handleUserSelection = async (interaction, eventId) => {
   let selectedUsers = interaction.values
   let event = await fetchEvent(eventId)
-  const embedDescription = `You have been invited to the event ${event.title} by ${interaction.user}.`
   const userIDs = event.users.map((user) => user.discordID)
   const uniqueUsers = selectedUsers.filter((user) => !userIDs.includes(user))
 
