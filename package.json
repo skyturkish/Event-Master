@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "main": "index.js",
-    "deployrun": "node deploy-commands.js && node index.js"
+    "deployrun": "node deploy-commands.js && node index.js",
+    "run": "node deploy-commands.js && node index.js",
+    "start": "node deploy-commands.js && node index.js"
   },
   "keywords": [],
   "author": "",
