@@ -27,7 +27,8 @@ async function handleEventAction(interaction, action, eventId, actionMessage) {
       actionMessage = `You have left the event "${event.title}". Please confirm your participation status below.`
       isEphemeral = true
     } else if (action == 'update-event') {
-      await handleEventUpdate(interaction, eventId)
+      const response = await handleEventUpdate(interaction, eventId)
+      if (!response.success) return
 
       actionMessage = `You have updated the event "${event.title}". Please confirm your participation status below.`
     } else if (action == 'invite-event') {

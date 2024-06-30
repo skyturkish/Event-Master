@@ -49,12 +49,7 @@ async function addOrUpdateUser(eventId, userId, status = 'invited') {
 }
 
 async function updateEvent(eventId, eventData) {
-  try {
-    await axios.put(`${BASE_URL}event/${eventId}`, eventData)
-  } catch (error) {
-    console.error('Error updating event:', error)
-    throw error
-  }
+  await axios.put(`${BASE_URL}event/${eventId}`, eventData)
 }
 
 module.exports = {
