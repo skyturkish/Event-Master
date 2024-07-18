@@ -117,8 +117,10 @@ async function handleEventAction(interaction, action, eventId, actionMessage) {
       await responseMessage.edit({ embeds: [updatedEmbed], components: [], ephemeral: isEphemeral })
     })
   } catch (error) {
+    console.log('Error:', error)
     return interaction.reply({
-      content: error.response.data.error || error.message || 'An error occurred.',
+      content:
+        (error.response && error.response.data && error.response.data.error) || error.message || 'An error occurred.',
       ephemeral: true,
     })
   }
