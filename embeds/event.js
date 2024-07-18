@@ -37,6 +37,12 @@ async function createEventEmbed(event, client) {
   })
 
   responseText += '\u200B\n'
+
+  if (responseText.length > 1024) {
+    const truncatedText = responseText.substring(0, 1024)
+    const lastCommaIndex = truncatedText.lastIndexOf(',')
+    responseText = truncatedText.substring(0, lastCommaIndex) + ', ...'
+  }
   return new EmbedBuilder()
     .setColor(0x0099ff)
     .setTitle(event.title)
