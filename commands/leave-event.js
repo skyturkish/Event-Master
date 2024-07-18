@@ -6,6 +6,7 @@ module.exports = {
     .setName('leave-event')
     .setDescription('Exit an event by selecting from the list of available events'),
   async execute(interaction) {
+    console.log('leave-event')
     await prepareEventSelection(interaction, 'leave-event')
   },
 }

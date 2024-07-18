@@ -6,6 +6,7 @@ module.exports = {
     .setName('update-event')
     .setDescription('Update an event with a title, description, user limit, and start time'),
   async execute(interaction) {
+    console.log('update-event')
     await prepareEventSelection(interaction, 'update-event')
   },
 }

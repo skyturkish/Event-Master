@@ -9,6 +9,7 @@ module.exports = {
     .setName('create-event')
     .setDescription('Create an event with a title, description, user limit, and start time'),
   async execute(interaction) {
+    console.log('create-event')
     await showModalWithInputs(interaction, 'eventModal', 'Create Event')
 
     const filter = (i) => i.customId === 'eventModal'

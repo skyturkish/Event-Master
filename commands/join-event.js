@@ -6,6 +6,7 @@ module.exports = {
     .setName('join-event')
     .setDescription('Join an event by selecting from the list of available events'),
   async execute(interaction) {
+    console.log('join-event')
     await prepareEventSelection(interaction, 'join-event')
   },
 }
