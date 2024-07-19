@@ -92,11 +92,15 @@ async function prepareEventSelection(interaction, commandName) {
       .addOptions(eventOptions)
   )
 
-  await interaction.reply({
-    content: getSelectionPromptMessage(commandName),
-    components: [eventRow],
-    ephemeral: true,
-  })
+  try {
+    await interaction.reply({
+      content: getSelectionPromptMessage(commandName),
+      components: [eventRow],
+      ephemeral: true,
+    })
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 module.exports = {
