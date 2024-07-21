@@ -1,49 +1,17 @@
 const { fetchEventsByCriteria } = require('../services/event-service')
 const { ActionRowBuilder, StringSelectMenuBuilder } = require('discord.js')
 
-async function getEventsByCommand(commandName, guildId, userId) {
+function getCriteria(commandName, guildId, userId) {
   const criteriaMap = {
     'invite-event': { guild: guildId, status: 'not-started' },
-    'join-event': { guild: guildId, status: 'not-started' },
-    'leave-event': { guild: guildId, status: 'not-started', userDiscordID: userId, userStatus: 'attending' },
+    'join-event': { guild: guildId, status: 'not-started' }, // not-started, ready-to-start
+    'leave-event': { guild: guildId, status: 'not-started', userDiscordID: userId, userStatus: 'attending' }, // not-started, ready-to-start
     'update-event': { guild: guildId, status: 'not-started', creator: userId },
     'cancel-event': { guild: guildId, status: 'not-started', creator: userId },
-    'start-event': [
-      { guild: guildId, status: 'not-started', creator: userId },
-      { guild: guildId, status: 'ready-to-start', creator: userId },
-    ],
+    'start-event': { guild: guildId, status: 'ready-to-start', creator: userId },
     'finish-event': { guild: guildId, status: 'ongoing', creator: userId },
   }
-
-  if (commandName === 'start-event') {
-    const [notStartedEvents, readyEvents] = await Promise.all(
-      criteriaMap[commandName].map((criteria) => fetchEventsByCriteria(criteria))
-    )
-    return notStartedEvents.concat(readyEvents)
-  }
-
-  return fetchEventsByCriteria(criteriaMap[commandName])
-}
-
-function getEmptyEventMessage(commandName) {
-  const messageMap = {
-    'invite-event':
-      'No events available to invite to. You can create an event with /create-event. For more information, use /help.',
-    'join-event':
-      'No events available to join. You can create an event with /create-event. For more information, use /help.',
-    'leave-event':
-      'You are not participating in any events to leave. Check available events with /events. For more information, use /help.',
-    'update-event':
-      'You can only update events that have not started yet. Maybe your events have already started or finished. Check with /events. For more information, use /help.',
-    'cancel-event':
-      'You can only update events that have not started yet. Maybe your events have already started or finished. Check with /events. For more information, use /help.',
-    'start-event':
-      'You can only start events that have not started yet. Maybe your events have already started or finished. Check with /events. For more information, use /help.',
-    'finish-event':
-      'You can only finish events that are ongoing. Maybe your events have not started yet or have already finished. Check with /events. For more information, use /help.',
-  }
-
-  return messageMap[commandName]
+  return criteriaMap[commandName]
 }
 
 function getSelectionPromptMessage(commandName) {
@@ -61,45 +29,59 @@ function getSelectionPromptMessage(commandName) {
 }
 
 async function prepareEventSelection(interaction, commandName) {
-  const events = await getEventsByCommand(commandName, interaction.guild.id, interaction.user.id)
-
-  if (events.length === 0) {
-    await interaction.reply({
-      content: getEmptyEventMessage(commandName),
-      ephemeral: true,
-    })
-    return
-  }
-
-  const eventOptions = events.map((event) => ({
-    label: event.title,
-    description: `Start: ${new Date(event.startTime).toLocaleString('en-GB', {
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
-      hour: '2-digit',
-      minute: '2-digit',
-      hour12: false,
-    })} - ${event.description}`.substring(0, 100),
-    value: event._id,
-    emoji: '📅',
-  }))
-
-  const eventRow = new ActionRowBuilder().addComponents(
-    new StringSelectMenuBuilder()
-      .setCustomId(`select-event-for-:${commandName}`)
-      .setPlaceholder('Select an event')
-      .addOptions(eventOptions)
-  )
-
   try {
+    const criteria = getCriteria(commandName, interaction.guild.id, interaction.user.id)
+
+    const events = await fetchEventsByCriteria(criteria)
+
+    const eventOptions = events.map((event) => ({
+      label: event.title,
+      description: `Start: ${new Date(event.startTime).toLocaleString('en-GB', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false,
+      })} - ${event.description}`.substring(0, 100),
+      value: event._id,
+      emoji: '📅',
+    }))
+
+    const eventRow = new ActionRowBuilder().addComponents(
+      new StringSelectMenuBuilder()
+        .setCustomId(`select-event-for-:${commandName}`)
+        .setPlaceholder('Select an event')
+        .addOptions(eventOptions)
+    )
+
     await interaction.reply({
       content: getSelectionPromptMessage(commandName),
       components: [eventRow],
       ephemeral: true,
     })
   } catch (error) {
-    console.log(error)
+    console.log('prepareEventSelection error:', error)
+
+    content = 'An error occurred while fetching the events.'
+
+    if (error.response.data.error === 'No events found') {
+      const contentMap = {
+        'invite-event': 'No events available to invite others to.',
+        'join-event': 'No events available to join.',
+        'leave-event': 'No events available to leave.',
+        'update-event': 'No events available to update.',
+        'cancel-event': 'No events available to cancel.',
+        'start-event': 'No events available to start.',
+        'finish-event': 'No events available to finish.',
+      }
+      content = contentMap[commandName]
+    }
+
+    await interaction.reply({
+      content,
+      ephemeral: true,
+    })
   }
 }
 

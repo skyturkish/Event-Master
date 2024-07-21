@@ -3,20 +3,15 @@ const axios = require('axios')
 const BASE_URL = process.env.BASE_URL || 'http://localhost:3000'
 
 async function fetchEventsByCriteria({ guild, status, userDiscordID, userStatus, creator }) {
-  try {
-    const queryParams = new URLSearchParams()
-    if (guild) queryParams.append('guild', guild)
-    if (status) queryParams.append('status', status)
-    if (userDiscordID) queryParams.append('userDiscordID', userDiscordID)
-    if (userStatus) queryParams.append('userStatus', userStatus)
-    if (creator) queryParams.append('creator', creator)
+  const queryParams = new URLSearchParams()
+  if (guild) queryParams.append('guild', guild)
+  if (status) queryParams.append('status', status)
+  if (userDiscordID) queryParams.append('userDiscordID', userDiscordID)
+  if (userStatus) queryParams.append('userStatus', userStatus)
+  if (creator) queryParams.append('creator', creator)
 
-    const response = await axios.get(`${BASE_URL}/event?${queryParams.toString()}`)
-    return response.data
-  } catch (error) {
-    console.error('Error fetching events by criteria:', error)
-    return []
-  }
+  const response = await axios.get(`${BASE_URL}/event?${queryParams.toString()}`)
+  return response.data
 }
 
 async function fetchEvent(eventId) {
