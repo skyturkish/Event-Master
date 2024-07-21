@@ -1,6 +1,6 @@
 const axios = require('axios')
 
-const BASE_URL = process.env.BASE_URL || 'http://localhost:3000/'
+const BASE_URL = process.env.BASE_URL || 'http://localhost:3000'
 
 async function fetchEventsByCriteria({ guild, status, userDiscordID, userStatus, creator }) {
   try {
@@ -11,7 +11,7 @@ async function fetchEventsByCriteria({ guild, status, userDiscordID, userStatus,
     if (userStatus) queryParams.append('userStatus', userStatus)
     if (creator) queryParams.append('creator', creator)
 
-    const response = await axios.get(`${BASE_URL}event?${queryParams.toString()}`)
+    const response = await axios.get(`${BASE_URL}/event?${queryParams.toString()}`)
     return response.data
   } catch (error) {
     console.error('Error fetching events by criteria:', error)
@@ -21,7 +21,7 @@ async function fetchEventsByCriteria({ guild, status, userDiscordID, userStatus,
 
 async function fetchEvent(eventId) {
   try {
-    const response = await axios.get(`${BASE_URL}event/${eventId}`)
+    const response = await axios.get(`${BASE_URL}/event/${eventId}`)
     return response.data
   } catch (error) {
     console.error('Error fetching event:', error)
@@ -31,7 +31,7 @@ async function fetchEvent(eventId) {
 
 async function createEvent(eventData) {
   try {
-    const response = await axios.post(`${BASE_URL}event`, eventData)
+    const response = await axios.post(`${BASE_URL}/event`, eventData)
     return response.data
   } catch (error) {
     console.error('Error creating event:', error)
@@ -41,7 +41,7 @@ async function createEvent(eventData) {
 
 async function addOrUpdateUser(eventId, userId, status = 'invited') {
   try {
-    await axios.put(`${BASE_URL}event/${eventId}/users/${userId}`, { status })
+    await axios.put(`${BASE_URL}/event/${eventId}/users/${userId}`, { status })
   } catch (error) {
     console.error('Error adding or updating user:', error)
     throw error
@@ -49,7 +49,7 @@ async function addOrUpdateUser(eventId, userId, status = 'invited') {
 }
 
 async function updateEvent(eventId, eventData) {
-  await axios.put(`${BASE_URL}event/${eventId}`, eventData)
+  await axios.put(`${BASE_URL}/event/${eventId}`, eventData)
 }
 
 module.exports = {
