@@ -103,8 +103,9 @@ async function handleEventAction(interaction, action, eventId, actionMessage) {
 
         await i.update({ embeds: [updatedEmbed], components: [buttons], ephemeral: isEphemeral })
       } catch (error) {
+
         await i.reply({
-          content: error.response.data.error,
+          content: error.response ? error.response.data.error : 'An error occurred',
           ephemeral: true,
         })
       }
