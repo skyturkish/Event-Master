@@ -17,10 +17,17 @@ const handleEventUpdate = async (interaction, eventId) => {
     }
 
     try {
-      const updatedEvent = await updateEvent(event._id, eventData)
+      await updateEvent(event._id, eventData)
+      event = await fetchEvent(event._id)
 
-      return { success: true, data: updatedEvent }
+      await collected.reply({
+        content: 'Event updated successfully.',
+        ephemeral: true,
+      })
+
+      return { success: true, data: event }
     } catch (error) {
+      console.log('Error updating event:', error)
       await collected.reply({
         content: error.response.data.error || 'An error occurred while updating the event.',
         ephemeral: true,

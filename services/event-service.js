@@ -15,32 +15,17 @@ async function fetchEventsByCriteria({ guild, status, userDiscordID, userStatus,
 }
 
 async function fetchEvent(eventId) {
-  try {
-    const response = await axios.get(`${BASE_URL}/event/${eventId}`)
-    return response.data
-  } catch (error) {
-    console.error('Error fetching event:', error)
-    return null
-  }
+  const response = await axios.get(`${BASE_URL}/event/${eventId}`)
+  return response.data
 }
 
 async function createEvent(eventData) {
-  try {
-    const response = await axios.post(`${BASE_URL}/event`, eventData)
-    return response.data
-  } catch (error) {
-    console.error('Error creating event:', error)
-    throw error
-  }
+  const response = await axios.post(`${BASE_URL}/event`, eventData)
+  return response.data
 }
 
 async function addOrUpdateUser(eventId, userId, status = 'invited') {
-  try {
-    await axios.put(`${BASE_URL}/event/${eventId}/users/${userId}`, { status })
-  } catch (error) {
-    console.error('Error adding or updating user:', error)
-    throw error
-  }
+  await axios.put(`${BASE_URL}/event/${eventId}/users/${userId}`, { status })
 }
 
 async function updateEvent(eventId, eventData) {
