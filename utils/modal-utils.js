@@ -24,7 +24,7 @@ const showModalWithInputs = async (interaction, customId, title, event) => {
     .setCustomId('participantLimitInput')
     .setLabel('Participant Limit')
     .setStyle(TextInputStyle.Short)
-    .setPlaceholder('0 - 1000')
+    .setPlaceholder('1 - 1024')
     .setRequired(true)
 
   const startDateInput = new TextInputBuilder()
