@@ -44,7 +44,7 @@ async function createEventEmbed(event, client) {
     responseText = truncatedText.substring(0, lastCommaIndex) + ', ...'
   }
   return new EmbedBuilder()
-    .setColor(0x0099ff)
+    .setColor(0xb8c4f8)
     .setTitle(event.title)
     .setDescription(event.description)
     .setThumbnail(botAvatarUrl)

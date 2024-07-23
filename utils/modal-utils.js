@@ -71,8 +71,8 @@ const handleModalSubmit = (modalInteraction) => {
   participantLimit = parseInt(participantLimit, 10)
 
   // Normalize date and time format
-  startDate = startDate.replace(/:/g, '-')
-  startTime = startTime.replace(/-/g, ':')
+  startDate = startDate.replace(/[:\-.;]/g, '-')
+  startTime = startTime.replace(/[:\-.;]/g, ':')
 
   // Date and time formatting
   const dateTime = moment(`${startDate} ${startTime}`, 'YYYY-MM-DD HH:mm')
