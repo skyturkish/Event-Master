@@ -41,6 +41,14 @@ async function prepareEventSelection(interaction, commandName) {
 
     const events = await fetchEventsByCriteria(criteria)
 
+    const statusEmojis = {
+      'not-started': '⏳',
+      'ready-to-start': '🚀',
+      ongoing: '🔄',
+      finished: '✅',
+      canceled: '❌',
+    }
+
     const eventOptions = events.map((event) => ({
       label: event.title,
       description: `Start: ${new Date(event.startTime).toLocaleString('en-GB', {
@@ -52,7 +60,7 @@ async function prepareEventSelection(interaction, commandName) {
         hour12: false,
       })} - ${event.description}`.substring(0, 100),
       value: event._id,
-      emoji: '📅',
+      emoji: statusEmojis[event.status] || '📅',
     }))
 
     const eventRow = new ActionRowBuilder().addComponents(
