@@ -11,6 +11,7 @@ async function createEventEmbed(event, client) {
     { label: 'Declined ❌:', status: 'declined' },
     { label: 'Considering 🤔:', status: 'considering' },
     { label: 'Invited - awaiting response 🕐:', status: 'invited' },
+    { label: 'Waitlist 📝:', status: 'waitlist' },
   ]
 
   let responseText = `**Event ID:** ${event._id}\n`
@@ -26,15 +27,28 @@ async function createEventEmbed(event, client) {
     event.participantLimit
   }\n\n`
 
-  statuses.forEach(({ label, status }) => {
-    responseText += `**${label}**\n`
-    const participantsString = event.users
-      .filter((user) => user.status === status)
-      .map((user) => `<@${user.discordID}>`)
-      .join(', ')
+  const waitlistUsers = event.users.filter((user) => user.status === 'waitlist')
+  const showWaitlist = waitlistUsers.length > 0
 
-    responseText += `${participantsString}\n\n`
-  })
+  if (showWaitlist) {
+    const attendingUsers = event.users.filter((user) => user.status === 'attending')
+    responseText += `**Attending ✅:**\n${attendingUsers.map((user) => `<@${user.discordID}>`).join(', ')}\n\n`
+    responseText += `**Waitlist 📝:**\n`
+    waitlistUsers.forEach((user, index) => {
+      responseText += `${index + 1}. <@${user.discordID}>\n`
+    })
+  } else {
+    statuses.forEach(({ label, status }) => {
+      if (status !== 'waitlist') {
+        responseText += `**${label}**\n`
+        const participantsString = event.users
+          .filter((user) => user.status === status)
+          .map((user) => `<@${user.discordID}>`)
+          .join(', ')
+        responseText += `${participantsString}\n\n`
+      }
+    })
+  }
 
   responseText += '\u200B\n'
 
@@ -43,6 +57,7 @@ async function createEventEmbed(event, client) {
     const lastCommaIndex = truncatedText.lastIndexOf(',')
     responseText = truncatedText.substring(0, lastCommaIndex) + ', ...'
   }
+
   return new EmbedBuilder()
     .setColor(0xb8c4f8)
     .setTitle(event.title)

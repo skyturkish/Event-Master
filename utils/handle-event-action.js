@@ -86,8 +86,7 @@ async function handleEventAction(interaction, action, eventId, actionMessage) {
 
     buttonCollector.on('collect', async (i) => {
       try {
-        await addOrUpdateUser(eventId, i.user.id, i.customId)
-        event = await fetchEvent(eventId)
+        event = await addOrUpdateUser(eventId, i.user.id, i.customId)
         const updatedEmbed = await createEventEmbed(event, interaction.client)
 
         const attendingUsers = event.users.filter((p) => p.status === 'attending')
@@ -102,20 +101,19 @@ async function handleEventAction(interaction, action, eventId, actionMessage) {
         }
 
         await i.update({ embeds: [updatedEmbed], components: [buttons], ephemeral: isEphemeral })
-      } catch (error) {
 
+        buttonCollector.on('end', async () => {
+          event = await fetchEvent(eventId)
+          const updatedEmbed = await createEventEmbed(event, interaction.client)
+
+          await responseMessage.edit({ embeds: [updatedEmbed], components: [], ephemeral: isEphemeral })
+        })
+      } catch (error) {
         await i.reply({
           content: error.response ? error.response.data.error : 'An error occurred',
           ephemeral: true,
         })
       }
-    })
-
-    buttonCollector.on('end', async () => {
-      event = await fetchEvent(eventId)
-      const updatedEmbed = await createEventEmbed(event, interaction.client)
-
-      await responseMessage.edit({ embeds: [updatedEmbed], components: [], ephemeral: isEphemeral })
     })
   } catch (error) {
     console.log('Error:', error)
