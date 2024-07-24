@@ -15,7 +15,7 @@ function getCriteria(commandName, guildId, userId) {
     'cancel-event': { guild: guildId, statuses: ['not-started'], creator: userId },
     'start-event': { guild: guildId, statuses: ['ready-to-start'], creator: userId },
     'finish-event': { guild: guildId, statuses: ['ongoing'], creator: userId },
-    events: { guild: guildId },
+    events: { guild: guildId, statuses: ['not-started', 'ready-to-start', 'ongoing', 'finished'] },
   }
   return criteriaMap[commandName]
 }
