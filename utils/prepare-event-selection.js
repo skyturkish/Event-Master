@@ -49,6 +49,10 @@ async function prepareEventSelection(interaction, commandName) {
       canceled: '❌',
     }
 
+    const statusOrder = ['not-started', 'ready-to-start', 'ongoing', 'finished', 'canceled']
+    // Sort on backend to avoid sorting on frontend
+    events.sort((b, a) => statusOrder.indexOf(a.status) - statusOrder.indexOf(b.status))
+
     const eventOptions = events.map((event) => ({
       label: event.title,
       description: `Start: ${new Date(event.startTime).toLocaleString('en-GB', {
