@@ -70,7 +70,7 @@ async function prepareEventSelection(interaction, commandName) {
 
     content = 'An error occurred while fetching the events.'
 
-    if (error.response.data.error === 'No events found') {
+    if (error.response && error.response.data && error.response.data.error === 'No events found') {
       const contentMap = {
         'invite-event': 'No events available to invite others to.',
         'join-event': 'No events available to join.',
