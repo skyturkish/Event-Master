@@ -3,13 +3,18 @@ const { ActionRowBuilder, StringSelectMenuBuilder } = require('discord.js')
 
 function getCriteria(commandName, guildId, userId) {
   const criteriaMap = {
-    'invite-event': { guild: guildId, status: 'not-started' },
-    'join-event': { guild: guildId, status: 'not-started' }, // not-started, ready-to-start
-    'leave-event': { guild: guildId, status: 'not-started', userDiscordID: userId, userStatus: 'attending' }, // not-started, ready-to-start
-    'update-event': { guild: guildId, status: 'not-started', creator: userId },
-    'cancel-event': { guild: guildId, status: 'not-started', creator: userId },
-    'start-event': { guild: guildId, status: 'ready-to-start', creator: userId },
-    'finish-event': { guild: guildId, status: 'ongoing', creator: userId },
+    'invite-event': { guild: guildId, statuses: ['not-started', 'ready-to-start'] },
+    'join-event': { guild: guildId, statuses: ['not-started', 'ready-to-start'] },
+    'leave-event': {
+      guild: guildId,
+      statuses: ['not-started', 'ready-to-start'],
+      userDiscordID: userId,
+      userStatus: 'attending',
+    },
+    'update-event': { guild: guildId, statuses: ['not-started'], creator: userId },
+    'cancel-event': { guild: guildId, statuses: ['not-started'], creator: userId },
+    'start-event': { guild: guildId, statuses: ['ready-to-start'], creator: userId },
+    'finish-event': { guild: guildId, statuses: ['ongoing'], creator: userId },
   }
   return criteriaMap[commandName]
 }

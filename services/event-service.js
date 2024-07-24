@@ -2,10 +2,10 @@ const axios = require('axios')
 
 const BASE_URL = process.env.BASE_URL || 'http://localhost:3000'
 
-async function fetchEventsByCriteria({ guild, status, userDiscordID, userStatus, creator }) {
+async function fetchEventsByCriteria({ guild, statuses, userDiscordID, userStatus, creator }) {
   const queryParams = new URLSearchParams()
   if (guild) queryParams.append('guild', guild)
-  if (status) queryParams.append('status', status)
+  if (statuses) queryParams.append('statuses', statuses)
   if (userDiscordID) queryParams.append('userDiscordID', userDiscordID)
   if (userStatus) queryParams.append('userStatus', userStatus)
   if (creator) queryParams.append('creator', creator)
