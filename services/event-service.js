@@ -25,7 +25,8 @@ async function createEvent(eventData) {
 }
 
 async function addOrUpdateUser(eventId, userId, status = 'invited') {
-  await axios.put(`${BASE_URL}/event/${eventId}/users/${userId}`, { status })
+  const response = await axios.put(`${BASE_URL}/event/${eventId}/users/${userId}`, { status })
+  return response.data
 }
 
 async function updateEvent(eventId, eventData) {

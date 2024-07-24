@@ -86,8 +86,7 @@ async function handleEventAction(interaction, action, eventId, actionMessage) {
 
     buttonCollector.on('collect', async (i) => {
       try {
-        await addOrUpdateUser(eventId, i.user.id, i.customId)
-        event = await fetchEvent(eventId)
+        event = await addOrUpdateUser(eventId, i.user.id, i.customId)
         const updatedEmbed = await createEventEmbed(event, interaction.client)
 
         const attendingUsers = event.users.filter((p) => p.status === 'attending')
