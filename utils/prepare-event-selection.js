@@ -15,6 +15,7 @@ function getCriteria(commandName, guildId, userId) {
     'cancel-event': { guild: guildId, statuses: ['not-started'], creator: userId },
     'start-event': { guild: guildId, statuses: ['ready-to-start'], creator: userId },
     'finish-event': { guild: guildId, statuses: ['ongoing'], creator: userId },
+    events: { guild: guildId },
   }
   return criteriaMap[commandName]
 }
@@ -28,6 +29,7 @@ function getSelectionPromptMessage(commandName) {
     'cancel-event': 'Please select an event to cancel:',
     'start-event': 'Please select an event to start:',
     'finish-event': 'Please select an event to finish:',
+    events: 'Please select an event to view:',
   }
 
   return messageMap[commandName]

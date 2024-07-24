@@ -44,6 +44,8 @@ async function handleEventAction(interaction, action, eventId, actionMessage) {
       actionMessage = `You have finished the event "${event.title}". Please confirm your participation status below.`
     } else if (action == 'cancel-event') {
       actionMessage = `You have canceled the event "${event.title}". Please confirm your participation status below.`
+    } else if (action == 'events') {
+      actionMessage = `You have selected the event "${event.title}". Please confirm your participation status below.`
     }
     event = await fetchEvent(eventId)
 
