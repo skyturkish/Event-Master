@@ -15,6 +15,7 @@ function getCriteria(commandName, guildId, userId) {
     'cancel-event': { guild: guildId, statuses: ['not-started'], creator: userId },
     'start-event': { guild: guildId, statuses: ['ready-to-start'], creator: userId },
     'finish-event': { guild: guildId, statuses: ['ongoing'], creator: userId },
+    events: { guild: guildId, statuses: ['not-started', 'ready-to-start', 'ongoing', 'finished'] },
   }
   return criteriaMap[commandName]
 }
@@ -28,6 +29,7 @@ function getSelectionPromptMessage(commandName) {
     'cancel-event': 'Please select an event to cancel:',
     'start-event': 'Please select an event to start:',
     'finish-event': 'Please select an event to finish:',
+    events: 'Please select an event to view:',
   }
 
   return messageMap[commandName]
@@ -38,6 +40,18 @@ async function prepareEventSelection(interaction, commandName) {
     const criteria = getCriteria(commandName, interaction.guild.id, interaction.user.id)
 
     const events = await fetchEventsByCriteria(criteria)
+
+    const statusEmojis = {
+      'not-started': '⏳',
+      'ready-to-start': '🚀',
+      ongoing: '🔄',
+      finished: '✅',
+      canceled: '❌',
+    }
+
+    const statusOrder = ['not-started', 'ready-to-start', 'ongoing', 'finished', 'canceled']
+    // Sort on backend to avoid sorting on frontend
+    events.sort((b, a) => statusOrder.indexOf(a.status) - statusOrder.indexOf(b.status))
 
     const eventOptions = events.map((event) => ({
       label: event.title,
@@ -50,7 +64,7 @@ async function prepareEventSelection(interaction, commandName) {
         hour12: false,
       })} - ${event.description}`.substring(0, 100),
       value: event._id,
-      emoji: '📅',
+      emoji: statusEmojis[event.status] || '📅',
     }))
 
     const eventRow = new ActionRowBuilder().addComponents(
