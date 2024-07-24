@@ -67,7 +67,7 @@ async function handleEventAction(interaction, action, eventId, actionMessage) {
     const messageOptions = {
       content: actionMessage,
       embeds: [embed],
-      components: [buttons],
+      components: event.status == 'not-started' || event.status == 'ready-to-start' ? [buttons] : [],
       ephemeral: isEphemeral,
       fetchReply: true,
     }
@@ -102,7 +102,11 @@ async function handleEventAction(interaction, action, eventId, actionMessage) {
           event = await fetchEvent(eventId)
         }
 
-        await i.update({ embeds: [updatedEmbed], components: [buttons], ephemeral: isEphemeral })
+        await i.update({
+          embeds: [updatedEmbed],
+          components: event.status == 'not-started' || event.status == 'ready-to-start' ? [buttons] : [],
+          ephemeral: isEphemeral,
+        })
 
         buttonCollector.on('end', async () => {
           event = await fetchEvent(eventId)
