@@ -74,10 +74,18 @@ async function handleEventAction(interaction, action, eventId, actionMessage) {
 
     let responseMessage
 
-    if (!interaction.replied) {
-      responseMessage = await interaction.reply(messageOptions)
-    } else {
-      responseMessage = await interaction.followUp(messageOptions)
+    try {
+      if (!interaction.deferred && !interaction.replied) {
+        responseMessage = await interaction.reply(messageOptions)
+      } else {
+        responseMessage = await interaction.followUp(messageOptions)
+      }
+    } catch (error) {
+      console.error('Error handling interaction:', error)
+      return interaction.reply({
+        content: 'An error occurred while handling the interaction.',
+        ephemeral: true,
+      })
     }
 
     const buttonFilter = (i) => ['attending', 'declined', 'considering'].includes(i.customId)

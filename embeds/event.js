@@ -64,7 +64,7 @@ async function createEventEmbed(event, client) {
     .setDescription(event.description)
     .setThumbnail(botAvatarUrl)
     .addFields({ name: 'Details', value: responseText })
-    .setTimestamp()
+    .setTimestamp(new Date(event.createdAt))
     .setFooter({ text: `This event is created by ${creator.username}`, iconURL: creatorAvatarUrl })
 }
 
