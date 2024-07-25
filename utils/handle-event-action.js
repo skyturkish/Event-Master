@@ -8,10 +8,17 @@ async function handleEventAction(interaction, action, eventId, actionMessage) {
   try {
     let event = await fetchEvent(eventId)
 
+    await interaction.update({
+      content: `You selected ${event.title}. Coming soon! You can see this event on our website!`,
+      components: [],
+    })
+
     if (!event) {
-      await interaction.update({
+      await interaction.reply({
         content: `Event with ID ${eventId} not found.`,
+        ephemeral: true,
       })
+      return
     }
 
     let isEphemeral = false
@@ -76,17 +83,18 @@ async function handleEventAction(interaction, action, eventId, actionMessage) {
 
     try {
       if (!interaction.deferred && !interaction.replied) {
-        responseMessage = await interaction.update(messageOptions)
+        responseMessage = await interaction.reply(messageOptions)
       } else {
-        responseMessage = await interaction.update(messageOptions)
+        responseMessage = await interaction.followUp(messageOptions)
       }
     } catch (error) {
       console.error('Error handling interaction:', error)
 
-      await interaction.update({
+      await interaction.reply({
         content: 'An error occurred while handling the interaction.',
         ephemeral: true,
       })
+      return
     }
 
     const buttonFilter = (i) => ['attending', 'declined', 'considering'].includes(i.customId)
@@ -132,7 +140,7 @@ async function handleEventAction(interaction, action, eventId, actionMessage) {
     })
   } catch (error) {
     console.log('Error:', error)
-    await interaction.update({
+    await interaction.reply({
       content:
         (error.response && error.response.data && error.response.data.error) || error.message || 'An error occurred.',
       ephemeral: true,
