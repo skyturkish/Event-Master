@@ -9,7 +9,7 @@ async function handleEventAction(interaction, action, eventId, actionMessage) {
     let event = await fetchEvent(eventId)
 
     if (!event) {
-      return interaction.reply({
+      await interaction.reply({
         content: `Event with ID ${eventId} not found.`,
       })
     }
@@ -132,7 +132,7 @@ async function handleEventAction(interaction, action, eventId, actionMessage) {
     })
   } catch (error) {
     console.log('Error:', error)
-    return interaction.reply({
+    await interaction.reply({
       content:
         (error.response && error.response.data && error.response.data.error) || error.message || 'An error occurred.',
       ephemeral: true,
