@@ -14,7 +14,7 @@ const handleEventCancel = async (interaction, eventId) => {
       )}`,
     })
   } catch (error) {
-    return interaction.reply({
+    await interaction.reply({
       content: error.response.data.error,
       ephemeral: true,
     })
