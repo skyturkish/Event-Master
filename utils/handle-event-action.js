@@ -9,7 +9,7 @@ async function handleEventAction(interaction, action, eventId, actionMessage) {
     let event = await fetchEvent(eventId)
 
     if (!event) {
-      return interaction.reply({
+      await interaction.update({
         content: `Event with ID ${eventId} not found.`,
       })
     }
@@ -76,14 +76,14 @@ async function handleEventAction(interaction, action, eventId, actionMessage) {
 
     try {
       if (!interaction.deferred && !interaction.replied) {
-        responseMessage = await interaction.reply(messageOptions)
+        responseMessage = await interaction.update(messageOptions)
       } else {
-        responseMessage = await interaction.followUp(messageOptions)
+        responseMessage = await interaction.update(messageOptions)
       }
     } catch (error) {
       console.error('Error handling interaction:', error)
 
-      await interaction.reply({
+      await interaction.update({
         content: 'An error occurred while handling the interaction.',
         ephemeral: true,
       })
@@ -132,7 +132,7 @@ async function handleEventAction(interaction, action, eventId, actionMessage) {
     })
   } catch (error) {
     console.log('Error:', error)
-    return interaction.reply({
+    await interaction.update({
       content:
         (error.response && error.response.data && error.response.data.error) || error.message || 'An error occurred.',
       ephemeral: true,
