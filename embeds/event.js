@@ -14,6 +14,14 @@ async function createEventEmbed(event, client) {
     { label: 'Waitlist 📝:', status: 'waitlist' },
   ]
 
+  const statusEmojis = {
+    'not-started': '⏳',
+    'ready-to-start': '🚀',
+    ongoing: '🔄',
+    finished: '✅',
+    canceled: '❌',
+  }
+
   let responseText = `**Event ID:** ${event._id}\n`
   responseText += `**Start Time:** ${new Date(event.startTime).toLocaleString('en-GB', {
     year: 'numeric',
@@ -25,7 +33,8 @@ async function createEventEmbed(event, client) {
   })}\n`
   responseText += `**Participants:** ${event.users.filter((user) => user.status === 'attending').length}/${
     event.participantLimit
-  }\n\n`
+  }\n`
+  responseText += `**Status:** ${statusEmojis[event.status] || ''} ${event.status}\n\n`
 
   const waitlistUsers = event.users.filter((user) => user.status === 'waitlist')
   const showWaitlist = waitlistUsers.length > 0
