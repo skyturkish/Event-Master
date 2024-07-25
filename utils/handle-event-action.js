@@ -82,7 +82,8 @@ async function handleEventAction(interaction, action, eventId, actionMessage) {
       }
     } catch (error) {
       console.error('Error handling interaction:', error)
-      return interaction.reply({
+
+      await interaction.reply({
         content: 'An error occurred while handling the interaction.',
         ephemeral: true,
       })
