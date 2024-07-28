@@ -7,11 +7,14 @@ const { handleEventUpdate } = require('./handle-event-update')
 async function handleEventAction(interaction, action, eventId, actionMessage) {
   try {
     let event = await fetchEvent(eventId)
-
-    await interaction.update({
-      content: `You selected ${event.title}. Coming soon! You can see this event on our website!`,
-      components: [],
-    })
+    try {
+      await interaction.update({
+        content: `You selected ${event.title}. Coming soon! You can see this event on our website!`,
+        components: [],
+      })
+    } catch (error) {
+      console.log('Error updating interaction:', error)
+    }
 
     if (!event) {
       await interaction.reply({
