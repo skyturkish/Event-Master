@@ -6,7 +6,41 @@ const { showModalWithInputs, handleModalSubmit } = require('../utils/modal-utils
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('create-event')
-    .setDescription('Create an event with a title, description, user limit, and start time'),
+    .setDescription('Create an event')
+    .setDescriptionLocalizations({
+      id: 'Buat acara',
+      da: 'Opret en begivenhed',
+      de: 'Ein Ereignis erstellen',
+      'en-GB': 'Create an event',
+      'en-US': 'Create an event',
+      'es-ES': 'Crear un evento',
+      'es-419': 'Crear un evento',
+      fr: 'Créer un événement',
+      hr: 'Kreiraj događaj',
+      it: 'Crea un evento',
+      lt: 'Sukurti įvykį',
+      hu: 'Esemény létrehozása',
+      nl: 'Maak een evenement',
+      no: 'Opprett en hendelse',
+      pl: 'Utwórz wydarzenie',
+      'pt-BR': 'Criar um evento',
+      ro: 'Creați un eveniment',
+      fi: 'Luo tapahtuma',
+      'sv-SE': 'Skapa en händelse',
+      vi: 'Tạo sự kiện',
+      tr: 'Bir etkinlik oluştur',
+      cs: 'Vytvořit událost',
+      el: 'Δημιουργία εκδήλωσης',
+      bg: 'Създайте събитие',
+      ru: 'Создать событие',
+      uk: 'Створити подію',
+      hi: 'एक घटना बनाएँ',
+      th: 'สร้างเหตุการณ์',
+      'zh-CN': '创建事件',
+      ja: 'イベントを作成する',
+      'zh-TW': '創建事件',
+      ko: '이벤트 만들기',
+    }),
   async execute(interaction) {
     console.log('create-event')
     await showModalWithInputs(interaction, 'eventModal', 'Create Event')
