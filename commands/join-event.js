@@ -2,6 +2,7 @@ const { SlashCommandBuilder } = require('discord.js')
 const { prepareEventSelection } = require('../utils/prepare-event-selection')
 
 module.exports = {
+  cooldown: 30,
   data: new SlashCommandBuilder()
     .setName('join-event')
     .setDescription('Join an event by selecting from the list of available events')
