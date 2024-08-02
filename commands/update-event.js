@@ -2,6 +2,7 @@ const { SlashCommandBuilder } = require('discord.js')
 const { prepareEventSelection } = require('../utils/prepare-event-selection')
 
 module.exports = {
+  cooldown: 60,
   data: new SlashCommandBuilder()
     .setName('update-event')
     .setDescription('Update an event you created earlier')

@@ -2,6 +2,7 @@ const { SlashCommandBuilder } = require('discord.js')
 const { prepareEventSelection } = require('../utils/prepare-event-selection')
 
 module.exports = {
+  cooldown: 30,
   data: new SlashCommandBuilder()
     .setName('invite-event')
     .setDescription('Invite people to an event!')

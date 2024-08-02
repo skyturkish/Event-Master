@@ -2,6 +2,7 @@ const { SlashCommandBuilder } = require('discord.js')
 const { prepareEventSelection } = require('../utils/prepare-event-selection')
 
 module.exports = {
+  cooldown: 600,
   data: new SlashCommandBuilder()
     .setName('finish-event')
     .setDescription('Finish an event')

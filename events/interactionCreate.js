@@ -1,13 +1,17 @@
+// events/interactionCreate.js
 const { prepareUserSelection } = require('../utils/prepare-user-selection')
 const { handleEventAction } = require('../utils/handle-event-action')
 const { handleUserSelection } = require('../utils/handle-user-selection')
 const { handleEventCancel } = require('../utils/handle-event-cancel')
 const { Events } = require('discord.js')
+const { cooldowns } = require('../utils/cooldowns')
 
 module.exports = {
   name: Events.InteractionCreate,
   async execute(interaction) {
     try {
+      // if (!interaction.isChatInputCommand()) return
+
       if (interaction.isChatInputCommand()) {
         const command = interaction.client.commands.get(interaction.commandName)
         if (!command) {
@@ -15,10 +19,37 @@ module.exports = {
           return
         }
 
+        const { cooldown = 0 } = command
+        const now = Date.now()
+        const timestamps = cooldowns.get(command.data.name) || new Map()
+        const cooldownAmount = cooldown * 1000
+
+        if (timestamps.has(interaction.user.id)) {
+          const expirationTime = timestamps.get(interaction.user.id) + cooldownAmount
+
+          if (now < expirationTime) {
+            const timeLeft = (expirationTime - now) / 1000
+            return interaction.reply({
+              content: `Please wait ${timeLeft.toFixed(1)} more second(s) before reusing the \`${
+                command.data.name
+              }\` command.`,
+              ephemeral: true,
+            })
+          }
+        }
+
+        timestamps.set(interaction.user.id, now)
+        cooldowns.set(command.data.name, timestamps)
+        setTimeout(() => timestamps.delete(interaction.user.id), cooldownAmount)
+
         await command.execute(interaction)
       }
 
       if (!interaction.isStringSelectMenu() && !interaction.isButton() && !interaction.isUserSelectMenu()) return
+
+      if (interaction.isButton()) {
+        console.log('Button interaction:', interaction.customId)
+      }
 
       if (interaction.customId.startsWith('select-event-for-:')) {
         const commandName = interaction.customId.split(':')[1]
