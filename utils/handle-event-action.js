@@ -3,15 +3,20 @@ const { createEventEmbed } = require('../embeds/event')
 const { createButtons } = require('../components/buttons')
 const { getMentionUsersString } = require('./mentionUtils')
 const { handleEventUpdate } = require('./handle-event-update')
+const { getLocalizedValue } = require('../utils/localization')
 
 async function handleEventAction(interaction, action, eventId, actionMessage) {
   try {
     let event = await fetchEvent(eventId)
 
-    if (action != 'update-event') {
+    if (action != 'update-event' && action != 'create-event') {
       try {
+        const youSelectedTheEvent = getLocalizedValue(interaction.locale, 'dynamic.youSelectedEvent', {
+          'event.title': event.title,
+        })
+
         await interaction.update({
-          content: `You selected ${event.title}. Coming soon! You can see this event on our website!`,
+          content: youSelectedTheEvent,
           components: [],
         })
       } catch (error) {
@@ -32,33 +37,50 @@ async function handleEventAction(interaction, action, eventId, actionMessage) {
     if (action == 'join-event') {
       await addOrUpdateUser(eventId, interaction.user.id, 'attending')
 
-      actionMessage = `You have joined the event "${event.title}". Please confirm your participation status below.`
+      actionMessage = getLocalizedValue(interaction.locale, 'dynamic.actionMessages.youHaveJoinedTheEvent', {
+        'event.title': event.title,
+      })
+
       isEphemeral = true
     } else if (action == 'leave-event') {
       await addOrUpdateUser(eventId, interaction.user.id, 'declined')
 
-      actionMessage = `You have left the event "${event.title}". Please confirm your participation status below.`
+      actionMessage = getLocalizedValue(interaction.locale, 'dynamic.actionMessages.youHaveLeftTheEvent', {
+        'event.title': event.title,
+      })
+
       isEphemeral = true
     } else if (action == 'update-event') {
       const response = await handleEventUpdate(interaction, eventId)
       if (!response.success) return
 
-      actionMessage = `You have updated the event "${event.title}". Please confirm your participation status below.`
+      actionMessage = getLocalizedValue(interaction.locale, 'dynamic.actionMessages.youHaveUpdatedTheEvent', {
+        'event.title': event.title,
+      })
     } else if (action == 'invite-event') {
     } else if (action == 'create-event') {
-      actionMessage = `You have created the event "${event.title}". Please confirm your participation status below.`
+      actionMessage = getLocalizedValue(interaction.locale, 'dynamic.actionMessages.youHaveCreatedTheEvent', {
+        'event.title': event.title,
+      })
     } else if (action == 'start-event') {
       await updateEvent(eventId, { status: 'ongoing' })
 
-      actionMessage = `You have started the event "${event.title}". Please confirm your participation status below.`
+      actionMessage = getLocalizedValue(interaction.locale, 'dynamic.actionMessages.youHaveStartedTheEvent', {
+        'event.title': event.title,
+      })
     } else if (action == 'finish-event') {
       await updateEvent(eventId, { status: 'finished' })
-
-      actionMessage = `You have finished the event "${event.title}". Please confirm your participation status below.`
+      actionMessage = getLocalizedValue(interaction.locale, 'dynamic.actionMessages.youHaveFinishedTheEvent', {
+        'event.title': event.title,
+      })
     } else if (action == 'cancel-event') {
-      actionMessage = `You have canceled the event "${event.title}". Please confirm your participation status below.`
+      actionMessage = getLocalizedValue(interaction.locale, 'dynamic.actionMessages.youHaveCanceledTheEvent', {
+        'event.title': event.title,
+      })
     } else if (action == 'events') {
-      actionMessage = `You have selected the event "${event.title}". Please confirm your participation status below.`
+      actionMessage = getLocalizedValue(interaction.locale, 'dynamic.actionMessages.youHaveSelectedTheEvent', {
+        'event.title': event.title,
+      })
     }
     event = await fetchEvent(eventId)
 
@@ -66,16 +88,19 @@ async function handleEventAction(interaction, action, eventId, actionMessage) {
 
     if (event.status === 'not-started' && attendingUsers.length >= event.participantLimit) {
       await updateEvent(eventId, { status: 'ready-to-start' })
+
+      const weHaveHitTheMagicNumber = getLocalizedValue(interaction.locale, 'dynamic.weHaveHitTheMagicNumber', {
+        participants: getMentionUsersString(attendingUsers.map((p) => p.discordID)),
+      })
+
       await interaction.channel.send({
-        content: `We've hit the magic number of participants! 🎉 The event can kick off as soon as the time arrives! Here are the awesome attendees: ${getMentionUsersString(
-          attendingUsers.map((p) => p.discordID)
-        )}`,
+        content: weHaveHitTheMagicNumber,
       })
       event = await fetchEvent(eventId)
     }
 
-    const embed = await createEventEmbed(event, interaction.client)
-    const buttons = createButtons()
+    const embed = await createEventEmbed({ event, client: interaction.client, language: interaction.locale })
+    const buttons = createButtons({ language: interaction.locale })
 
     const messageOptions = {
       content: actionMessage,
@@ -96,8 +121,13 @@ async function handleEventAction(interaction, action, eventId, actionMessage) {
     } catch (error) {
       console.error('Error handling interaction:', error)
 
+      const anErrorOccurredWhileHandlingTheInteraction = getLocalizedValue(
+        interaction.locale,
+        'anErrorOccurredWhileHandlingTheInteraction'
+      )
+
       await interaction.reply({
-        content: 'An error occurred while handling the interaction.',
+        content: anErrorOccurredWhileHandlingTheInteraction,
         ephemeral: true,
       })
       return
@@ -112,15 +142,17 @@ async function handleEventAction(interaction, action, eventId, actionMessage) {
     buttonCollector.on('collect', async (i) => {
       try {
         event = await addOrUpdateUser(eventId, i.user.id, i.customId)
-        const updatedEmbed = await createEventEmbed(event, interaction.client)
+        const updatedEmbed = await createEventEmbed({ event, client: interaction.client, language: interaction.locale })
 
         const attendingUsers = event.users.filter((p) => p.status === 'attending')
         if (event.status === 'not-started' && attendingUsers.length >= event.participantLimit) {
           await updateEvent(eventId, { status: 'ready-to-start' })
+
+          const weHaveHitTheMagicNumber = getLocalizedValue(interaction.locale, 'dynamic.weHaveHitTheMagicNumber', {
+            participants: getMentionUsersString(attendingUsers.map((p) => p.discordID)),
+          })
           await interaction.channel.send({
-            content: `We've hit the magic number of participants! 🎉 The event can kick off as soon as the time arrives! Here are the awesome attendees: ${getMentionUsersString(
-              attendingUsers.map((p) => p.discordID)
-            )}`,
+            content: weHaveHitTheMagicNumber,
           })
           event = await fetchEvent(eventId)
         }
@@ -133,22 +165,40 @@ async function handleEventAction(interaction, action, eventId, actionMessage) {
 
         buttonCollector.on('end', async () => {
           event = await fetchEvent(eventId)
-          const updatedEmbed = await createEventEmbed(event, interaction.client)
+          const updatedEmbed = await createEventEmbed({
+            event,
+            client: interaction.client,
+            language: interaction.locale,
+          })
 
           await responseMessage.edit({ embeds: [updatedEmbed], components: [], ephemeral: isEphemeral })
         })
       } catch (error) {
+        console.log('Error:', error)
+        let errorMessage = getLocalizedValue(interaction.locale, 'anErrorOccurred')
+
+        if (error.response && error.response.data && error.response.data.error) {
+          backendErrors = getLocalizedValue(interaction.locale, 'backendErrors')
+          errorMessage = backendErrors[error.response.data.error]
+        }
+
         await i.reply({
-          content: error.response ? error.response.data.error : 'An error occurred',
+          content: errorMessage,
           ephemeral: true,
         })
       }
     })
   } catch (error) {
-    console.log('Error:', error)
+    console.log('Handle Event Action Error:', error)
+    let errorMessage = getLocalizedValue(interaction.locale, 'anErrorOccurred')
+
+    if (error.response && error.response.data && error.response.data.error) {
+      backendErrors = getLocalizedValue(interaction.locale, 'backendErrors')
+      errorMessage = backendErrors[error.response.data.error]
+    }
+
     await interaction.reply({
-      content:
-        (error.response && error.response.data && error.response.data.error) || error.message || 'An error occurred.',
+      content: errorMessage,
       ephemeral: true,
     })
   }

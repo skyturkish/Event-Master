@@ -1,0 +1,120 @@
+{
+  "commons": {
+    "eventId": "Event-ID",
+    "startTime": "Starttid",
+    "participants": "Deltagare",
+    "status": "Status",
+    "attending": "Närvarande",
+    "waitlist": "Väntelista",
+    "details": "Detaljer",
+    "noDescription": "Ingen beskrivning tillgänglig.",
+    "selectUsersToInvite": "Välj användare att bjuda in",
+    "selectAnEvent": "Välj ett event",
+    "createEvent": "Skapa Event",
+    "updateEvent": "Uppdatera Event"
+  },
+  "buttons": {
+    "attend": "Närvara",
+    "decline": "Avböja",
+    "considering": "Överväger"
+  },
+  "status": {
+    "attending": "Närvarande",
+    "decline": "Avböjt",
+    "considering": "Överväger",
+    "invited": "Inbjuden - väntar på svar",
+    "waitlist": "Väntelista"
+  },
+  "eventStatus": {
+    "notStarted": "Ej startat",
+    "readyToStart": "Redo att starta",
+    "ongoing": "Pågående",
+    "finished": "Avslutat",
+    "canceled": "Avbrutet"
+  },
+  "modal": {
+    "labels": {
+      "eventTitle": "Eventtitel",
+      "eventDescription": "Eventbeskrivning",
+      "participantLimit": "Deltagargräns",
+      "eventStartDate": "Event Startdatum (ÅÅÅÅ-MM-DD)",
+      "eventStartDatePlaceHolder": "Format: ÅÅÅÅ-MM-DD",
+      "eventStartTime": "Event Starttid (HH:MM)",
+      "eventStartTimePlaceHolder": "Format: HH:MM"
+    }
+  },
+  "dynamic": {
+    "thisEventIsCreatedBy": "Detta event är skapat av ${creator.username}",
+    "sorryTheEventIsCanceled": "Tyvärr, eventet ${event.title} du skulle delta i har avbrutits av ${event.creator}. Här är deltagarna som skulle delta: ${participants}.",
+    "youSelectedEvent": "Du valde ${event.title}. Kommer snart! Du kan se detta event på vår hemsida!",
+    "eventWithIdNotFound": "Event med ID ${eventId} hittades inte.",
+    "weHaveHitTheMagicNumber": "Vi har nått det magiska antalet deltagare! 🎉 Eventet kan starta så snart tiden kommer! Här är de fantastiska deltagarna: ${participants} ",
+    "actionMessages": {
+      "youHaveJoinedTheEvent": "Du har gått med i eventet ${event.title}. Vänligen bekräfta din deltagarstatus nedan.",
+      "youHaveLeftTheEvent": "Du har lämnat eventet ${event.title}. Vänligen bekräfta din deltagarstatus nedan.",
+      "youHaveUpdatedTheEvent": "Du har uppdaterat eventet ${event.title}. Vänligen bekräfta din deltagarstatus nedan.",
+      "youHaveCreatedTheEvent": "Du har skapat eventet ${event.title}. Vänligen bekräfta din deltagarstatus nedan.",
+      "youHaveStartedTheEvent": "Du har startat eventet ${event.title}. Vänligen bekräfta din deltagarstatus nedan.",
+      "youHaveFinishedTheEvent": "Du har avslutat eventet ${event.title}. Vänligen bekräfta din deltagarstatus nedan.",
+      "youHaveCanceledTheEvent": "Du har avbrutit eventet ${event.title}. Vänligen bekräfta din deltagarstatus nedan.",
+      "youHaveSelectedTheEvent": "Du har valt eventet ${event.title}. Vänligen bekräfta din deltagarstatus nedan.",
+      "allTheUsersYouInvitedHaveAlreadyResponded": "Alla användare du bjöd in har redan svarat och blev inte ombjudna: ${selectedUsers}. Vänligen kontrollera listan nedan för aktuell status."
+    },
+    "pleaseWait": "Vänligen vänta ${timeLeft} sekund(er) innan du använder kommandot ${command.data.name} igen.",
+    "theFollowingUsersHaveBeenSuccessfullyInvited": "Följande användare har framgångsrikt bjudits in till eventet: ${invitedUsers}.",
+    "howeverTheFollowingUsersHadAlreadyResponded": "Dock, följande användare hade redan svarat på inbjudan och blev inte ombjudna: ${notInvitedUsers}. Vänligen kontrollera listan nedan för deras aktuella status.",
+    "eventSelected": "Event ${event.title} valt. Nu, välj användare att bjuda in:"
+  },
+  "anErrorOccurredWhileHandlingTheInteraction": "Ett fel inträffade vid hantering av interaktionen. Försök igen senare.",
+  "anErrorOccurred": "Ett fel inträffade. Försök igen senare.",
+  "eventUpdatedSuccessfully": "Eventet uppdaterades framgångsrikt.",
+  "anErrorOccuredWhileUpdatingTheEvent": "Ett fel inträffade vid uppdatering av eventet. Försök igen senare.",
+  "anErrorOccurredWhileCreatingTheEvent": "Ett fel inträffade vid skapandet av eventet. Försök igen senare.",
+  "anUnexpectedErrorOccurred": "Ett oväntat fel inträffade. Försök igen senare.",
+  "anErrorOccurredWhileProcessingYourRequest": "Ett fel inträffade vid behandling av din förfrågan. Försök igen senare.",
+  "anErrorOccurredWhileFetchingTheEvents": "Ett fel inträffade vid hämtning av eventen.",
+  "selections": {
+    "inviteEvent": "Vänligen välj ett event att bjuda in andra till:",
+    "joinEvent": "Vänligen välj ett event att delta i:",
+    "leaveEvent": "Vänligen välj ett event att lämna:",
+    "updateEvent": "Vänligen välj ett event att uppdatera:",
+    "cancelEvent": "Vänligen välj ett event att avbryta:",
+    "startEvent": "Vänligen välj ett event att starta:",
+    "finishEvent": "Vänligen välj ett event att avsluta:",
+    "events": "Vänligen välj ett event att visa:",
+    "activeEvents": "Vänligen välj ett aktivt event att visa:"
+  },
+  "noEvents": {
+    "inviteEvent": "Inga event tillgängliga att bjuda in andra till.",
+    "joinEvent": "Inga event tillgängliga att delta i.",
+    "leaveEvent": "Inga event tillgängliga att lämna.",
+    "updateEvent": "Inga event tillgängliga att uppdatera.",
+    "cancelEvent": "Inga event tillgängliga att avbryta.",
+    "startEvent": "Inga event tillgängliga att starta.",
+    "finishEvent": "Inga event tillgängliga att avsluta."
+  },
+  "backendErrors": {
+    "participantLimitMustBeANumberBetween1And1024": "Deltagargräns måste vara ett nummer mellan 1 och 1024.",
+    "invalidStartTimeFormat": "Ogiltigt starttidsformat. Vänligen använd formatet HH:MM.",
+    "cannotInteractWithEventInThePast": "Du kan inte interagera med ett event i det förflutna.",
+    "cannotCreateEventMoreThan45DaysInAdvance": "Du kan inte skapa ett event mer än 45 dagar i förväg.",
+    "cannotChangeStatusToNotStarted": "Du kan inte ändra status tillbaka till ej startat.",
+    "participantLimitMustEqualAttendingUsersToMarkReady": "Deltagargränsen måste vara lika med antalet närvarande användare för att markeras som redo att starta.",
+    "onlyNotStartedEventsCanBeMarkedReady": "Endast event som inte har startat kan markeras som redo att starta.",
+    "cannotStartEventNotReady": "Du kan inte starta ett event som inte är redo att starta.",
+    "cannotStartFinishedEvent": "Du kan inte starta ett avslutat event.",
+    "cannotStartCanceledEvent": "Du kan inte starta ett avbrutet event.",
+    "cannotFinishNotStartedEvent": "Du kan inte avsluta ett event som inte har startat än.",
+    "cannotFinishCanceledEvent": "Du kan inte avsluta ett avbrutet event.",
+    "cannotCancelOngoingEvent": "Du kan inte avbryta ett pågående event.",
+    "cannotCancelFinishedEvent": "Du kan inte avbryta ett avslutat event.",
+    "eventNotFound": "Eventet hittades inte.",
+    "noEventsFound": "Inga event hittades.",
+    "thisEventIsCurrentlyOngoing": "Detta event pågår för närvarande, du kan inte längre fatta ett beslut.",
+    "thisEventHasAlreadyFinished": "Detta event har redan avslutats, du kan inte längre fatta ett beslut.",
+    "thisEventHasBeenCanceled": "Detta event har avbrutits, du kan inte längre fatta ett beslut.",
+    "invalidStatus": "Ogiltig status.",
+    "participantLimitCannotBeLessThanNumberOfAttendingUsers": "Deltagargränsen kan inte vara mindre än antalet närvarande användare.",
+    "somethingWentWrong": "Något gick fel!"
+  }
+}

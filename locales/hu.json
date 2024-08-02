@@ -1,0 +1,120 @@
+{
+  "commons": {
+    "eventId": "Esemény azonosító",
+    "startTime": "Kezdési idő",
+    "participants": "Résztvevők",
+    "status": "Állapot",
+    "attending": "Részt vesz",
+    "waitlist": "Várólista",
+    "details": "Részletek",
+    "noDescription": "Nincs megadva leírás.",
+    "selectUsersToInvite": "Válassza ki a meghívandó felhasználókat",
+    "selectAnEvent": "Válasszon egy eseményt",
+    "createEvent": "Esemény létrehozása",
+    "updateEvent": "Esemény frissítése"
+  },
+  "buttons": {
+    "attend": "Részt vesz",
+    "decline": "Elutasít",
+    "considering": "Fontolgatja"
+  },
+  "status": {
+    "attending": "Részt vesz",
+    "decline": "Elutasította",
+    "considering": "Fontolgatja",
+    "invited": "Meghívva - válaszra várva",
+    "waitlist": "Várólista"
+  },
+  "eventStatus": {
+    "notStarted": "Nem kezdődött el",
+    "readyToStart": "Kezdésre kész",
+    "ongoing": "Folyamatban",
+    "finished": "Befejezve",
+    "canceled": "Törölve"
+  },
+  "modal": {
+    "labels": {
+      "eventTitle": "Esemény címe",
+      "eventDescription": "Esemény leírása",
+      "participantLimit": "Résztvevők korlátozása",
+      "eventStartDate": "Esemény kezdési dátuma (ÉÉÉÉ-HH-NN)",
+      "eventStartDatePlaceHolder": "Formátum: ÉÉÉÉ-HH-NN",
+      "eventStartTime": "Esemény kezdési ideje (ÓÓ:PP)",
+      "eventStartTimePlaceHolder": "Formátum: ÓÓ:PP"
+    }
+  },
+  "dynamic": {
+    "thisEventIsCreatedBy": "Ezt az eseményt ${creator.username} hozta létre",
+    "sorryTheEventIsCanceled": "Sajnáljuk, a(z) ${event.title} esemény, amelyen részt vett volna, ${event.creator} által törölve lett. Íme azok a résztvevők, akik részt vettek volna: ${participants}.",
+    "youSelectedEvent": "A kiválasztott esemény: ${event.title}. Hamarosan! Az eseményt weboldalunkon is láthatja!",
+    "eventWithIdNotFound": "A ${eventId} azonosítójú esemény nem található.",
+    "weHaveHitTheMagicNumber": "Elértük a varázsszámot a résztvevők számában! 🎉 Az esemény elindulhat, amint elérkezik az idő! Íme a csodás résztvevők: ${participants} ",
+    "actionMessages": {
+      "youHaveJoinedTheEvent": "Csatlakoztál a(z) ${event.title} eseményhez. Kérjük, erősítse meg részvételi státuszát alább.",
+      "youHaveLeftTheEvent": "Kiléptél a(z) ${event.title} eseményből. Kérjük, erősítse meg részvételi státuszát alább.",
+      "youHaveUpdatedTheEvent": "Frissítetted a(z) ${event.title} eseményt. Kérjük, erősítse meg részvételi státuszát alább.",
+      "youHaveCreatedTheEvent": "Létrehoztad a(z) ${event.title} eseményt. Kérjük, erősítse meg részvételi státuszát alább.",
+      "youHaveStartedTheEvent": "Elindítottad a(z) ${event.title} eseményt. Kérjük, erősítse meg részvételi státuszát alább.",
+      "youHaveFinishedTheEvent": "Befejezted a(z) ${event.title} eseményt. Kérjük, erősítse meg részvételi státuszát alább.",
+      "youHaveCanceledTheEvent": "Törölted a(z) ${event.title} eseményt. Kérjük, erősítse meg részvételi státuszát alább.",
+      "youHaveSelectedTheEvent": "Kiválasztottad a(z) ${event.title} eseményt. Kérjük, erősítse meg részvételi státuszát alább.",
+      "allTheUsersYouInvitedHaveAlreadyResponded": "Az összes meghívott felhasználó már válaszolt, és nem lettek újra meghívva: ${selectedUsers}. Kérjük, ellenőrizze az alábbi listában az aktuális állapotot."
+    },
+    "pleaseWait": "Kérjük, várjon ${timeLeft} másodpercet, mielőtt újra használja a(z) ${command.data.name} parancsot.",
+    "theFollowingUsersHaveBeenSuccessfullyInvited": "Az alábbi felhasználók sikeresen meghívást kaptak az eseményre: ${invitedUsers}.",
+    "howeverTheFollowingUsersHadAlreadyResponded": "Azonban az alábbi felhasználók már válaszoltak a meghívásra, és nem lettek újra meghívva: ${notInvitedUsers}. Kérjük, ellenőrizze az alábbi listában az aktuális állapotot.",
+    "eventSelected": "A kiválasztott esemény: ${event.title}. Most válassza ki a meghívandó felhasználókat:"
+  },
+  "anErrorOccurredWhileHandlingTheInteraction": "Hiba történt az interakció kezelése közben. Kérjük, próbálja meg később.",
+  "anErrorOccurred": "Hiba történt. Kérjük, próbálja meg később.",
+  "eventUpdatedSuccessfully": "Az esemény sikeresen frissítve.",
+  "anErrorOccuredWhileUpdatingTheEvent": "Hiba történt az esemény frissítése közben. Kérjük, próbálja meg később.",
+  "anErrorOccurredWhileCreatingTheEvent": "Hiba történt az esemény létrehozása közben. Kérjük, próbálja meg később.",
+  "anUnexpectedErrorOccurred": "Váratlan hiba történt. Kérjük, próbálja meg később.",
+  "anErrorOccurredWhileProcessingYourRequest": "Hiba történt a kérés feldolgozása közben. Kérjük, próbálja meg később.",
+  "anErrorOccurredWhileFetchingTheEvents": "Hiba történt az események lekérése közben.",
+  "selections": {
+    "inviteEvent": "Kérjük, válasszon egy eseményt a meghíváshoz:",
+    "joinEvent": "Kérjük, válasszon egy eseményt a csatlakozáshoz:",
+    "leaveEvent": "Kérjük, válasszon egy eseményt a kilépéshez:",
+    "updateEvent": "Kérjük, válasszon egy eseményt a frissítéshez:",
+    "cancelEvent": "Kérjük, válasszon egy eseményt a törléshez:",
+    "startEvent": "Kérjük, válasszon egy eseményt az indításhoz:",
+    "finishEvent": "Kérjük, válasszon egy eseményt a befejezéshez:",
+    "events": "Kérjük, válasszon egy eseményt a megtekintéshez:",
+    "activeEvents": "Kérjük, válasszon egy aktív eseményt a megtekintéshez:"
+  },
+  "noEvents": {
+    "inviteEvent": "Nincs elérhető esemény a meghíváshoz.",
+    "joinEvent": "Nincs elérhető esemény a csatlakozáshoz.",
+    "leaveEvent": "Nincs elérhető esemény a kilépéshez.",
+    "updateEvent": "Nincs elérhető esemény a frissítéshez.",
+    "cancelEvent": "Nincs elérhető esemény a törléshez.",
+    "startEvent": "Nincs elérhető esemény az indításhoz.",
+    "finishEvent": "Nincs elérhető esemény a befejezéshez."
+  },
+  "backendErrors": {
+    "participantLimitMustBeANumberBetween1And1024": "A résztvevők korlátozásának egy 1 és 1024 közötti számnak kell lennie.",
+    "invalidStartTimeFormat": "Érvénytelen kezdési idő formátum. Kérjük, használja az ÓÓ:PP formátumot.",
+    "cannotInteractWithEventInThePast": "Nem léphet interakcióba egy múltbeli eseménnyel.",
+    "cannotCreateEventMoreThan45DaysInAdvance": "Nem hozhat létre eseményt 45 nappal előre.",
+    "cannotChangeStatusToNotStarted": "Nem változtathatja vissza az állapotot 'nem kezdődött el' állapotra.",
+    "participantLimitMustEqualAttendingUsersToMarkReady": "A résztvevők korlátozásának meg kell egyeznie a jelenlegi résztvevők számával a kezdésre kész állapot jelöléséhez.",
+    "onlyNotStartedEventsCanBeMarkedReady": "Csak a még el nem kezdett események jelölhetők kezdésre kész állapotúként.",
+    "cannotStartEventNotReady": "Nem indíthatja el az eseményt, amely nincs készen az indításra.",
+    "cannotStartFinishedEvent": "Nem indíthat el egy befejezett eseményt.",
+    "cannotStartCanceledEvent": "Nem indíthat el egy törölt eseményt.",
+    "cannotFinishNotStartedEvent": "Nem fejezheti be az eseményt, amely még el sem kezdődött.",
+    "cannotFinishCanceledEvent": "Nem fejezheti be a törölt eseményt.",
+    "cannotCancelOngoingEvent": "Nem törölheti a folyamatban lévő eseményt.",
+    "cannotCancelFinishedEvent": "Nem törölheti a befejezett eseményt.",
+    "eventNotFound": "Az esemény nem található.",
+    "noEventsFound": "Nincsenek megtalálható események.",
+    "thisEventIsCurrentlyOngoing": "Ez az esemény jelenleg folyamatban van, már nem hozhat döntést.",
+    "thisEventHasAlreadyFinished": "Ez az esemény már befejeződött, már nem hozhat döntést.",
+    "thisEventHasBeenCanceled": "Ez az esemény törölve lett, már nem hozhat döntést.",
+    "invalidStatus": "Érvénytelen állapot.",
+    "participantLimitCannotBeLessThanNumberOfAttendingUsers": "A résztvevők korlátozása nem lehet kisebb a jelenlegi résztvevők számánál.",
+    "somethingWentWrong": "Valami hiba történt!"
+  }
+}

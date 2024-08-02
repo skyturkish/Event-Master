@@ -1,0 +1,120 @@
+{
+  "commons": {
+    "eventId": "Veranstaltungs-ID",
+    "startTime": "Startzeit",
+    "participants": "Teilnehmer",
+    "status": "Status",
+    "attending": "Teilnehmend",
+    "waitlist": "Warteliste",
+    "details": "Details",
+    "noDescription": "Keine Beschreibung verfügbar.",
+    "selectUsersToInvite": "Benutzer zum Einladen auswählen",
+    "selectAnEvent": "Wählen Sie eine Veranstaltung aus",
+    "createEvent": "Veranstaltung erstellen",
+    "updateEvent": "Veranstaltung aktualisieren"
+  },
+  "buttons": {
+    "attend": "Teilnehmen",
+    "decline": "Ablehnen",
+    "considering": "Überlege es mir"
+  },
+  "status": {
+    "attending": "Teilnehmend",
+    "decline": "Abgelehnt",
+    "considering": "Überlege es mir",
+    "invited": "Eingeladen - wartet auf Antwort",
+    "waitlist": "Warteliste"
+  },
+  "eventStatus": {
+    "notStarted": "Nicht gestartet",
+    "readyToStart": "Bereit zum Starten",
+    "ongoing": "Laufend",
+    "finished": "Beendet",
+    "canceled": "Abgesagt"
+  },
+  "modal": {
+    "labels": {
+      "eventTitle": "Veranstaltungstitel",
+      "eventDescription": "Veranstaltungsbeschreibung",
+      "participantLimit": "Teilnehmergrenze",
+      "eventStartDate": "Veranstaltungsbeginn (JJJJ-MM-TT)",
+      "eventStartDatePlaceHolder": "Format: JJJJ-MM-TT",
+      "eventStartTime": "Veranstaltungsbeginn (SS:MM)",
+      "eventStartTimePlaceHolder": "Format: SS:MM"
+    }
+  },
+  "dynamic": {
+    "thisEventIsCreatedBy": "Diese Veranstaltung wurde von ${creator.username} erstellt",
+    "sorryTheEventIsCanceled": "Entschuldigung, die Veranstaltung ${event.title}, an der Sie teilnehmen wollten, wurde von ${event.creator} abgesagt. Hier sind die Teilnehmer, die teilnehmen wollten: ${participants}.",
+    "youSelectedEvent": "Sie haben ${event.title} ausgewählt. Demnächst! Sie können diese Veranstaltung auf unserer Website sehen!",
+    "eventWithIdNotFound": "Veranstaltung mit ID ${eventId} nicht gefunden.",
+    "weHaveHitTheMagicNumber": "Wir haben die magische Zahl der Teilnehmer erreicht! 🎉 Die Veranstaltung kann beginnen, sobald die Zeit kommt! Hier sind die großartigen Teilnehmer: ${participants}",
+    "actionMessages": {
+      "youHaveJoinedTheEvent": "Sie haben sich der Veranstaltung ${event.title} angeschlossen. Bitte bestätigen Sie unten Ihren Teilnahme-Status.",
+      "youHaveLeftTheEvent": "Sie haben die Veranstaltung ${event.title} verlassen. Bitte bestätigen Sie unten Ihren Teilnahme-Status.",
+      "youHaveUpdatedTheEvent": "Sie haben die Veranstaltung ${event.title} aktualisiert. Bitte bestätigen Sie unten Ihren Teilnahme-Status.",
+      "youHaveCreatedTheEvent": "Sie haben die Veranstaltung ${event.title} erstellt. Bitte bestätigen Sie unten Ihren Teilnahme-Status.",
+      "youHaveStartedTheEvent": "Sie haben die Veranstaltung ${event.title} gestartet. Bitte bestätigen Sie unten Ihren Teilnahme-Status.",
+      "youHaveFinishedTheEvent": "Sie haben die Veranstaltung ${event.title} beendet. Bitte bestätigen Sie unten Ihren Teilnahme-Status.",
+      "youHaveCanceledTheEvent": "Sie haben die Veranstaltung ${event.title} abgesagt. Bitte bestätigen Sie unten Ihren Teilnahme-Status.",
+      "youHaveSelectedTheEvent": "Sie haben die Veranstaltung ${event.title} ausgewählt. Bitte bestätigen Sie unten Ihren Teilnahme-Status.",
+      "allTheUsersYouInvitedHaveAlreadyResponded": "Alle eingeladenen Benutzer haben bereits geantwortet und wurden nicht erneut eingeladen: ${selectedUsers}. Bitte überprüfen Sie die untenstehende Liste für den aktuellen Status."
+    },
+    "pleaseWait": "Bitte warten Sie ${timeLeft} weitere Sekunde(n), bevor Sie den Befehl ${command.data.name} erneut verwenden.",
+    "theFollowingUsersHaveBeenSuccessfullyInvited": "Die folgenden Benutzer wurden erfolgreich zur Veranstaltung eingeladen: ${invitedUsers}.",
+    "howeverTheFollowingUsersHadAlreadyResponded": "Die folgenden Benutzer hatten jedoch bereits auf die Einladung geantwortet und wurden nicht erneut eingeladen: ${notInvitedUsers}. Bitte überprüfen Sie die untenstehende Liste für ihren aktuellen Status.",
+    "eventSelected": "Veranstaltung ${event.title} ausgewählt. Jetzt Benutzer zum Einladen auswählen:"
+  },
+  "anErrorOccurredWhileHandlingTheInteraction": "Beim Verarbeiten der Interaktion ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.",
+  "anErrorOccurred": "Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.",
+  "eventUpdatedSuccessfully": "Veranstaltung erfolgreich aktualisiert.",
+  "anErrorOccuredWhileUpdatingTheEvent": "Beim Aktualisieren der Veranstaltung ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.",
+  "anErrorOccurredWhileCreatingTheEvent": "Beim Erstellen der Veranstaltung ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.",
+  "anUnexpectedErrorOccurred": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.",
+  "anErrorOccurredWhileProcessingYourRequest": "Bei der Bearbeitung Ihrer Anfrage ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.",
+  "anErrorOccurredWhileFetchingTheEvents": "Beim Abrufen der Veranstaltungen ist ein Fehler aufgetreten.",
+  "selections": {
+    "inviteEvent": "Bitte wählen Sie eine Veranstaltung aus, zu der Sie andere einladen möchten:",
+    "joinEvent": "Bitte wählen Sie eine Veranstaltung aus, der Sie beitreten möchten:",
+    "leaveEvent": "Bitte wählen Sie eine Veranstaltung aus, die Sie verlassen möchten:",
+    "updateEvent": "Bitte wählen Sie eine Veranstaltung aus, die Sie aktualisieren möchten:",
+    "cancelEvent": "Bitte wählen Sie eine Veranstaltung aus, die Sie absagen möchten:",
+    "startEvent": "Bitte wählen Sie eine Veranstaltung aus, die Sie starten möchten:",
+    "finishEvent": "Bitte wählen Sie eine Veranstaltung aus, die Sie beenden möchten:",
+    "events": "Bitte wählen Sie eine Veranstaltung zum Anzeigen aus:",
+    "activeEvents": "Bitte wählen Sie eine aktive Veranstaltung zum Anzeigen aus:"
+  },
+  "noEvents": {
+    "inviteEvent": "Keine Veranstaltungen verfügbar, zu denen Sie andere einladen können.",
+    "joinEvent": "Keine Veranstaltungen verfügbar, denen Sie beitreten können.",
+    "leaveEvent": "Keine Veranstaltungen verfügbar, die Sie verlassen können.",
+    "updateEvent": "Keine Veranstaltungen verfügbar, die Sie aktualisieren können.",
+    "cancelEvent": "Keine Veranstaltungen verfügbar, die Sie absagen können.",
+    "startEvent": "Keine Veranstaltungen verfügbar, die Sie starten können.",
+    "finishEvent": "Keine Veranstaltungen verfügbar, die Sie beenden können."
+  },
+  "backendErrors": {
+    "participantLimitMustBeANumberBetween1And1024": "Die Teilnehmergrenze muss eine Zahl zwischen 1 und 1024 sein.",
+    "invalidStartTimeFormat": "Ungültiges Startzeitformat. Bitte verwenden Sie das Format SS:MM.",
+    "cannotInteractWithEventInThePast": "Sie können nicht mit einer Veranstaltung in der Vergangenheit interagieren.",
+    "cannotCreateEventMoreThan45DaysInAdvance": "Sie können keine Veranstaltung erstellen, die mehr als 45 Tage im Voraus liegt.",
+    "cannotChangeStatusToNotStarted": "Sie können den Status nicht auf 'nicht gestartet' zurücksetzen.",
+    "participantLimitMustEqualAttendingUsersToMarkReady": "Die Teilnehmergrenze muss der aktuellen Anzahl der teilnehmenden Benutzer entsprechen, um als bereit zum Starten markiert zu werden.",
+    "onlyNotStartedEventsCanBeMarkedReady": "Nur Veranstaltungen, die noch nicht gestartet wurden, können als bereit zum Starten markiert werden.",
+    "cannotStartEventNotReady": "Sie können die Veranstaltung nicht starten, die nicht bereit ist.",
+    "cannotStartFinishedEvent": "Sie können keine beendete Veranstaltung starten.",
+    "cannotStartCanceledEvent": "Sie können keine abgesagte Veranstaltung starten.",
+    "cannotFinishNotStartedEvent": "Sie können keine Veranstaltung beenden, die noch nicht gestartet ist.",
+    "cannotFinishCanceledEvent": "Sie können keine abgesagte Veranstaltung beenden.",
+    "cannotCancelOngoingEvent": "Sie können keine laufende Veranstaltung absagen.",
+    "cannotCancelFinishedEvent": "Sie können keine beendete Veranstaltung absagen.",
+    "eventNotFound": "Veranstaltung nicht gefunden.",
+    "noEventsFound": "Keine Veranstaltungen gefunden.",
+    "thisEventIsCurrentlyOngoing": "Diese Veranstaltung läuft derzeit, Sie können keine Entscheidung mehr treffen.",
+    "thisEventHasAlreadyFinished": "Diese Veranstaltung ist bereits beendet, Sie können keine Entscheidung mehr treffen.",
+    "thisEventHasBeenCanceled": "Diese Veranstaltung wurde abgesagt, Sie können keine Entscheidung mehr treffen.",
+    "invalidStatus": "Ungültiger Status.",
+    "participantLimitCannotBeLessThanNumberOfAttendingUsers": "Die Teilnehmergrenze kann nicht unter der Anzahl der teilnehmenden Benutzer liegen.",
+    "somethingWentWrong": "Etwas ist schief gelaufen!"
+  }
+}

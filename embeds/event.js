@@ -1,17 +1,26 @@
 const { EmbedBuilder } = require('discord.js')
+const { getLocalizedValue } = require('../utils/localization')
 
-async function createEventEmbed(event, client) {
+function formatBold(text) {
+  return `**${text}**`
+}
+
+async function createEventEmbed({ event, client, language }) {
   const creator = await client.users.fetch(event.creator)
   const creatorAvatarUrl = creator.displayAvatarURL()
   const botUser = client.user
   const botAvatarUrl = botUser.displayAvatarURL()
 
+  const status = getLocalizedValue(language, 'status')
+  const commons = getLocalizedValue(language, 'commons')
+  const eventStatus = getLocalizedValue(language, 'eventStatus')
+
   const statuses = [
-    { label: 'Attending ✅:', status: 'attending' },
-    { label: 'Declined ❌:', status: 'declined' },
-    { label: 'Considering 🤔:', status: 'considering' },
-    { label: 'Invited - awaiting response 🕐:', status: 'invited' },
-    { label: 'Waitlist 📝:', status: 'waitlist' },
+    { label: status.attending + ' ✅:', status: 'attending' },
+    { label: status.decline + ' ❌:', status: 'declined' },
+    { label: status.considering + ' 🤔:', status: 'considering' },
+    { label: status.invited + ' 🕐:', status: 'invited' },
+    { label: status.waitlist + ' 📝:', status: 'waitlist' },
   ]
 
   const statusEmojis = {
@@ -22,27 +31,42 @@ async function createEventEmbed(event, client) {
     canceled: '❌',
   }
 
-  let responseText = `**Event ID:** ${event._id}\n`
-  responseText += `**Start Time:** ${new Date(event.startTime).toLocaleString('en-GB', {
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-    hour: '2-digit',
-    minute: '2-digit',
-    hour12: false,
-  })}\n`
-  responseText += `**Participants:** ${event.users.filter((user) => user.status === 'attending').length}/${
-    event.participantLimit
-  }\n`
-  responseText += `**Status:** ${statusEmojis[event.status] || ''} ${event.status}\n\n`
+  const eventStatusText = {
+    'not-started': 'notStarted',
+    'ready-to-start': 'readyToStart',
+    ongoing: 'ongoing',
+    finished: 'finished',
+    canceled: 'canceled',
+  }
+
+  let responseText = formatBold(commons.eventId + ':') + ` ${event._id}\n`
+  // TODO bu localeString'e de şey ver işte interaction.locale
+  responseText +=
+    formatBold(commons.startTime + ':') +
+    ` ${new Date(event.startTime).toLocaleString(language, {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false,
+    })}\n`
+
+  responseText +=
+    formatBold(commons.participants + ':') +
+    ` ${event.users.filter((user) => user.status === 'attending').length}/${event.participantLimit}\n`
+  responseText +=
+    formatBold(commons.status + ':') +
+    ` ${statusEmojis[event.status] || ''} ${eventStatus[eventStatusText[event.status]]}\n\n`
 
   const waitlistUsers = event.users.filter((user) => user.status === 'waitlist')
   const showWaitlist = waitlistUsers.length > 0
 
   if (showWaitlist) {
     const attendingUsers = event.users.filter((user) => user.status === 'attending')
-    responseText += `**Attending ✅:**\n${attendingUsers.map((user) => `<@${user.discordID}>`).join(', ')}\n\n`
-    responseText += `**Waitlist 📝:**\n`
+    responseText +=
+      formatBold(status.attending + ' ✅:') + `\n${attendingUsers.map((user) => `<@${user.discordID}>`).join(', ')}\n\n`
+    responseText += formatBold(commons.status + ':') + formatBold(status.waitlist + ' 📝:')`\n`
     waitlistUsers.forEach((user, index) => {
       responseText += `${index + 1}. <@${user.discordID}>\n`
     })
@@ -67,14 +91,18 @@ async function createEventEmbed(event, client) {
     responseText = truncatedText.substring(0, lastCommaIndex) + ', ...'
   }
 
+  const thisEventIsCreatedBy = getLocalizedValue(language, 'dynamic.thisEventIsCreatedBy', {
+    'creator.username': creator.username,
+  })
+
   return new EmbedBuilder()
     .setColor(0xb8c4f8)
     .setTitle(event.title)
-    .setDescription(event.description)
+    .setDescription(event.description || commons.noDescription)
     .setThumbnail(botAvatarUrl)
-    .addFields({ name: 'Details', value: responseText })
+    .addFields({ name: commons.details, value: responseText })
     .setTimestamp(new Date(event.createdAt))
-    .setFooter({ text: `This event is created by ${creator.username}`, iconURL: creatorAvatarUrl })
+    .setFooter({ text: thisEventIsCreatedBy, iconURL: creatorAvatarUrl })
 }
 
 module.exports = { createEventEmbed }

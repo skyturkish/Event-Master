@@ -1,0 +1,120 @@
+{
+  "commons": {
+    "eventId": "ID Acara",
+    "startTime": "Waktu Mula",
+    "participants": "Peserta",
+    "status": "Status",
+    "attending": "Hadir",
+    "waitlist": "Senarai Tunggu",
+    "details": "Butiran",
+    "noDescription": "Tiada deskripsi diberikan.",
+    "selectUsersToInvite": "Pilih pengguna untuk menjemput",
+    "selectAnEvent": "Pilih acara",
+    "createEvent": "Cipta Acara",
+    "updateEvent": "Kemaskini Acara"
+  },
+  "buttons": {
+    "attend": "Hadir",
+    "decline": "Tolak",
+    "considering": "Pertimbangan"
+  },
+  "status": {
+    "attending": "Hadir",
+    "decline": "Ditolak",
+    "considering": "Pertimbangan",
+    "invited": "Dijemput - menunggu jawapan",
+    "waitlist": "Senarai Tunggu"
+  },
+  "eventStatus": {
+    "notStarted": "Belum Mula",
+    "readyToStart": "Sedia Untuk Mula",
+    "ongoing": "Sedang Berlangsung",
+    "finished": "Selesai",
+    "canceled": "Dibatalkan"
+  },
+  "modal": {
+    "labels": {
+      "eventTitle": "Tajuk Acara",
+      "eventDescription": "Deskripsi Acara",
+      "participantLimit": "Had Peserta",
+      "eventStartDate": "Tarikh Mula Acara (YYYY-MM-DD)",
+      "eventStartDatePlaceHolder": "Format: YYYY-MM-DD",
+      "eventStartTime": "Waktu Mula Acara (HH:MM)",
+      "eventStartTimePlaceHolder": "Format: HH:MM"
+    }
+  },
+  "dynamic": {
+    "thisEventIsCreatedBy": "Acara ini dicipta oleh ${creator.username}",
+    "sorryTheEventIsCanceled": "Maaf, acara ${event.title} yang anda akan hadiri telah dibatalkan oleh ${event.creator}. Berikut adalah peserta yang akan hadir: ${participants}.",
+    "youSelectedEvent": "Anda telah memilih ${event.title}. Akan datang! Anda boleh melihat acara ini di laman web kami!",
+    "eventWithIdNotFound": "Acara dengan ID ${eventId} tidak dijumpai.",
+    "weHaveHitTheMagicNumber": "Kami telah mencapai bilangan peserta yang diingini! 🎉 Acara boleh dimulakan sebaik sahaja masa tiba! Berikut adalah peserta hebat: ${participants} ",
+    "actionMessages": {
+      "youHaveJoinedTheEvent": "Anda telah menyertai acara ${event.title}. Sila sahkan status penyertaan anda di bawah.",
+      "youHaveLeftTheEvent": "Anda telah meninggalkan acara ${event.title}. Sila sahkan status penyertaan anda di bawah.",
+      "youHaveUpdatedTheEvent": "Anda telah mengemaskini acara ${event.title}. Sila sahkan status penyertaan anda di bawah.",
+      "youHaveCreatedTheEvent": "Anda telah mencipta acara ${event.title}. Sila sahkan status penyertaan anda di bawah.",
+      "youHaveStartedTheEvent": "Anda telah memulakan acara ${event.title}. Sila sahkan status penyertaan anda di bawah.",
+      "youHaveFinishedTheEvent": "Anda telah menamatkan acara ${event.title}. Sila sahkan status penyertaan anda di bawah.",
+      "youHaveCanceledTheEvent": "Anda telah membatalkan acara ${event.title}. Sila sahkan status penyertaan anda di bawah.",
+      "youHaveSelectedTheEvent": "Anda telah memilih acara ${event.title}. Sila sahkan status penyertaan anda di bawah.",
+      "allTheUsersYouInvitedHaveAlreadyResponded": "Semua pengguna yang anda jemput telah memberi respon dan tidak dijemput semula: ${selectedUsers}. Sila semak senarai di bawah untuk status terkini."
+    },
+    "pleaseWait": "Sila tunggu ${timeLeft} saat lagi sebelum menggunakan semula arahan ${command.data.name}.",
+    "theFollowingUsersHaveBeenSuccessfullyInvited": "Pengguna berikut telah berjaya dijemput ke acara: ${invitedUsers}.",
+    "howeverTheFollowingUsersHadAlreadyResponded": "Walau bagaimanapun, pengguna berikut telah memberi respon kepada jemputan dan tidak dijemput semula: ${notInvitedUsers}. Sila semak senarai di bawah untuk status terkini.",
+    "eventSelected": "Acara ${event.title} dipilih. Sekarang, pilih pengguna untuk menjemput:"
+  },
+  "anErrorOccurredWhileHandlingTheInteraction": "Ralat berlaku semasa mengendalikan interaksi. Sila cuba lagi kemudian.",
+  "anErrorOccurred": "Ralat berlaku. Sila cuba lagi kemudian.",
+  "eventUpdatedSuccessfully": "Acara berjaya dikemaskini.",
+  "anErrorOccuredWhileUpdatingTheEvent": "Ralat berlaku semasa mengemaskini acara. Sila cuba lagi kemudian.",
+  "anErrorOccurredWhileCreatingTheEvent": "Ralat berlaku semasa mencipta acara. Sila cuba lagi kemudian.",
+  "anUnexpectedErrorOccurred": "Ralat tidak dijangka berlaku. Sila cuba lagi kemudian.",
+  "anErrorOccurredWhileProcessingYourRequest": "Ralat berlaku semasa memproses permintaan anda. Sila cuba lagi kemudian.",
+  "anErrorOccurredWhileFetchingTheEvents": "Ralat berlaku semasa mendapatkan acara.",
+  "selections": {
+    "inviteEvent": "Sila pilih acara untuk menjemput orang lain:",
+    "joinEvent": "Sila pilih acara untuk disertai:",
+    "leaveEvent": "Sila pilih acara untuk ditinggalkan:",
+    "updateEvent": "Sila pilih acara untuk dikemaskini:",
+    "cancelEvent": "Sila pilih acara untuk dibatalkan:",
+    "startEvent": "Sila pilih acara untuk dimulakan:",
+    "finishEvent": "Sila pilih acara untuk ditamatkan:",
+    "events": "Sila pilih acara untuk dilihat:",
+    "activeEvents": "Sila pilih acara aktif untuk dilihat:"
+  },
+  "noEvents": {
+    "inviteEvent": "Tiada acara yang boleh menjemput orang lain.",
+    "joinEvent": "Tiada acara yang boleh disertai.",
+    "leaveEvent": "Tiada acara yang boleh ditinggalkan.",
+    "updateEvent": "Tiada acara yang boleh dikemaskini.",
+    "cancelEvent": "Tiada acara yang boleh dibatalkan.",
+    "startEvent": "Tiada acara yang boleh dimulakan.",
+    "finishEvent": "Tiada acara yang boleh ditamatkan."
+  },
+  "backendErrors": {
+    "participantLimitMustBeANumberBetween1And1024": "Had peserta mesti nombor antara 1 dan 1024.",
+    "invalidStartTimeFormat": "Format masa mula tidak sah. Sila gunakan format HH:MM.",
+    "cannotInteractWithEventInThePast": "Anda tidak boleh berinteraksi dengan acara yang telah lalu.",
+    "cannotCreateEventMoreThan45DaysInAdvance": "Anda tidak boleh mencipta acara lebih daripada 45 hari lebih awal.",
+    "cannotChangeStatusToNotStarted": "Anda tidak boleh menukar status kembali kepada belum mula.",
+    "participantLimitMustEqualAttendingUsersToMarkReady": "Had peserta mesti sama dengan bilangan pengguna yang hadir untuk menandakan sedia untuk mula.",
+    "onlyNotStartedEventsCanBeMarkedReady": "Hanya acara yang belum bermula boleh ditandakan sedia untuk mula.",
+    "cannotStartEventNotReady": "Anda tidak boleh memulakan acara yang belum sedia untuk mula.",
+    "cannotStartFinishedEvent": "Anda tidak boleh memulakan acara yang telah selesai.",
+    "cannotStartCanceledEvent": "Anda tidak boleh memulakan acara yang telah dibatalkan.",
+    "cannotFinishNotStartedEvent": "Anda tidak boleh menamatkan acara yang belum bermula.",
+    "cannotFinishCanceledEvent": "Anda tidak boleh menamatkan acara yang telah dibatalkan.",
+    "cannotCancelOngoingEvent": "Anda tidak boleh membatalkan acara yang sedang berlangsung.",
+    "cannotCancelFinishedEvent": "Anda tidak boleh membatalkan acara yang telah selesai.",
+    "eventNotFound": "Acara tidak dijumpai.",
+    "noEventsFound": "Tiada acara dijumpai.",
+    "thisEventIsCurrentlyOngoing": "Acara ini sedang berlangsung, anda tidak boleh membuat keputusan lagi.",
+    "thisEventHasAlreadyFinished": "Acara ini telah selesai, anda tidak boleh membuat keputusan lagi.",
+    "thisEventHasBeenCanceled": "Acara ini telah dibatalkan, anda tidak boleh membuat keputusan lagi.",
+    "invalidStatus": "Status tidak sah.",
+    "participantLimitCannotBeLessThanNumberOfAttendingUsers": "Had peserta tidak boleh kurang daripada bilangan pengguna yang hadir.",
+    "somethingWentWrong": "Ada sesuatu yang tidak kena!"
+  }
+}

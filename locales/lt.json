@@ -1,0 +1,120 @@
+{
+  "commons": {
+    "eventId": "Renginio ID",
+    "startTime": "Pradžios laikas",
+    "participants": "Dalyviai",
+    "status": "Būsena",
+    "attending": "Dalyvaujantis",
+    "waitlist": "Laukimo sąrašas",
+    "details": "Detalės",
+    "noDescription": "Aprašymas nepateiktas.",
+    "selectUsersToInvite": "Pasirinkite vartotojus pakviesti",
+    "selectAnEvent": "Pasirinkite renginį",
+    "createEvent": "Sukurti renginį",
+    "updateEvent": "Atnaujinti renginį"
+  },
+  "buttons": {
+    "attend": "Dalyvauti",
+    "decline": "Atsisakyti",
+    "considering": "Svarstoma"
+  },
+  "status": {
+    "attending": "Dalyvaujantis",
+    "decline": "Atsisakyta",
+    "considering": "Svarstoma",
+    "invited": "Pakviesta - laukiama atsakymo",
+    "waitlist": "Laukimo sąrašas"
+  },
+  "eventStatus": {
+    "notStarted": "Nepradėtas",
+    "readyToStart": "Pasiruošęs pradėti",
+    "ongoing": "Vyksta",
+    "finished": "Baigtas",
+    "canceled": "Atšauktas"
+  },
+  "modal": {
+    "labels": {
+      "eventTitle": "Renginio pavadinimas",
+      "eventDescription": "Renginio aprašymas",
+      "participantLimit": "Dalyvių limitas",
+      "eventStartDate": "Renginio pradžios data (YYYY-MM-DD)",
+      "eventStartDatePlaceHolder": "Formatas: YYYY-MM-DD",
+      "eventStartTime": "Renginio pradžios laikas (HH:MM)",
+      "eventStartTimePlaceHolder": "Formatas: HH:MM"
+    }
+  },
+  "dynamic": {
+    "thisEventIsCreatedBy": "Šį renginį sukūrė ${creator.username}",
+    "sorryTheEventIsCanceled": "Atsiprašome, renginys ${event.title}, kuriame ketinote dalyvauti, buvo atšauktas ${event.creator}. Štai dalyviai, kurie ketino dalyvauti: ${participants}.",
+    "youSelectedEvent": "Pasirinkote ${event.title}. Netrukus! Šį renginį galite matyti mūsų svetainėje!",
+    "eventWithIdNotFound": "Renginys su ID ${eventId} nerastas.",
+    "weHaveHitTheMagicNumber": "Pasiekėme dalyvių magišką skaičių! 🎉 Renginys gali prasidėti, kai tik ateis laikas! Štai puikūs dalyviai: ${participants}",
+    "actionMessages": {
+      "youHaveJoinedTheEvent": "Prisijungėte prie renginio ${event.title}. Patvirtinkite savo dalyvavimo statusą žemiau.",
+      "youHaveLeftTheEvent": "Palikote renginį ${event.title}. Patvirtinkite savo dalyvavimo statusą žemiau.",
+      "youHaveUpdatedTheEvent": "Atnaujinote renginį ${event.title}. Patvirtinkite savo dalyvavimo statusą žemiau.",
+      "youHaveCreatedTheEvent": "Sukūrėte renginį ${event.title}. Patvirtinkite savo dalyvavimo statusą žemiau.",
+      "youHaveStartedTheEvent": "Pradėjote renginį ${event.title}. Patvirtinkite savo dalyvavimo statusą žemiau.",
+      "youHaveFinishedTheEvent": "Baigėte renginį ${event.title}. Patvirtinkite savo dalyvavimo statusą žemiau.",
+      "youHaveCanceledTheEvent": "Atšaukėte renginį ${event.title}. Patvirtinkite savo dalyvavimo statusą žemiau.",
+      "youHaveSelectedTheEvent": "Pasirinkote renginį ${event.title}. Patvirtinkite savo dalyvavimo statusą žemiau.",
+      "allTheUsersYouInvitedHaveAlreadyResponded": "Visi vartotojai, kuriuos pakvietėte, jau atsakė ir nebuvo pakviesti iš naujo: ${selectedUsers}. Patikrinkite žemiau esantį sąrašą dėl dabartinės būsenos."
+    },
+    "pleaseWait": "Palaukite dar ${timeLeft} sekundžių (-es) prieš vėl naudodami komandą ${command.data.name}.",
+    "theFollowingUsersHaveBeenSuccessfullyInvited": "Šie vartotojai sėkmingai pakviesti į renginį: ${invitedUsers}.",
+    "howeverTheFollowingUsersHadAlreadyResponded": "Tačiau šie vartotojai jau atsakė į kvietimą ir nebuvo pakviesti iš naujo: ${notInvitedUsers}. Patikrinkite žemiau esantį sąrašą dėl jų dabartinės būsenos.",
+    "eventSelected": "Renginys ${event.title} pasirinktas. Dabar pasirinkite vartotojus, kuriuos norite pakviesti:"
+  },
+  "anErrorOccurredWhileHandlingTheInteraction": "Įvyko klaida apdorojant sąveiką. Bandykite dar kartą vėliau.",
+  "anErrorOccurred": "Įvyko klaida. Bandykite dar kartą vėliau.",
+  "eventUpdatedSuccessfully": "Renginys sėkmingai atnaujintas.",
+  "anErrorOccuredWhileUpdatingTheEvent": "Įvyko klaida atnaujinant renginį. Bandykite dar kartą vėliau.",
+  "anErrorOccurredWhileCreatingTheEvent": "Įvyko klaida kuriant renginį. Bandykite dar kartą vėliau.",
+  "anUnexpectedErrorOccurred": "Įvyko nenumatyta klaida. Bandykite dar kartą vėliau.",
+  "anErrorOccurredWhileProcessingYourRequest": "Įvyko klaida apdorojant jūsų užklausą. Bandykite dar kartą vėliau.",
+  "anErrorOccurredWhileFetchingTheEvents": "Įvyko klaida gaunant renginius.",
+  "selections": {
+    "inviteEvent": "Pasirinkite renginį, į kurį norite pakviesti kitus:",
+    "joinEvent": "Pasirinkite renginį, prie kurio norite prisijungti:",
+    "leaveEvent": "Pasirinkite renginį, iš kurio norite išeiti:",
+    "updateEvent": "Pasirinkite renginį, kurį norite atnaujinti:",
+    "cancelEvent": "Pasirinkite renginį, kurį norite atšaukti:",
+    "startEvent": "Pasirinkite renginį, kurį norite pradėti:",
+    "finishEvent": "Pasirinkite renginį, kurį norite baigti:",
+    "events": "Pasirinkite renginį peržiūrai:",
+    "activeEvents": "Pasirinkite aktyvų renginį peržiūrai:"
+  },
+  "noEvents": {
+    "inviteEvent": "Nėra renginių, į kuriuos būtų galima pakviesti kitus.",
+    "joinEvent": "Nėra renginių, prie kurių būtų galima prisijungti.",
+    "leaveEvent": "Nėra renginių, iš kurių būtų galima išeiti.",
+    "updateEvent": "Nėra renginių, kuriuos būtų galima atnaujinti.",
+    "cancelEvent": "Nėra renginių, kuriuos būtų galima atšaukti.",
+    "startEvent": "Nėra renginių, kuriuos būtų galima pradėti.",
+    "finishEvent": "Nėra renginių, kuriuos būtų galima baigti."
+  },
+  "backendErrors": {
+    "participantLimitMustBeANumberBetween1And1024": "Dalyvių limitas turi būti skaičius tarp 1 ir 1024.",
+    "invalidStartTimeFormat": "Neteisingas pradžios laiko formatas. Naudokite formatą HH:MM.",
+    "cannotInteractWithEventInThePast": "Negalite sąveikauti su praeities renginiu.",
+    "cannotCreateEventMoreThan45DaysInAdvance": "Negalite sukurti renginio daugiau nei 45 dienas į priekį.",
+    "cannotChangeStatusToNotStarted": "Negalite pakeisti būsenos atgal į 'nepradėtas'.",
+    "participantLimitMustEqualAttendingUsersToMarkReady": "Dalyvių limitas turi būti lygus dalyvaujančių vartotojų skaičiui, kad būtų galima pažymėti kaip pasiruošusį pradėti.",
+    "onlyNotStartedEventsCanBeMarkedReady": "Tik nepradėti renginiai gali būti pažymėti kaip pasiruošę pradėti.",
+    "cannotStartEventNotReady": "Negalite pradėti renginio, kuris nėra pasiruošęs pradėti.",
+    "cannotStartFinishedEvent": "Negalite pradėti baigto renginio.",
+    "cannotStartCanceledEvent": "Negalite pradėti atšaukto renginio.",
+    "cannotFinishNotStartedEvent": "Negalite baigti renginio, kuris dar neprasidėjo.",
+    "cannotFinishCanceledEvent": "Negalite baigti atšaukto renginio.",
+    "cannotCancelOngoingEvent": "Negalite atšaukti vykstančio renginio.",
+    "cannotCancelFinishedEvent": "Negalite atšaukti baigto renginio.",
+    "eventNotFound": "Renginys nerastas.",
+    "noEventsFound": "Renginių nerasta.",
+    "thisEventIsCurrentlyOngoing": "Šis renginys šiuo metu vyksta, negalite daugiau priimti sprendimų.",
+    "thisEventHasAlreadyFinished": "Šis renginys jau baigėsi, negalite daugiau priimti sprendimų.",
+    "thisEventHasBeenCanceled": "Šis renginys buvo atšauktas, negalite daugiau priimti sprendimų.",
+    "invalidStatus": "Neteisinga būsena.",
+    "participantLimitCannotBeLessThanNumberOfAttendingUsers": "Dalyvių limitas negali būti mažesnis už dalyvaujančių vartotojų skaičių.",
+    "somethingWentWrong": "Kažkas nepavyko!"
+  }
+}

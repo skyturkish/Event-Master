@@ -1,0 +1,120 @@
+{
+  "commons": {
+    "eventId": "Etkinlik Kimliği",
+    "startTime": "Başlangıç Zamanı",
+    "participants": "Katılımcılar",
+    "status": "Durum",
+    "attending": "Katılıyor",
+    "waitlist": "Bekleme Listesi",
+    "details": "Detaylar",
+    "noDescription": "Açıklama sağlanmadı.",
+    "selectUsersToInvite": "Davet edilecek kullanıcıları seçin",
+    "selectAnEvent": "Bir etkinlik seçin",
+    "createEvent": "Etkinlik Oluştur",
+    "updateEvent": "Etkinliği Güncelle"
+  },
+  "buttons": {
+    "attend": "Katıl",
+    "decline": "Reddet",
+    "considering": "Düşünüyor"
+  },
+  "status": {
+    "attending": "Katılıyor",
+    "decline": "Reddetti",
+    "considering": "Düşünüyor",
+    "invited": "Davet Edildi - cevap bekleniyor",
+    "waitlist": "Bekleme Listesi"
+  },
+  "eventStatus": {
+    "notStarted": "Başlamadı",
+    "readyToStart": "Başlamaya Hazır",
+    "ongoing": "Devam Ediyor",
+    "finished": "Tamamlandı",
+    "canceled": "İptal Edildi"
+  },
+  "modal": {
+    "labels": {
+      "eventTitle": "Etkinlik Başlığı",
+      "eventDescription": "Etkinlik Açıklaması",
+      "participantLimit": "Katılımcı Limiti",
+      "eventStartDate": "Etkinlik Başlangıç Tarihi (YYYY-AA-GG)",
+      "eventStartDatePlaceHolder": "Format: YYYY-AA-GG",
+      "eventStartTime": "Etkinlik Başlangıç Zamanı (SS:DD)",
+      "eventStartTimePlaceHolder": "Format: SS:DD"
+    }
+  },
+  "dynamic": {
+    "thisEventIsCreatedBy": "Bu etkinlik ${creator.username} tarafından oluşturuldu",
+    "sorryTheEventIsCanceled": "Üzgünüz, ${event.creator} tarafından iptal edilen ${event.title} etkinliğine katılacaktınız. Katılacak katılımcılar şunlardı: ${participants}.",
+    "youSelectedEvent": "${event.title} etkinliğini seçtiniz. Yakında! Bu etkinliği web sitemizde görebilirsiniz!",
+    "eventWithIdNotFound": "${eventId} kimliğine sahip etkinlik bulunamadı.",
+    "weHaveHitTheMagicNumber": "Katılımcıların büyülü sayısına ulaştık! 🎉 Etkinlik zaman geldiğinde başlayabilir! İşte muhteşem katılımcılar: ${participants} ",
+    "actionMessages": {
+      "youHaveJoinedTheEvent": "${event.title} etkinliğine katıldınız. Lütfen katılım durumunuzu aşağıda onaylayın.",
+      "youHaveLeftTheEvent": "${event.title} etkinliğinden ayrıldınız. Lütfen katılım durumunuzu aşağıda onaylayın.",
+      "youHaveUpdatedTheEvent": "${event.title} etkinliğini güncellediniz. Lütfen katılım durumunuzu aşağıda onaylayın.",
+      "youHaveCreatedTheEvent": "${event.title} etkinliğini oluşturdunuz. Lütfen katılım durumunuzu aşağıda onaylayın.",
+      "youHaveStartedTheEvent": "${event.title} etkinliğini başlattınız. Lütfen katılım durumunuzu aşağıda onaylayın.",
+      "youHaveFinishedTheEvent": "${event.title} etkinliğini tamamladınız. Lütfen katılım durumunuzu aşağıda onaylayın.",
+      "youHaveCanceledTheEvent": "${event.title} etkinliğini iptal ettiniz. Lütfen katılım durumunuzu aşağıda onaylayın.",
+      "youHaveSelectedTheEvent": "${event.title} etkinliğini seçtiniz. Lütfen katılım durumunuzu aşağıda onaylayın.",
+      "allTheUsersYouInvitedHaveAlreadyResponded": "Davet ettiğiniz tüm kullanıcılar zaten yanıt verdi ve yeniden davet edilmedi: ${selectedUsers}. Lütfen aşağıdaki listede mevcut durumu kontrol edin."
+    },
+    "pleaseWait": "Lütfen ${command.data.name} komutunu tekrar kullanmadan önce ${timeLeft} saniye bekleyin.",
+    "theFollowingUsersHaveBeenSuccessfullyInvited": "Aşağıdaki kullanıcılar başarıyla etkinliğe davet edildi: ${invitedUsers}.",
+    "howeverTheFollowingUsersHadAlreadyResponded": "Ancak, aşağıdaki kullanıcılar zaten davete yanıt verdi ve yeniden davet edilmedi: ${notInvitedUsers}. Lütfen mevcut durumu kontrol etmek için aşağıdaki listeyi kontrol edin.",
+    "eventSelected": "Etkinlik ${event.title} seçildi. Şimdi davet edilecek kullanıcıları seçin:"
+  },
+  "anErrorOccurredWhileHandlingTheInteraction": "Etkileşimi işlerken bir hata oluştu. Lütfen daha sonra tekrar deneyin.",
+  "anErrorOccurred": "Bir hata oluştu. Lütfen daha sonra tekrar deneyin.",
+  "eventUpdatedSuccessfully": "Etkinlik başarıyla güncellendi.",
+  "anErrorOccuredWhileUpdatingTheEvent": "Etkinliği güncellerken bir hata oluştu. Lütfen daha sonra tekrar deneyin.",
+  "anErrorOccurredWhileCreatingTheEvent": "Etkinliği oluştururken bir hata oluştu. Lütfen daha sonra tekrar deneyin.",
+  "anUnexpectedErrorOccurred": "Beklenmeyen bir hata oluştu. Lütfen daha sonra tekrar deneyin.",
+  "anErrorOccurredWhileProcessingYourRequest": "İsteğinizi işlerken bir hata oluştu. Lütfen daha sonra tekrar deneyin.",
+  "anErrorOccurredWhileFetchingTheEvents": "Etkinlikleri çekerken bir hata oluştu.",
+  "selections": {
+    "inviteEvent": "Lütfen başkalarını davet etmek için bir etkinlik seçin:",
+    "joinEvent": "Lütfen katılmak için bir etkinlik seçin:",
+    "leaveEvent": "Lütfen ayrılmak için bir etkinlik seçin:",
+    "updateEvent": "Lütfen güncellemek için bir etkinlik seçin:",
+    "cancelEvent": "Lütfen iptal etmek için bir etkinlik seçin:",
+    "startEvent": "Lütfen başlatmak için bir etkinlik seçin:",
+    "finishEvent": "Lütfen bitirmek için bir etkinlik seçin:",
+    "events": "Lütfen görmek için bir etkinlik seçin:",
+    "activeEvents": "Lütfen aktif bir etkinlik seçin:"
+  },
+  "noEvents": {
+    "inviteEvent": "Başkalarını davet etmek için mevcut etkinlik yok.",
+    "joinEvent": "Katılmak için mevcut etkinlik yok.",
+    "leaveEvent": "Ayrılmak için mevcut etkinlik yok.",
+    "updateEvent": "Güncellemek için mevcut etkinlik yok.",
+    "cancelEvent": "İptal etmek için mevcut etkinlik yok.",
+    "startEvent": "Başlatmak için mevcut etkinlik yok.",
+    "finishEvent": "Bitirmek için mevcut etkinlik yok."
+  },
+  "backendErrors": {
+    "participantLimitMustBeANumberBetween1And1024": "Katılımcı limiti 1 ile 1024 arasında bir sayı olmalıdır.",
+    "invalidStartTimeFormat": "Geçersiz başlangıç zamanı formatı. Lütfen SS:DD formatını kullanın.",
+    "cannotInteractWithEventInThePast": "Geçmişteki bir etkinlikle etkileşime geçemezsiniz.",
+    "cannotCreateEventMoreThan45DaysInAdvance": "45 günden daha ileri bir tarihte etkinlik oluşturamazsınız.",
+    "cannotChangeStatusToNotStarted": "Durumu yeniden başlamadı olarak değiştiremezsiniz.",
+    "participantLimitMustEqualAttendingUsersToMarkReady": "Katılımcı limiti, başlamaya hazır olarak işaretlemek için mevcut katılımcı sayısına eşit olmalıdır.",
+    "onlyNotStartedEventsCanBeMarkedReady": "Sadece başlamamış etkinlikler başlamaya hazır olarak işaretlenebilir.",
+    "cannotStartEventNotReady": "Başlamaya hazır olmayan bir etkinliği başlatamazsınız.",
+    "cannotStartFinishedEvent": "Tamamlanmış bir etkinliği başlatamazsınız.",
+    "cannotStartCanceledEvent": "İptal edilmiş bir etkinliği başlatamazsınız.",
+    "cannotFinishNotStartedEvent": "Başlamamış bir etkinliği tamamlayamazsınız.",
+    "cannotFinishCanceledEvent": "İptal edilmiş bir etkinliği tamamlayamazsınız.",
+    "cannotCancelOngoingEvent": "Devam eden bir etkinliği iptal edemezsiniz.",
+    "cannotCancelFinishedEvent": "Tamamlanmış bir etkinliği iptal edemezsiniz.",
+    "eventNotFound": "Etkinlik bulunamadı.",
+    "noEventsFound": "Hiç etkinlik bulunamadı.",
+    "thisEventIsCurrentlyOngoing": "Bu etkinlik şu anda devam ediyor, artık karar veremezsiniz.",
+    "thisEventHasAlreadyFinished": "Bu etkinlik zaten tamamlandı, artık karar veremezsiniz.",
+    "thisEventHasBeenCanceled": "Bu etkinlik iptal edildi, artık karar veremezsiniz.",
+    "invalidStatus": "Geçersiz durum.",
+    "participantLimitCannotBeLessThanNumberOfAttendingUsers": "Katılımcı limiti, katılan kullanıcıların sayısından az olamaz.",
+    "somethingWentWrong": "Bir şeyler yanlış gitti!"
+  }
+}

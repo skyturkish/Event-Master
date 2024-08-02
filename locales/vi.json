@@ -1,0 +1,120 @@
+{
+  "commons": {
+    "eventId": "Mã sự kiện",
+    "startTime": "Thời gian bắt đầu",
+    "participants": "Người tham gia",
+    "status": "Trạng thái",
+    "attending": "Tham gia",
+    "waitlist": "Danh sách chờ",
+    "details": "Chi tiết",
+    "noDescription": "Chưa cung cấp mô tả.",
+    "selectUsersToInvite": "Chọn người dùng để mời",
+    "selectAnEvent": "Chọn một sự kiện",
+    "createEvent": "Tạo sự kiện",
+    "updateEvent": "Cập nhật sự kiện"
+  },
+  "buttons": {
+    "attend": "Tham gia",
+    "decline": "Từ chối",
+    "considering": "Đang cân nhắc"
+  },
+  "status": {
+    "attending": "Đang tham gia",
+    "decline": "Đã từ chối",
+    "considering": "Đang cân nhắc",
+    "invited": "Đã mời - chờ phản hồi",
+    "waitlist": "Danh sách chờ"
+  },
+  "eventStatus": {
+    "notStarted": "Chưa bắt đầu",
+    "readyToStart": "Sẵn sàng bắt đầu",
+    "ongoing": "Đang diễn ra",
+    "finished": "Đã kết thúc",
+    "canceled": "Đã hủy"
+  },
+  "modal": {
+    "labels": {
+      "eventTitle": "Tiêu đề sự kiện",
+      "eventDescription": "Mô tả sự kiện",
+      "participantLimit": "Giới hạn người tham gia",
+      "eventStartDate": "Ngày bắt đầu sự kiện (YYYY-MM-DD)",
+      "eventStartDatePlaceHolder": "Định dạng: YYYY-MM-DD",
+      "eventStartTime": "Thời gian bắt đầu sự kiện (HH:MM)",
+      "eventStartTimePlaceHolder": "Định dạng: HH:MM"
+    }
+  },
+  "dynamic": {
+    "thisEventIsCreatedBy": "Sự kiện này được tạo bởi ${creator.username}",
+    "sorryTheEventIsCanceled": "Xin lỗi, sự kiện ${event.title} mà bạn định tham gia đã bị ${event.creator} hủy. Dưới đây là những người tham gia dự kiến: ${participants}.",
+    "youSelectedEvent": "Bạn đã chọn ${event.title}. Sẽ sớm có mặt! Bạn có thể xem sự kiện này trên trang web của chúng tôi!",
+    "eventWithIdNotFound": "Không tìm thấy sự kiện với mã ${eventId}.",
+    "weHaveHitTheMagicNumber": "Chúng ta đã đạt đến số người tham gia cần thiết! 🎉 Sự kiện có thể bắt đầu ngay khi đến giờ! Đây là những người tham gia tuyệt vời: ${participants}",
+    "actionMessages": {
+      "youHaveJoinedTheEvent": "Bạn đã tham gia sự kiện ${event.title}. Vui lòng xác nhận trạng thái tham gia của bạn dưới đây.",
+      "youHaveLeftTheEvent": "Bạn đã rời khỏi sự kiện ${event.title}. Vui lòng xác nhận trạng thái tham gia của bạn dưới đây.",
+      "youHaveUpdatedTheEvent": "Bạn đã cập nhật sự kiện ${event.title}. Vui lòng xác nhận trạng thái tham gia của bạn dưới đây.",
+      "youHaveCreatedTheEvent": "Bạn đã tạo sự kiện ${event.title}. Vui lòng xác nhận trạng thái tham gia của bạn dưới đây.",
+      "youHaveStartedTheEvent": "Bạn đã bắt đầu sự kiện ${event.title}. Vui lòng xác nhận trạng thái tham gia của bạn dưới đây.",
+      "youHaveFinishedTheEvent": "Bạn đã kết thúc sự kiện ${event.title}. Vui lòng xác nhận trạng thái tham gia của bạn dưới đây.",
+      "youHaveCanceledTheEvent": "Bạn đã hủy sự kiện ${event.title}. Vui lòng xác nhận trạng thái tham gia của bạn dưới đây.",
+      "youHaveSelectedTheEvent": "Bạn đã chọn sự kiện ${event.title}. Vui lòng xác nhận trạng thái tham gia của bạn dưới đây.",
+      "allTheUsersYouInvitedHaveAlreadyResponded": "Tất cả người dùng bạn đã mời đã phản hồi và không được mời lại: ${selectedUsers}. Vui lòng kiểm tra danh sách dưới đây để biết trạng thái hiện tại."
+    },
+    "pleaseWait": "Vui lòng chờ ${timeLeft} giây trước khi sử dụng lại lệnh ${command.data.name}.",
+    "theFollowingUsersHaveBeenSuccessfullyInvited": "Những người dùng sau đã được mời thành công đến sự kiện: ${invitedUsers}.",
+    "howeverTheFollowingUsersHadAlreadyResponded": "Tuy nhiên, những người dùng sau đã phản hồi lời mời và không được mời lại: ${notInvitedUsers}. Vui lòng kiểm tra danh sách dưới đây để biết trạng thái hiện tại.",
+    "eventSelected": "Sự kiện ${event.title} đã được chọn. Bây giờ, hãy chọn người dùng để mời:"
+  },
+  "anErrorOccurredWhileHandlingTheInteraction": "Đã xảy ra lỗi trong quá trình xử lý tương tác. Vui lòng thử lại sau.",
+  "anErrorOccurred": "Đã xảy ra lỗi. Vui lòng thử lại sau.",
+  "eventUpdatedSuccessfully": "Sự kiện đã được cập nhật thành công.",
+  "anErrorOccuredWhileUpdatingTheEvent": "Đã xảy ra lỗi khi cập nhật sự kiện. Vui lòng thử lại sau.",
+  "anErrorOccurredWhileCreatingTheEvent": "Đã xảy ra lỗi khi tạo sự kiện. Vui lòng thử lại sau.",
+  "anUnexpectedErrorOccurred": "Đã xảy ra lỗi không mong đợi. Vui lòng thử lại sau.",
+  "anErrorOccurredWhileProcessingYourRequest": "Đã xảy ra lỗi trong quá trình xử lý yêu cầu của bạn. Vui lòng thử lại sau.",
+  "anErrorOccurredWhileFetchingTheEvents": "Đã xảy ra lỗi khi lấy dữ liệu sự kiện.",
+  "selections": {
+    "inviteEvent": "Vui lòng chọn sự kiện để mời người khác:",
+    "joinEvent": "Vui lòng chọn sự kiện để tham gia:",
+    "leaveEvent": "Vui lòng chọn sự kiện để rời khỏi:",
+    "updateEvent": "Vui lòng chọn sự kiện để cập nhật:",
+    "cancelEvent": "Vui lòng chọn sự kiện để hủy:",
+    "startEvent": "Vui lòng chọn sự kiện để bắt đầu:",
+    "finishEvent": "Vui lòng chọn sự kiện để kết thúc:",
+    "events": "Vui lòng chọn sự kiện để xem:",
+    "activeEvents": "Vui lòng chọn sự kiện đang hoạt động để xem:"
+  },
+  "noEvents": {
+    "inviteEvent": "Không có sự kiện nào để mời người khác.",
+    "joinEvent": "Không có sự kiện nào để tham gia.",
+    "leaveEvent": "Không có sự kiện nào để rời khỏi.",
+    "updateEvent": "Không có sự kiện nào để cập nhật.",
+    "cancelEvent": "Không có sự kiện nào để hủy.",
+    "startEvent": "Không có sự kiện nào để bắt đầu.",
+    "finishEvent": "Không có sự kiện nào để kết thúc."
+  },
+  "backendErrors": {
+    "participantLimitMustBeANumberBetween1And1024": "Giới hạn người tham gia phải là một số từ 1 đến 1024.",
+    "invalidStartTimeFormat": "Định dạng thời gian bắt đầu không hợp lệ. Vui lòng sử dụng định dạng HH:MM.",
+    "cannotInteractWithEventInThePast": "Bạn không thể tương tác với sự kiện trong quá khứ.",
+    "cannotCreateEventMoreThan45DaysInAdvance": "Bạn không thể tạo sự kiện trước hơn 45 ngày.",
+    "cannotChangeStatusToNotStarted": "Bạn không thể thay đổi trạng thái về chưa bắt đầu.",
+    "participantLimitMustEqualAttendingUsersToMarkReady": "Giới hạn người tham gia phải bằng số người đang tham gia hiện tại để đánh dấu là sẵn sàng.",
+    "onlyNotStartedEventsCanBeMarkedReady": "Chỉ các sự kiện chưa bắt đầu mới có thể được đánh dấu là sẵn sàng bắt đầu.",
+    "cannotStartEventNotReady": "Bạn không thể bắt đầu sự kiện chưa sẵn sàng.",
+    "cannotStartFinishedEvent": "Bạn không thể bắt đầu một sự kiện đã kết thúc.",
+    "cannotStartCanceledEvent": "Bạn không thể bắt đầu một sự kiện đã bị hủy.",
+    "cannotFinishNotStartedEvent": "Bạn không thể kết thúc một sự kiện chưa bắt đầu.",
+    "cannotFinishCanceledEvent": "Bạn không thể kết thúc một sự kiện đã bị hủy.",
+    "cannotCancelOngoingEvent": "Bạn không thể hủy một sự kiện đang diễn ra.",
+    "cannotCancelFinishedEvent": "Bạn không thể hủy một sự kiện đã kết thúc.",
+    "eventNotFound": "Không tìm thấy sự kiện.",
+    "noEventsFound": "Không tìm thấy sự kiện nào.",
+    "thisEventIsCurrentlyOngoing": "Sự kiện này hiện đang diễn ra, bạn không thể đưa ra quyết định.",
+    "thisEventHasAlreadyFinished": "Sự kiện này đã kết thúc, bạn không thể đưa ra quyết định.",
+    "thisEventHasBeenCanceled": "Sự kiện này đã bị hủy, bạn không thể đưa ra quyết định.",
+    "invalidStatus": "Trạng thái không hợp lệ.",
+    "participantLimitCannotBeLessThanNumberOfAttendingUsers": "Giới hạn người tham gia không thể nhỏ hơn số người đang tham gia.",
+    "somethingWentWrong": "Đã xảy ra sự cố!"
+  }
+}
