@@ -1,0 +1,120 @@
+{
+  "commons": {
+    "eventId": "事件 ID",
+    "startTime": "开始时间",
+    "participants": "参与者",
+    "status": "状态",
+    "attending": "参加",
+    "waitlist": "候补名单",
+    "details": "详情",
+    "noDescription": "没有提供描述。",
+    "selectUsersToInvite": "选择要邀请的用户",
+    "selectAnEvent": "选择一个事件",
+    "createEvent": "创建事件",
+    "updateEvent": "更新事件"
+  },
+  "buttons": {
+    "attend": "参加",
+    "decline": "拒绝",
+    "considering": "考虑中"
+  },
+  "status": {
+    "attending": "参加",
+    "decline": "拒绝",
+    "considering": "考虑中",
+    "invited": "已邀请 - 等待回应",
+    "waitlist": "候补名单"
+  },
+  "eventStatus": {
+    "notStarted": "尚未开始",
+    "readyToStart": "准备开始",
+    "ongoing": "进行中",
+    "finished": "已结束",
+    "canceled": "已取消"
+  },
+  "modal": {
+    "labels": {
+      "eventTitle": "事件标题",
+      "eventDescription": "事件描述",
+      "participantLimit": "参与者限制",
+      "eventStartDate": "事件开始日期 (YYYY-MM-DD)",
+      "eventStartDatePlaceHolder": "格式: YYYY-MM-DD",
+      "eventStartTime": "事件开始时间 (HH:MM)",
+      "eventStartTimePlaceHolder": "格式: HH:MM"
+    }
+  },
+  "dynamic": {
+    "thisEventIsCreatedBy": "此事件由 ${creator.username} 创建",
+    "sorryTheEventIsCanceled": "抱歉，你将参加的事件 ${event.title} 已被 ${event.creator} 取消。以下是原定参加的参与者：${participants}。",
+    "youSelectedEvent": "你选择了 ${event.title}。敬请期待！你可以在我们的网站上查看这个事件！",
+    "eventWithIdNotFound": "未找到 ID 为 ${eventId} 的事件。",
+    "weHaveHitTheMagicNumber": "我们达到了参与者的魔法数字！🎉 事件可以在时间到来时开始！以下是精彩的参与者：${participants}",
+    "actionMessages": {
+      "youHaveJoinedTheEvent": "你已加入事件 ${event.title}。请在下面确认你的参与状态。",
+      "youHaveLeftTheEvent": "你已离开事件 ${event.title}。请在下面确认你的参与状态。",
+      "youHaveUpdatedTheEvent": "你已更新事件 ${event.title}。请在下面确认你的参与状态。",
+      "youHaveCreatedTheEvent": "你已创建事件 ${event.title}。请在下面确认你的参与状态。",
+      "youHaveStartedTheEvent": "你已开始事件 ${event.title}。请在下面确认你的参与状态。",
+      "youHaveFinishedTheEvent": "你已结束事件 ${event.title}。请在下面确认你的参与状态。",
+      "youHaveCanceledTheEvent": "你已取消事件 ${event.title}。请在下面确认你的参与状态。",
+      "youHaveSelectedTheEvent": "你已选择事件 ${event.title}。请在下面确认你的参与状态。",
+      "allTheUsersYouInvitedHaveAlreadyResponded": "你邀请的所有用户已经回应，并且没有重新邀请：${selectedUsers}。请检查下面的列表以获取当前状态。"
+    },
+    "pleaseWait": "请再等 ${timeLeft} 秒后再使用 ${command.data.name} 命令。",
+    "theFollowingUsersHaveBeenSuccessfullyInvited": "以下用户已成功邀请到事件：${invitedUsers}。",
+    "howeverTheFollowingUsersHadAlreadyResponded": "然而，以下用户已经回应了邀请，并且没有重新邀请：${notInvitedUsers}。请检查下面的列表以获取他们的当前状态。",
+    "eventSelected": "事件 ${event.title} 已选择。现在，选择要邀请的用户："
+  },
+  "anErrorOccurredWhileHandlingTheInteraction": "处理交互时发生错误。请稍后再试。",
+  "anErrorOccurred": "发生错误。请稍后再试。",
+  "eventUpdatedSuccessfully": "事件更新成功。",
+  "anErrorOccuredWhileUpdatingTheEvent": "更新事件时发生错误。请稍后再试。",
+  "anErrorOccurredWhileCreatingTheEvent": "创建事件时发生错误。请稍后再试。",
+  "anUnexpectedErrorOccurred": "发生意外错误。请稍后再试。",
+  "anErrorOccurredWhileProcessingYourRequest": "处理请求时发生错误。请稍后再试。",
+  "anErrorOccurredWhileFetchingTheEvents": "获取事件时发生错误。",
+  "selections": {
+    "inviteEvent": "请选择一个事件以邀请他人：",
+    "joinEvent": "请选择一个事件以加入：",
+    "leaveEvent": "请选择一个事件以离开：",
+    "updateEvent": "请选择一个事件以更新：",
+    "cancelEvent": "请选择一个事件以取消：",
+    "startEvent": "请选择一个事件以开始：",
+    "finishEvent": "请选择一个事件以结束：",
+    "events": "请选择一个事件以查看：",
+    "activeEvents": "请选择一个活动事件以查看："
+  },
+  "noEvents": {
+    "inviteEvent": "没有可邀请他人的事件。",
+    "joinEvent": "没有可加入的事件。",
+    "leaveEvent": "没有可离开的事件。",
+    "updateEvent": "没有可更新的事件。",
+    "cancelEvent": "没有可取消的事件。",
+    "startEvent": "没有可开始的事件。",
+    "finishEvent": "没有可结束的事件。"
+  },
+  "backendErrors": {
+    "participantLimitMustBeANumberBetween1And1024": "参与者限制必须是介于 1 和 1024 之间的数字。",
+    "invalidStartTimeFormat": "开始时间格式无效。请使用 HH:MM 格式。",
+    "cannotInteractWithEventInThePast": "无法与过去的事件互动。",
+    "cannotCreateEventMoreThan45DaysInAdvance": "无法创建提前超过 45 天的事件。",
+    "cannotChangeStatusToNotStarted": "无法将状态更改回未开始。",
+    "participantLimitMustEqualAttendingUsersToMarkReady": "参与者限制必须等于当前参加用户的数量才能标记为准备开始。",
+    "onlyNotStartedEventsCanBeMarkedReady": "只有尚未开始的事件才能标记为准备开始。",
+    "cannotStartEventNotReady": "无法开始尚未准备好的事件。",
+    "cannotStartFinishedEvent": "无法开始已结束的事件。",
+    "cannotStartCanceledEvent": "无法开始已取消的事件。",
+    "cannotFinishNotStartedEvent": "无法结束尚未开始的事件。",
+    "cannotFinishCanceledEvent": "无法结束已取消的事件。",
+    "cannotCancelOngoingEvent": "无法取消进行中的事件。",
+    "cannotCancelFinishedEvent": "无法取消已结束的事件。",
+    "eventNotFound": "未找到事件。",
+    "noEventsFound": "未找到事件。",
+    "thisEventIsCurrentlyOngoing": "该事件正在进行中，您无法再做出决定。",
+    "thisEventHasAlreadyFinished": "该事件已经结束，您无法再做出决定。",
+    "thisEventHasBeenCanceled": "该事件已被取消，您无法再做出决定。",
+    "invalidStatus": "无效状态。",
+    "participantLimitCannotBeLessThanNumberOfAttendingUsers": "参与者限制不能小于参加用户的数量。",
+    "somethingWentWrong": "出现了问题！"
+  }
+}

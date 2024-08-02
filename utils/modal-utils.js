@@ -1,12 +1,15 @@
 const { ModalBuilder, TextInputBuilder, ActionRowBuilder, TextInputStyle } = require('discord.js')
 const moment = require('moment')
+const { getLocalizedValue } = require('../utils/localization')
 
 const showModalWithInputs = async (interaction, customId, title, event) => {
   const modal = new ModalBuilder().setCustomId(customId).setTitle(title)
 
+  const labels = getLocalizedValue(interaction.locale, 'modal.labels')
+
   const titleInput = new TextInputBuilder()
     .setCustomId('titleInput')
-    .setLabel('Event Title')
+    .setLabel(labels.eventTitle)
     .setStyle(TextInputStyle.Paragraph)
     .setRequired(true)
     .setMinLength(4)
@@ -14,7 +17,7 @@ const showModalWithInputs = async (interaction, customId, title, event) => {
 
   const descriptionInput = new TextInputBuilder()
     .setCustomId('descriptionInput')
-    .setLabel('Event Description')
+    .setLabel(labels.eventDescription)
     .setStyle(TextInputStyle.Paragraph)
     .setRequired(false)
     .setMinLength(4)
@@ -22,22 +25,22 @@ const showModalWithInputs = async (interaction, customId, title, event) => {
 
   const participantLimitInput = new TextInputBuilder()
     .setCustomId('participantLimitInput')
-    .setLabel('Participant Limit')
+    .setLabel(labels.participantLimit)
     .setStyle(TextInputStyle.Short)
     .setPlaceholder('1 - 1024')
     .setRequired(true)
 
   const startDateInput = new TextInputBuilder()
     .setCustomId('startDateInput')
-    .setLabel('Event Start Date (YYYY-MM-DD)')
-    .setPlaceholder('Format: YYYY-MM-DD')
+    .setLabel(labels.eventStartDate)
+    .setPlaceholder(labels.eventStartDatePlaceHolder)
     .setStyle(TextInputStyle.Short)
     .setRequired(true)
 
   const startTimeInput = new TextInputBuilder()
     .setCustomId('startTimeInput')
-    .setLabel('Event Start Time (HH:MM)')
-    .setPlaceholder('Format: HH:MM')
+    .setLabel(labels.eventStartTime)
+    .setPlaceholder(labels.eventStartTimePlaceHolder)
     .setStyle(TextInputStyle.Short)
     .setRequired(true)
 
@@ -60,9 +63,11 @@ const showModalWithInputs = async (interaction, customId, title, event) => {
   await interaction.showModal(modal)
 }
 
-const handleModalSubmit = (modalInteraction) => {
+const handleModalSubmit = (modalInteraction, language) => {
+  const noDescription = getLocalizedValue(language, 'commons.noDescription')
+
   const title = modalInteraction.fields.getTextInputValue('titleInput')
-  const description = modalInteraction.fields.getTextInputValue('descriptionInput') || 'No description provided.'
+  const description = modalInteraction.fields.getTextInputValue('descriptionInput') || noDescription
   let participantLimit = modalInteraction.fields.getTextInputValue('participantLimitInput')
   let startDate = modalInteraction.fields.getTextInputValue('startDateInput')
   let startTime = modalInteraction.fields.getTextInputValue('startTimeInput')

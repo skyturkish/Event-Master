@@ -1,0 +1,120 @@
+{
+  "commons": {
+    "eventId": "ID Události",
+    "startTime": "Čas Začátku",
+    "participants": "Účastníci",
+    "status": "Stav",
+    "attending": "Účastní",
+    "waitlist": "Čekací seznam",
+    "details": "Detaily",
+    "noDescription": "Nebyl poskytnut žádný popis.",
+    "selectUsersToInvite": "Vyberte uživatele k pozvání",
+    "selectAnEvent": "Vyberte událost",
+    "createEvent": "Vytvořit Událost",
+    "updateEvent": "Aktualizovat Událost"
+  },
+  "buttons": {
+    "attend": "Zúčastnit se",
+    "decline": "Odmítnout",
+    "considering": "Zvažuje se"
+  },
+  "status": {
+    "attending": "Účastní",
+    "decline": "Odmítnut",
+    "considering": "Zvažuje se",
+    "invited": "Pozván - čeká se na odpověď",
+    "waitlist": "Čekací seznam"
+  },
+  "eventStatus": {
+    "notStarted": "Nezačalo",
+    "readyToStart": "Připraveno k Zahájení",
+    "ongoing": "Probíhá",
+    "finished": "Dokončeno",
+    "canceled": "Zrušeno"
+  },
+  "modal": {
+    "labels": {
+      "eventTitle": "Název Události",
+      "eventDescription": "Popis Události",
+      "participantLimit": "Limit Účastníků",
+      "eventStartDate": "Datum Začátku Události (YYYY-MM-DD)",
+      "eventStartDatePlaceHolder": "Formát: YYYY-MM-DD",
+      "eventStartTime": "Čas Začátku Události (HH:MM)",
+      "eventStartTimePlaceHolder": "Formát: HH:MM"
+    }
+  },
+  "dynamic": {
+    "thisEventIsCreatedBy": "Tuto událost vytvořil ${creator.username}",
+    "sorryTheEventIsCanceled": "Omlouváme se, událost ${event.title}, které jste se měli zúčastnit, byla zrušena ${event.creator}. Zde jsou účastníci, kteří se měli zúčastnit: ${participants}.",
+    "youSelectedEvent": "Vybrali jste ${event.title}. Přijde brzy! Tuto událost můžete vidět na našem webu!",
+    "eventWithIdNotFound": "Událost s ID ${eventId} nebyla nalezena.",
+    "weHaveHitTheMagicNumber": "Dosáhli jsme magického počtu účastníků! 🎉 Událost může začít, jakmile přijde čas! Zde jsou úžasní účastníci: ${participants} ",
+    "actionMessages": {
+      "youHaveJoinedTheEvent": "Připojili jste se k události ${event.title}. Potvrďte prosím svůj stav účasti níže.",
+      "youHaveLeftTheEvent": "Opustili jste událost ${event.title}. Potvrďte prosím svůj stav účasti níže.",
+      "youHaveUpdatedTheEvent": "Aktualizovali jste událost ${event.title}. Potvrďte prosím svůj stav účasti níže.",
+      "youHaveCreatedTheEvent": "Vytvořili jste událost ${event.title}. Potvrďte prosím svůj stav účasti níže.",
+      "youHaveStartedTheEvent": "Zahájili jste událost ${event.title}. Potvrďte prosím svůj stav účasti níže.",
+      "youHaveFinishedTheEvent": "Dokončili jste událost ${event.title}. Potvrďte prosím svůj stav účasti níže.",
+      "youHaveCanceledTheEvent": "Zrušili jste událost ${event.title}. Potvrďte prosím svůj stav účasti níže.",
+      "youHaveSelectedTheEvent": "Vybrali jste událost ${event.title}. Potvrďte prosím svůj stav účasti níže.",
+      "allTheUsersYouInvitedHaveAlreadyResponded": "Všichni uživatelé, které jste pozvali, již odpověděli a nebyli znovu pozváni: ${selectedUsers}. Zkontrolujte prosím níže uvedený seznam pro aktuální stav."
+    },
+    "pleaseWait": "Počkejte prosím ještě ${timeLeft} sekundu(y) před opětovným použitím příkazu ${command.data.name}.",
+    "theFollowingUsersHaveBeenSuccessfullyInvited": "Následující uživatelé byli úspěšně pozváni na událost: ${invitedUsers}.",
+    "howeverTheFollowingUsersHadAlreadyResponded": "Nicméně následující uživatelé již na pozvánku odpověděli a nebyli znovu pozváni: ${notInvitedUsers}. Zkontrolujte prosím níže uvedený seznam pro aktuální stav.",
+    "eventSelected": "Událost ${event.title} vybrána. Nyní vyberte uživatele k pozvání:"
+  },
+  "anErrorOccurredWhileHandlingTheInteraction": "Při zpracování interakce došlo k chybě. Zkuste to prosím později.",
+  "anErrorOccurred": "Došlo k chybě. Zkuste to prosím později.",
+  "eventUpdatedSuccessfully": "Událost byla úspěšně aktualizována.",
+  "anErrorOccuredWhileUpdatingTheEvent": "Při aktualizaci události došlo k chybě. Zkuste to prosím později.",
+  "anErrorOccurredWhileCreatingTheEvent": "Při vytváření události došlo k chybě. Zkuste to prosím později.",
+  "anUnexpectedErrorOccurred": "Došlo k neočekávané chybě. Zkuste to prosím později.",
+  "anErrorOccurredWhileProcessingYourRequest": "Při zpracování vaší žádosti došlo k chybě. Zkuste to prosím později.",
+  "anErrorOccurredWhileFetchingTheEvents": "Při načítání událostí došlo k chybě.",
+  "selections": {
+    "inviteEvent": "Vyberte prosím událost, na kterou chcete pozvat ostatní:",
+    "joinEvent": "Vyberte prosím událost, ke které se chcete připojit:",
+    "leaveEvent": "Vyberte prosím událost, kterou chcete opustit:",
+    "updateEvent": "Vyberte prosím událost, kterou chcete aktualizovat:",
+    "cancelEvent": "Vyberte prosím událost, kterou chcete zrušit:",
+    "startEvent": "Vyberte prosím událost, kterou chcete zahájit:",
+    "finishEvent": "Vyberte prosím událost, kterou chcete dokončit:",
+    "events": "Vyberte prosím událost k zobrazení:",
+    "activeEvents": "Vyberte prosím aktivní událost k zobrazení:"
+  },
+  "noEvents": {
+    "inviteEvent": "Žádné události nejsou k dispozici pro pozvání ostatních.",
+    "joinEvent": "Žádné události nejsou k dispozici pro připojení.",
+    "leaveEvent": "Žádné události nejsou k dispozici pro opuštění.",
+    "updateEvent": "Žádné události nejsou k dispozici pro aktualizaci.",
+    "cancelEvent": "Žádné události nejsou k dispozici pro zrušení.",
+    "startEvent": "Žádné události nejsou k dispozici pro zahájení.",
+    "finishEvent": "Žádné události nejsou k dispozici pro dokončení."
+  },
+  "backendErrors": {
+    "participantLimitMustBeANumberBetween1And1024": "Limit účastníků musí být číslo mezi 1 a 1024.",
+    "invalidStartTimeFormat": "Neplatný formát času začátku. Použijte prosím formát HH:MM.",
+    "cannotInteractWithEventInThePast": "Nemůžete interagovat s událostí v minulosti.",
+    "cannotCreateEventMoreThan45DaysInAdvance": "Nemůžete vytvořit událost více než 45 dní dopředu.",
+    "cannotChangeStatusToNotStarted": "Nemůžete změnit stav zpět na nezačato.",
+    "participantLimitMustEqualAttendingUsersToMarkReady": "Limit účastníků musí být roven aktuálnímu počtu účastníků, aby bylo možné označit jako připraveno k zahájení.",
+    "onlyNotStartedEventsCanBeMarkedReady": "Jenom události, které ještě nezačaly, mohou být označeny jako připravené k zahájení.",
+    "cannotStartEventNotReady": "Nemůžete zahájit událost, která není připravena k zahájení.",
+    "cannotStartFinishedEvent": "Nemůžete zahájit dokončenou událost.",
+    "cannotStartCanceledEvent": "Nemůžete zahájit zrušenou událost.",
+    "cannotFinishNotStartedEvent": "Nemůžete dokončit událost, která ještě nezačala.",
+    "cannotFinishCanceledEvent": "Nemůžete dokončit zrušenou událost.",
+    "cannotCancelOngoingEvent": "Nemůžete zrušit probíhající událost.",
+    "cannotCancelFinishedEvent": "Nemůžete zrušit dokončenou událost.",
+    "eventNotFound": "Událost nenalezena.",
+    "noEventsFound": "Žádné události nenalezeny.",
+    "thisEventIsCurrentlyOngoing": "Tato událost právě probíhá, již nemůžete učinit rozhodnutí.",
+    "thisEventHasAlreadyFinished": "Tato událost již byla dokončena, již nemůžete učinit rozhodnutí.",
+    "thisEventHasBeenCanceled": "Tato událost byla zrušena, již nemůžete učinit rozhodnutí.",
+    "invalidStatus": "Neplatný stav.",
+    "participantLimitCannotBeLessThanNumberOfAttendingUsers": "Limit účastníků nemůže být menší než počet účastníků.",
+    "somethingWentWrong": "Něco se pokazilo!"
+  }
+}

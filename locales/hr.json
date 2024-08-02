@@ -1,0 +1,120 @@
+{
+  "commons": {
+    "eventId": "ID događaja",
+    "startTime": "Vrijeme početka",
+    "participants": "Sudionici",
+    "status": "Status",
+    "attending": "Sudjeluje",
+    "waitlist": "Lista čekanja",
+    "details": "Detalji",
+    "noDescription": "Nije pružen opis.",
+    "selectUsersToInvite": "Odaberite korisnike za pozivanje",
+    "selectAnEvent": "Odaberite događaj",
+    "createEvent": "Kreiraj događaj",
+    "updateEvent": "Ažuriraj događaj"
+  },
+  "buttons": {
+    "attend": "Sudjeluj",
+    "decline": "Odbij",
+    "considering": "Razmatra"
+  },
+  "status": {
+    "attending": "Sudjeluje",
+    "decline": "Odbijeno",
+    "considering": "Razmatra",
+    "invited": "Pozvan - čeka odgovor",
+    "waitlist": "Lista čekanja"
+  },
+  "eventStatus": {
+    "notStarted": "Nije započelo",
+    "readyToStart": "Spremno za početak",
+    "ongoing": "U tijeku",
+    "finished": "Završeno",
+    "canceled": "Otkazano"
+  },
+  "modal": {
+    "labels": {
+      "eventTitle": "Naslov događaja",
+      "eventDescription": "Opis događaja",
+      "participantLimit": "Limit sudionika",
+      "eventStartDate": "Datum početka događaja (YYYY-MM-DD)",
+      "eventStartDatePlaceHolder": "Format: YYYY-MM-DD",
+      "eventStartTime": "Vrijeme početka događaja (HH:MM)",
+      "eventStartTimePlaceHolder": "Format: HH:MM"
+    }
+  },
+  "dynamic": {
+    "thisEventIsCreatedBy": "Ovaj događaj kreirao je ${creator.username}",
+    "sorryTheEventIsCanceled": "Nažalost, događaj ${event.title} kojem ste trebali prisustvovati otkazan je od strane ${event.creator}. Evo sudionika koji su trebali prisustvovati: ${participants}.",
+    "youSelectedEvent": "Odabrali ste ${event.title}. Uskoro! Možete vidjeti ovaj događaj na našoj web stranici!",
+    "eventWithIdNotFound": "Događaj s ID-om ${eventId} nije pronađen.",
+    "weHaveHitTheMagicNumber": "Postigli smo čarobni broj sudionika! 🎉 Događaj može početi čim stigne vrijeme! Evo sjajnih sudionika: ${participants} ",
+    "actionMessages": {
+      "youHaveJoinedTheEvent": "Pridružili ste se događaju ${event.title}. Molimo potvrdite svoj status sudjelovanja u nastavku.",
+      "youHaveLeftTheEvent": "Napustili ste događaj ${event.title}. Molimo potvrdite svoj status sudjelovanja u nastavku.",
+      "youHaveUpdatedTheEvent": "Ažurirali ste događaj ${event.title}. Molimo potvrdite svoj status sudjelovanja u nastavku.",
+      "youHaveCreatedTheEvent": "Kreirali ste događaj ${event.title}. Molimo potvrdite svoj status sudjelovanja u nastavku.",
+      "youHaveStartedTheEvent": "Započeli ste događaj ${event.title}. Molimo potvrdite svoj status sudjelovanja u nastavku.",
+      "youHaveFinishedTheEvent": "Završili ste događaj ${event.title}. Molimo potvrdite svoj status sudjelovanja u nastavku.",
+      "youHaveCanceledTheEvent": "Otkazali ste događaj ${event.title}. Molimo potvrdite svoj status sudjelovanja u nastavku.",
+      "youHaveSelectedTheEvent": "Odabrali ste događaj ${event.title}. Molimo potvrdite svoj status sudjelovanja u nastavku.",
+      "allTheUsersYouInvitedHaveAlreadyResponded": "Svi korisnici koje ste pozvali već su odgovorili i nisu ponovno pozvani: ${selectedUsers}. Molimo provjerite popis u nastavku za trenutni status."
+    },
+    "pleaseWait": "Molimo pričekajte još ${timeLeft} sekunde(a) prije ponovnog korištenja naredbe ${command.data.name}.",
+    "theFollowingUsersHaveBeenSuccessfullyInvited": "Sljedeći korisnici su uspješno pozvani na događaj: ${invitedUsers}.",
+    "howeverTheFollowingUsersHadAlreadyResponded": "Međutim, sljedeći korisnici su već odgovorili na poziv i nisu ponovno pozvani: ${notInvitedUsers}. Molimo provjerite popis u nastavku za njihov trenutni status.",
+    "eventSelected": "Događaj ${event.title} odabran. Sada odaberite korisnike za pozivanje:"
+  },
+  "anErrorOccurredWhileHandlingTheInteraction": "Došlo je do pogreške prilikom rukovanja interakcijom. Molimo pokušajte ponovno kasnije.",
+  "anErrorOccurred": "Došlo je do pogreške. Molimo pokušajte ponovno kasnije.",
+  "eventUpdatedSuccessfully": "Događaj uspješno ažuriran.",
+  "anErrorOccuredWhileUpdatingTheEvent": "Došlo je do pogreške prilikom ažuriranja događaja. Molimo pokušajte ponovno kasnije.",
+  "anErrorOccurredWhileCreatingTheEvent": "Došlo je do pogreške prilikom kreiranja događaja. Molimo pokušajte ponovno kasnije.",
+  "anUnexpectedErrorOccurred": "Došlo je do neočekivane pogreške. Molimo pokušajte ponovno kasnije.",
+  "anErrorOccurredWhileProcessingYourRequest": "Došlo je do pogreške prilikom obrade vašeg zahtjeva. Molimo pokušajte ponovno kasnije.",
+  "anErrorOccurredWhileFetchingTheEvents": "Došlo je do pogreške prilikom dohvaćanja događaja.",
+  "selections": {
+    "inviteEvent": "Molimo odaberite događaj za pozivanje drugih:",
+    "joinEvent": "Molimo odaberite događaj za pridruživanje:",
+    "leaveEvent": "Molimo odaberite događaj za napuštanje:",
+    "updateEvent": "Molimo odaberite događaj za ažuriranje:",
+    "cancelEvent": "Molimo odaberite događaj za otkazivanje:",
+    "startEvent": "Molimo odaberite događaj za početak:",
+    "finishEvent": "Molimo odaberite događaj za završetak:",
+    "events": "Molimo odaberite događaj za pregled:",
+    "activeEvents": "Molimo odaberite aktivni događaj za pregled:"
+  },
+  "noEvents": {
+    "inviteEvent": "Nema dostupnih događaja za pozivanje drugih.",
+    "joinEvent": "Nema dostupnih događaja za pridruživanje.",
+    "leaveEvent": "Nema dostupnih događaja za napuštanje.",
+    "updateEvent": "Nema dostupnih događaja za ažuriranje.",
+    "cancelEvent": "Nema dostupnih događaja za otkazivanje.",
+    "startEvent": "Nema dostupnih događaja za početak.",
+    "finishEvent": "Nema dostupnih događaja za završetak."
+  },
+  "backendErrors": {
+    "participantLimitMustBeANumberBetween1And1024": "Limit sudionika mora biti broj između 1 i 1024.",
+    "invalidStartTimeFormat": "Neispravan format vremena početka. Molimo koristite format HH:MM.",
+    "cannotInteractWithEventInThePast": "Ne možete komunicirati s događajem u prošlosti.",
+    "cannotCreateEventMoreThan45DaysInAdvance": "Ne možete kreirati događaj više od 45 dana unaprijed.",
+    "cannotChangeStatusToNotStarted": "Ne možete promijeniti status natrag na 'nije započelo'.",
+    "participantLimitMustEqualAttendingUsersToMarkReady": "Limit sudionika mora biti jednak trenutnom broju sudionika kako bi se označilo kao spremno za početak.",
+    "onlyNotStartedEventsCanBeMarkedReady": "Samo događaji koji još nisu započeli mogu biti označeni kao spremni za početak.",
+    "cannotStartEventNotReady": "Ne možete započeti događaj koji nije spreman za početak.",
+    "cannotStartFinishedEvent": "Ne možete započeti završeni događaj.",
+    "cannotStartCanceledEvent": "Ne možete započeti otkazani događaj.",
+    "cannotFinishNotStartedEvent": "Ne možete završiti događaj koji još nije započeo.",
+    "cannotFinishCanceledEvent": "Ne možete završiti otkazani događaj.",
+    "cannotCancelOngoingEvent": "Ne možete otkazati događaj koji je u tijeku.",
+    "cannotCancelFinishedEvent": "Ne možete otkazati završeni događaj.",
+    "eventNotFound": "Događaj nije pronađen.",
+    "noEventsFound": "Nisu pronađeni događaji.",
+    "thisEventIsCurrentlyOngoing": "Ovaj događaj je trenutno u tijeku, više ne možete donijeti odluku.",
+    "thisEventHasAlreadyFinished": "Ovaj događaj je već završio, više ne možete donijeti odluku.",
+    "thisEventHasBeenCanceled": "Ovaj događaj je otkazan, više ne možete donijeti odluku.",
+    "invalidStatus": "Neispravan status.",
+    "participantLimitCannotBeLessThanNumberOfAttendingUsers": "Limit sudionika ne može biti manji od broja sudionika.",
+    "somethingWentWrong": "Nešto je pošlo po zlu!"
+  }
+}

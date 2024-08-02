@@ -1,0 +1,120 @@
+{
+  "commons": {
+    "eventId": "イベントID",
+    "startTime": "開始時間",
+    "participants": "参加者",
+    "status": "ステータス",
+    "attending": "出席",
+    "waitlist": "ウェイトリスト",
+    "details": "詳細",
+    "noDescription": "説明は提供されていません。",
+    "selectUsersToInvite": "招待するユーザーを選択",
+    "selectAnEvent": "イベントを選択",
+    "createEvent": "イベントを作成",
+    "updateEvent": "イベントを更新"
+  },
+  "buttons": {
+    "attend": "出席",
+    "decline": "辞退",
+    "considering": "検討中"
+  },
+  "status": {
+    "attending": "出席",
+    "decline": "辞退",
+    "considering": "検討中",
+    "invited": "招待済み - 応答待ち",
+    "waitlist": "ウェイトリスト"
+  },
+  "eventStatus": {
+    "notStarted": "未開始",
+    "readyToStart": "開始準備完了",
+    "ongoing": "進行中",
+    "finished": "終了",
+    "canceled": "キャンセル"
+  },
+  "modal": {
+    "labels": {
+      "eventTitle": "イベントタイトル",
+      "eventDescription": "イベントの説明",
+      "participantLimit": "参加者制限",
+      "eventStartDate": "イベント開始日 (YYYY-MM-DD)",
+      "eventStartDatePlaceHolder": "形式: YYYY-MM-DD",
+      "eventStartTime": "イベント開始時間 (HH:MM)",
+      "eventStartTimePlaceHolder": "形式: HH:MM"
+    }
+  },
+  "dynamic": {
+    "thisEventIsCreatedBy": "このイベントは${creator.username}が作成しました",
+    "sorryTheEventIsCanceled": "申し訳ありませんが、${event.creator}がキャンセルしたため、参加予定だったイベント${event.title}はキャンセルされました。参加予定だった参加者はこちらです：${participants}。",
+    "youSelectedEvent": "あなたはイベント${event.title}を選択しました。近日公開！このイベントはウェブサイトで確認できます！",
+    "eventWithIdNotFound": "ID${eventId}のイベントが見つかりません。",
+    "weHaveHitTheMagicNumber": "参加者の魔法の数に達しました！ 🎉 時間が来たらイベントを開始できます！素晴らしい参加者はこちらです：${participants} ",
+    "actionMessages": {
+      "youHaveJoinedTheEvent": "あなたはイベント${event.title}に参加しました。以下の参加ステータスを確認してください。",
+      "youHaveLeftTheEvent": "あなたはイベント${event.title}から退席しました。以下の参加ステータスを確認してください。",
+      "youHaveUpdatedTheEvent": "あなたはイベント${event.title}を更新しました。以下の参加ステータスを確認してください。",
+      "youHaveCreatedTheEvent": "あなたはイベント${event.title}を作成しました。以下の参加ステータスを確認してください。",
+      "youHaveStartedTheEvent": "あなたはイベント${event.title}を開始しました。以下の参加ステータスを確認してください。",
+      "youHaveFinishedTheEvent": "あなたはイベント${event.title}を終了しました。以下の参加ステータスを確認してください。",
+      "youHaveCanceledTheEvent": "あなたはイベント${event.title}をキャンセルしました。以下の参加ステータスを確認してください。",
+      "youHaveSelectedTheEvent": "あなたはイベント${event.title}を選択しました。以下の参加ステータスを確認してください。",
+      "allTheUsersYouInvitedHaveAlreadyResponded": "招待したすべてのユーザーがすでに応答しており、再招待されませんでした：${selectedUsers}。現在のステータスは以下のリストを確認してください。"
+    },
+    "pleaseWait": "再度${command.data.name}コマンドを使用する前に${timeLeft}秒待ってください。",
+    "theFollowingUsersHaveBeenSuccessfullyInvited": "次のユーザーがイベントに正常に招待されました：${invitedUsers}。",
+    "howeverTheFollowingUsersHadAlreadyResponded": "ただし、以下のユーザーはすでに応答しており、再招待されませんでした：${notInvitedUsers}。現在のステータスは以下のリストを確認してください。",
+    "eventSelected": "イベント${event.title}が選択されました。次に、招待するユーザーを選択してください："
+  },
+  "anErrorOccurredWhileHandlingTheInteraction": "インタラクションの処理中にエラーが発生しました。後でもう一度お試しください。",
+  "anErrorOccurred": "エラーが発生しました。後でもう一度お試しください。",
+  "eventUpdatedSuccessfully": "イベントが正常に更新されました。",
+  "anErrorOccuredWhileUpdatingTheEvent": "イベントの更新中にエラーが発生しました。後でもう一度お試しください。",
+  "anErrorOccurredWhileCreatingTheEvent": "イベントの作成中にエラーが発生しました。後でもう一度お試しください。",
+  "anUnexpectedErrorOccurred": "予期しないエラーが発生しました。後でもう一度お試しください。",
+  "anErrorOccurredWhileProcessingYourRequest": "リクエストの処理中にエラーが発生しました。後でもう一度お試しください。",
+  "anErrorOccurredWhileFetchingTheEvents": "イベントの取得中にエラーが発生しました。",
+  "selections": {
+    "inviteEvent": "他のユーザーを招待するイベントを選択してください：",
+    "joinEvent": "参加するイベントを選択してください：",
+    "leaveEvent": "退席するイベントを選択してください：",
+    "updateEvent": "更新するイベントを選択してください：",
+    "cancelEvent": "キャンセルするイベントを選択してください：",
+    "startEvent": "開始するイベントを選択してください：",
+    "finishEvent": "終了するイベントを選択してください：",
+    "events": "表示するイベントを選択してください：",
+    "activeEvents": "表示するアクティブなイベントを選択してください："
+  },
+  "noEvents": {
+    "inviteEvent": "他のユーザーを招待するイベントはありません。",
+    "joinEvent": "参加するイベントはありません。",
+    "leaveEvent": "退席するイベントはありません。",
+    "updateEvent": "更新するイベントはありません。",
+    "cancelEvent": "キャンセルするイベントはありません。",
+    "startEvent": "開始するイベントはありません。",
+    "finishEvent": "終了するイベントはありません。"
+  },
+  "backendErrors": {
+    "participantLimitMustBeANumberBetween1And1024": "参加者制限は1から1024の間の数値でなければなりません。",
+    "invalidStartTimeFormat": "開始時間の形式が無効です。HH:MM形式を使用してください。",
+    "cannotInteractWithEventInThePast": "過去のイベントに対して操作することはできません。",
+    "cannotCreateEventMoreThan45DaysInAdvance": "45日以上前にイベントを作成することはできません。",
+    "cannotChangeStatusToNotStarted": "ステータスを未開始に戻すことはできません。",
+    "participantLimitMustEqualAttendingUsersToMarkReady": "開始準備完了にマークするには、参加者制限は現在の参加者数と一致している必要があります。",
+    "onlyNotStartedEventsCanBeMarkedReady": "未開始のイベントのみ開始準備完了にマークできます。",
+    "cannotStartEventNotReady": "開始準備完了でないイベントを開始することはできません。",
+    "cannotStartFinishedEvent": "終了したイベントを開始することはできません。",
+    "cannotStartCanceledEvent": "キャンセルされたイベントを開始することはできません。",
+    "cannotFinishNotStartedEvent": "まだ開始されていないイベントを終了することはできません。",
+    "cannotFinishCanceledEvent": "キャンセルされたイベントを終了することはできません。",
+    "cannotCancelOngoingEvent": "進行中のイベントをキャンセルすることはできません。",
+    "cannotCancelFinishedEvent": "終了したイベントをキャンセルすることはできません。",
+    "eventNotFound": "イベントが見つかりません。",
+    "noEventsFound": "イベントが見つかりません。",
+    "thisEventIsCurrentlyOngoing": "このイベントは現在進行中です、もう決定することはできません。",
+    "thisEventHasAlreadyFinished": "このイベントはすでに終了しているため、もう決定することはできません。",
+    "thisEventHasBeenCanceled": "このイベントはキャンセルされたため、もう決定することはできません。",
+    "invalidStatus": "無効なステータスです。",
+    "participantLimitCannotBeLessThanNumberOfAttendingUsers": "参加者制限は現在の参加者数未満にすることはできません。",
+    "somethingWentWrong": "何かがうまくいきませんでした！"
+  }
+}

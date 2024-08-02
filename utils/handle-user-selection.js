@@ -1,6 +1,7 @@
 const { fetchEvent, addOrUpdateUser } = require('../services/event-service')
 const { getMentionUsersString, getUsersName } = require('../utils/mentionUtils')
 const { handleEventAction } = require('./handle-event-action')
+const { getLocalizedValue } = require('../utils/localization')
 
 const handleUserSelection = async (interaction, eventId) => {
   let selectedUsers = interaction.values
@@ -22,12 +23,15 @@ const handleUserSelection = async (interaction, eventId) => {
     if (allUsersProcessed && allSelectedUsersHaveResponded) {
       selectedUsers = await getUsersName(selectedUsers, interaction.client)
 
-      await handleEventAction(
-        interaction,
-        'invite-event',
-        eventId,
-        `All the users you invited have already responded and were not re-invited: ${selectedUsers}. Please check the list below for the current status.`
+      const allTheUsersYouInvitedHaveAlreadyResponded = getLocalizedValue(
+        interaction.locale,
+        'dynamic.allTheUsersYouInvitedHaveAlreadyResponded',
+        {
+          selectedUsers,
+        }
       )
+
+      await handleEventAction(interaction, 'invite-event', eventId, allTheUsersYouInvitedHaveAlreadyResponded)
 
       return
     }
@@ -43,19 +47,29 @@ const handleUserSelection = async (interaction, eventId) => {
       interaction.client
     )
 
-    let content = `The following users have been successfully invited to the event: ${getMentionUsersString(
-      invitedUsers
-    )}.`
+    let content = getLocalizedValue(interaction.locale, 'dynamic.theFollowingUsersHaveBeenSuccessfullyInvited', {
+      invitedUsers: getMentionUsersString(invitedUsers),
+    })
 
     if (notInvitedUsers.length > 0) {
-      content += ` However, the following users had already responded to the invitation and were not re-invited: ${notInvitedUsers}. Please check the list below for their current status.`
+      content += getLocalizedValue(interaction.locale, 'dynamic.howeverTheFollowingUsersHadAlreadyResponded', {
+        notInvitedUsers,
+      })
     }
 
     await handleEventAction(interaction, 'invite-event', eventId, content)
   } catch (error) {
     console.log('Error inviting users to event', error)
+
+    let errorMessage = getLocalizedValue(interaction.locale, 'anErrorOccurredWhileProcessingYourRequest')
+
+    if (error.response && error.response.data && error.response.data.error) {
+      backendErrors = getLocalizedValue(interaction.locale, 'backendErrors')
+      errorMessage = backendErrors[error.response.data.error]
+    }
+
     await interaction.reply({
-      content: error.response.data.error || 'An error occurred while processing your request.',
+      content: errorMessage,
       ephemeral: true,
     })
   }

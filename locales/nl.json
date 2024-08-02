@@ -1,0 +1,120 @@
+{
+  "commons": {
+    "eventId": "Evenement ID",
+    "startTime": "Starttijd",
+    "participants": "Deelnemers",
+    "status": "Status",
+    "attending": "Aanwezig",
+    "waitlist": "Wachtlijst",
+    "details": "Details",
+    "noDescription": "Geen beschrijving opgegeven.",
+    "selectUsersToInvite": "Selecteer gebruikers om uit te nodigen",
+    "selectAnEvent": "Selecteer een evenement",
+    "createEvent": "Evenement aanmaken",
+    "updateEvent": "Evenement bijwerken"
+  },
+  "buttons": {
+    "attend": "Aanwezig",
+    "decline": "Afwijzen",
+    "considering": "Overwegen"
+  },
+  "status": {
+    "attending": "Aanwezig",
+    "decline": "Afgewezen",
+    "considering": "Overwegen",
+    "invited": "Uitgenodigd - wachtend op reactie",
+    "waitlist": "Wachtlijst"
+  },
+  "eventStatus": {
+    "notStarted": "Niet gestart",
+    "readyToStart": "Klaar om te starten",
+    "ongoing": "Bezig",
+    "finished": "Afgerond",
+    "canceled": "Geannuleerd"
+  },
+  "modal": {
+    "labels": {
+      "eventTitle": "Evenement Titel",
+      "eventDescription": "Evenement Beschrijving",
+      "participantLimit": "Deelnemerslimiet",
+      "eventStartDate": "Evenement Startdatum (JJJJ-MM-DD)",
+      "eventStartDatePlaceHolder": "Formaat: JJJJ-MM-DD",
+      "eventStartTime": "Evenement Starttijd (UU:MM)",
+      "eventStartTimePlaceHolder": "Formaat: UU:MM"
+    }
+  },
+  "dynamic": {
+    "thisEventIsCreatedBy": "Dit evenement is gemaakt door ${creator.username}",
+    "sorryTheEventIsCanceled": "Sorry, het evenement ${event.title} waar je aan zou deelnemen is geannuleerd door ${event.creator}. Hier zijn de deelnemers die zouden deelnemen: ${participants}.",
+    "youSelectedEvent": "Je hebt ${event.title} geselecteerd. Binnenkort! Je kunt dit evenement op onze website zien!",
+    "eventWithIdNotFound": "Evenement met ID ${eventId} niet gevonden.",
+    "weHaveHitTheMagicNumber": "We hebben het magische aantal deelnemers bereikt! 🎉 Het evenement kan beginnen zodra de tijd aanbreekt! Hier zijn de geweldige aanwezigen: ${participants} ",
+    "actionMessages": {
+      "youHaveJoinedTheEvent": "Je hebt je aangemeld voor het evenement ${event.title}. Bevestig je deelnamestatus hieronder.",
+      "youHaveLeftTheEvent": "Je hebt je afgemeld voor het evenement ${event.title}. Bevestig je deelnamestatus hieronder.",
+      "youHaveUpdatedTheEvent": "Je hebt het evenement ${event.title} bijgewerkt. Bevestig je deelnamestatus hieronder.",
+      "youHaveCreatedTheEvent": "Je hebt het evenement ${event.title} aangemaakt. Bevestig je deelnamestatus hieronder.",
+      "youHaveStartedTheEvent": "Je hebt het evenement ${event.title} gestart. Bevestig je deelnamestatus hieronder.",
+      "youHaveFinishedTheEvent": "Je hebt het evenement ${event.title} afgerond. Bevestig je deelnamestatus hieronder.",
+      "youHaveCanceledTheEvent": "Je hebt het evenement ${event.title} geannuleerd. Bevestig je deelnamestatus hieronder.",
+      "youHaveSelectedTheEvent": "Je hebt het evenement ${event.title} geselecteerd. Bevestig je deelnamestatus hieronder.",
+      "allTheUsersYouInvitedHaveAlreadyResponded": "Alle gebruikers die je hebt uitgenodigd hebben al gereageerd en zijn niet opnieuw uitgenodigd: ${selectedUsers}. Controleer de onderstaande lijst voor de huidige status."
+    },
+    "pleaseWait": "Wacht alsjeblieft nog ${timeLeft} seconde(n) voordat je het ${command.data.name} commando opnieuw gebruikt.",
+    "theFollowingUsersHaveBeenSuccessfullyInvited": "De volgende gebruikers zijn succesvol uitgenodigd voor het evenement: ${invitedUsers}.",
+    "howeverTheFollowingUsersHadAlreadyResponded": "De volgende gebruikers hadden echter al gereageerd op de uitnodiging en zijn niet opnieuw uitgenodigd: ${notInvitedUsers}. Controleer de onderstaande lijst voor hun huidige status.",
+    "eventSelected": "Evenement ${event.title} geselecteerd. Selecteer nu gebruikers om uit te nodigen:"
+  },
+  "anErrorOccurredWhileHandlingTheInteraction": "Er is een fout opgetreden bij het verwerken van de interactie. Probeer het later opnieuw.",
+  "anErrorOccurred": "Er is een fout opgetreden. Probeer het later opnieuw.",
+  "eventUpdatedSuccessfully": "Evenement succesvol bijgewerkt.",
+  "anErrorOccuredWhileUpdatingTheEvent": "Er is een fout opgetreden bij het bijwerken van het evenement. Probeer het later opnieuw.",
+  "anErrorOccurredWhileCreatingTheEvent": "Er is een fout opgetreden bij het aanmaken van het evenement. Probeer het later opnieuw.",
+  "anUnexpectedErrorOccurred": "Er is een onverwachte fout opgetreden. Probeer het later opnieuw.",
+  "anErrorOccurredWhileProcessingYourRequest": "Er is een fout opgetreden bij het verwerken van je verzoek. Probeer het later opnieuw.",
+  "anErrorOccurredWhileFetchingTheEvents": "Er is een fout opgetreden bij het ophalen van de evenementen.",
+  "selections": {
+    "inviteEvent": "Selecteer een evenement om anderen voor uit te nodigen:",
+    "joinEvent": "Selecteer een evenement om aan deel te nemen:",
+    "leaveEvent": "Selecteer een evenement om te verlaten:",
+    "updateEvent": "Selecteer een evenement om bij te werken:",
+    "cancelEvent": "Selecteer een evenement om te annuleren:",
+    "startEvent": "Selecteer een evenement om te starten:",
+    "finishEvent": "Selecteer een evenement om af te ronden:",
+    "events": "Selecteer een evenement om te bekijken:",
+    "activeEvents": "Selecteer een actief evenement om te bekijken:"
+  },
+  "noEvents": {
+    "inviteEvent": "Geen evenementen beschikbaar om anderen voor uit te nodigen.",
+    "joinEvent": "Geen evenementen beschikbaar om aan deel te nemen.",
+    "leaveEvent": "Geen evenementen beschikbaar om te verlaten.",
+    "updateEvent": "Geen evenementen beschikbaar om bij te werken.",
+    "cancelEvent": "Geen evenementen beschikbaar om te annuleren.",
+    "startEvent": "Geen evenementen beschikbaar om te starten.",
+    "finishEvent": "Geen evenementen beschikbaar om af te ronden."
+  },
+  "backendErrors": {
+    "participantLimitMustBeANumberBetween1And1024": "Deelnemerslimiet moet een getal zijn tussen 1 en 1024.",
+    "invalidStartTimeFormat": "Ongeldig starttijd formaat. Gebruik het formaat UU:MM.",
+    "cannotInteractWithEventInThePast": "Je kunt niet interageren met een evenement in het verleden.",
+    "cannotCreateEventMoreThan45DaysInAdvance": "Je kunt geen evenement aanmaken meer dan 45 dagen vooruit.",
+    "cannotChangeStatusToNotStarted": "Je kunt de status niet terugzetten naar niet-gestart.",
+    "participantLimitMustEqualAttendingUsersToMarkReady": "Deelnemerslimiet moet gelijk zijn aan het huidige aantal aanwezige gebruikers om als klaar te markeren.",
+    "onlyNotStartedEventsCanBeMarkedReady": "Alleen evenementen die nog niet zijn gestart kunnen als klaar worden gemarkeerd.",
+    "cannotStartEventNotReady": "Je kunt het evenement niet starten dat niet klaar is om te starten.",
+    "cannotStartFinishedEvent": "Je kunt een afgerond evenement niet starten.",
+    "cannotStartCanceledEvent": "Je kunt een geannuleerd evenement niet starten.",
+    "cannotFinishNotStartedEvent": "Je kunt een evenement dat nog niet is gestart niet afronden.",
+    "cannotFinishCanceledEvent": "Je kunt een geannuleerd evenement niet afronden.",
+    "cannotCancelOngoingEvent": "Je kunt een lopend evenement niet annuleren.",
+    "cannotCancelFinishedEvent": "Je kunt een afgerond evenement niet annuleren.",
+    "eventNotFound": "Evenement niet gevonden.",
+    "noEventsFound": "Geen evenementen gevonden.",
+    "thisEventIsCurrentlyOngoing": "Dit evenement is momenteel bezig, je kunt geen beslissing meer nemen.",
+    "thisEventHasAlreadyFinished": "Dit evenement is al afgelopen, je kunt geen beslissing meer nemen.",
+    "thisEventHasBeenCanceled": "Dit evenement is geannuleerd, je kunt geen beslissing meer nemen.",
+    "invalidStatus": "Ongeldige status.",
+    "participantLimitCannotBeLessThanNumberOfAttendingUsers": "Deelnemerslimiet kan niet lager zijn dan het aantal aanwezige gebruikers.",
+    "somethingWentWrong": "Er ging iets mis!"
+  }
+}
