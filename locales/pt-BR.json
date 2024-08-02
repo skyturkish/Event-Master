@@ -1,0 +1,120 @@
+{
+  "commons": {
+    "eventId": "ID do Evento",
+    "startTime": "Hora de Início",
+    "participants": "Participantes",
+    "status": "Status",
+    "attending": "Comparecendo",
+    "waitlist": "Lista de Espera",
+    "details": "Detalhes",
+    "noDescription": "Nenhuma descrição fornecida.",
+    "selectUsersToInvite": "Selecione os usuários para convidar",
+    "selectAnEvent": "Selecione um evento",
+    "createEvent": "Criar Evento",
+    "updateEvent": "Atualizar Evento"
+  },
+  "buttons": {
+    "attend": "Comparecer",
+    "decline": "Recusar",
+    "considering": "Considerando"
+  },
+  "status": {
+    "attending": "Comparecendo",
+    "decline": "Recusado",
+    "considering": "Considerando",
+    "invited": "Convidado - aguardando resposta",
+    "waitlist": "Lista de Espera"
+  },
+  "eventStatus": {
+    "notStarted": "Não Iniciado",
+    "readyToStart": "Pronto para Iniciar",
+    "ongoing": "Em Andamento",
+    "finished": "Finalizado",
+    "canceled": "Cancelado"
+  },
+  "modal": {
+    "labels": {
+      "eventTitle": "Título do Evento",
+      "eventDescription": "Descrição do Evento",
+      "participantLimit": "Limite de Participantes",
+      "eventStartDate": "Data de Início do Evento (AAAA-MM-DD)",
+      "eventStartDatePlaceHolder": "Formato: AAAA-MM-DD",
+      "eventStartTime": "Hora de Início do Evento (HH:MM)",
+      "eventStartTimePlaceHolder": "Formato: HH:MM"
+    }
+  },
+  "dynamic": {
+    "thisEventIsCreatedBy": "Este evento foi criado por ${creator.username}",
+    "sorryTheEventIsCanceled": "Desculpe, o evento ${event.title} que você ia participar foi cancelado por ${event.creator}. Aqui estão os participantes que iam participar: ${participants}.",
+    "youSelectedEvent": "Você selecionou ${event.title}. Em breve! Você pode ver este evento em nosso site!",
+    "eventWithIdNotFound": "Evento com ID ${eventId} não encontrado.",
+    "weHaveHitTheMagicNumber": "Alcançamos o número mágico de participantes! 🎉 O evento pode começar assim que a hora chegar! Aqui estão os participantes incríveis: ${participants} ",
+    "actionMessages": {
+      "youHaveJoinedTheEvent": "Você se juntou ao evento ${event.title}. Por favor, confirme seu status de participação abaixo.",
+      "youHaveLeftTheEvent": "Você saiu do evento ${event.title}. Por favor, confirme seu status de participação abaixo.",
+      "youHaveUpdatedTheEvent": "Você atualizou o evento ${event.title}. Por favor, confirme seu status de participação abaixo.",
+      "youHaveCreatedTheEvent": "Você criou o evento ${event.title}. Por favor, confirme seu status de participação abaixo.",
+      "youHaveStartedTheEvent": "Você iniciou o evento ${event.title}. Por favor, confirme seu status de participação abaixo.",
+      "youHaveFinishedTheEvent": "Você finalizou o evento ${event.title}. Por favor, confirme seu status de participação abaixo.",
+      "youHaveCanceledTheEvent": "Você cancelou o evento ${event.title}. Por favor, confirme seu status de participação abaixo.",
+      "youHaveSelectedTheEvent": "Você selecionou o evento ${event.title}. Por favor, confirme seu status de participação abaixo.",
+      "allTheUsersYouInvitedHaveAlreadyResponded": "Todos os usuários que você convidou já responderam e não foram reinvited: ${selectedUsers}. Por favor, verifique a lista abaixo para o status atual."
+    },
+    "pleaseWait": "Por favor, espere ${timeLeft} segundo(s) antes de reutilizar o comando ${command.data.name}.",
+    "theFollowingUsersHaveBeenSuccessfullyInvited": "Os seguintes usuários foram convidados com sucesso para o evento: ${invitedUsers}.",
+    "howeverTheFollowingUsersHadAlreadyResponded": "No entanto, os seguintes usuários já haviam respondido ao convite e não foram reinvited: ${notInvitedUsers}. Por favor, verifique a lista abaixo para o status atual.",
+    "eventSelected": "Evento ${event.title} selecionado. Agora, selecione os usuários para convidar:"
+  },
+  "anErrorOccurredWhileHandlingTheInteraction": "Ocorreu um erro ao lidar com a interação. Por favor, tente novamente mais tarde.",
+  "anErrorOccurred": "Ocorreu um erro. Por favor, tente novamente mais tarde.",
+  "eventUpdatedSuccessfully": "Evento atualizado com sucesso.",
+  "anErrorOccuredWhileUpdatingTheEvent": "Ocorreu um erro ao atualizar o evento. Por favor, tente novamente mais tarde.",
+  "anErrorOccurredWhileCreatingTheEvent": "Ocorreu um erro ao criar o evento. Por favor, tente novamente mais tarde.",
+  "anUnexpectedErrorOccurred": "Ocorreu um erro inesperado. Por favor, tente novamente mais tarde.",
+  "anErrorOccurredWhileProcessingYourRequest": "Ocorreu um erro ao processar sua solicitação. Por favor, tente novamente mais tarde.",
+  "anErrorOccurredWhileFetchingTheEvents": "Ocorreu um erro ao buscar os eventos.",
+  "selections": {
+    "inviteEvent": "Por favor, selecione um evento para convidar outros:",
+    "joinEvent": "Por favor, selecione um evento para participar:",
+    "leaveEvent": "Por favor, selecione um evento para sair:",
+    "updateEvent": "Por favor, selecione um evento para atualizar:",
+    "cancelEvent": "Por favor, selecione um evento para cancelar:",
+    "startEvent": "Por favor, selecione um evento para iniciar:",
+    "finishEvent": "Por favor, selecione um evento para finalizar:",
+    "events": "Por favor, selecione um evento para ver:",
+    "activeEvents": "Por favor, selecione um evento ativo para ver:"
+  },
+  "noEvents": {
+    "inviteEvent": "Nenhum evento disponível para convidar outros.",
+    "joinEvent": "Nenhum evento disponível para participar.",
+    "leaveEvent": "Nenhum evento disponível para sair.",
+    "updateEvent": "Nenhum evento disponível para atualizar.",
+    "cancelEvent": "Nenhum evento disponível para cancelar.",
+    "startEvent": "Nenhum evento disponível para iniciar.",
+    "finishEvent": "Nenhum evento disponível para finalizar."
+  },
+  "backendErrors": {
+    "participantLimitMustBeANumberBetween1And1024": "O limite de participantes deve ser um número entre 1 e 1024.",
+    "invalidStartTimeFormat": "Formato de hora de início inválido. Por favor, use o formato HH:MM.",
+    "cannotInteractWithEventInThePast": "Você não pode interagir com um evento no passado.",
+    "cannotCreateEventMoreThan45DaysInAdvance": "Você não pode criar um evento com mais de 45 dias de antecedência.",
+    "cannotChangeStatusToNotStarted": "Você não pode mudar o status para não iniciado.",
+    "participantLimitMustEqualAttendingUsersToMarkReady": "O limite de participantes deve ser igual ao número atual de usuários comparecendo para marcar como pronto para iniciar.",
+    "onlyNotStartedEventsCanBeMarkedReady": "Apenas eventos que ainda não começaram podem ser marcados como prontos para iniciar.",
+    "cannotStartEventNotReady": "Você não pode iniciar um evento que não está pronto para iniciar.",
+    "cannotStartFinishedEvent": "Você não pode iniciar um evento finalizado.",
+    "cannotStartCanceledEvent": "Você não pode iniciar um evento cancelado.",
+    "cannotFinishNotStartedEvent": "Você não pode finalizar um evento que ainda não começou.",
+    "cannotFinishCanceledEvent": "Você não pode finalizar um evento cancelado.",
+    "cannotCancelOngoingEvent": "Você não pode cancelar um evento em andamento.",
+    "cannotCancelFinishedEvent": "Você não pode cancelar um evento finalizado.",
+    "eventNotFound": "Evento não encontrado.",
+    "noEventsFound": "Nenhum evento encontrado.",
+    "thisEventIsCurrentlyOngoing": "Este evento está em andamento, você não pode mais tomar uma decisão.",
+    "thisEventHasAlreadyFinished": "Este evento já foi finalizado, você não pode mais tomar uma decisão.",
+    "thisEventHasBeenCanceled": "Este evento foi cancelado, você não pode mais tomar uma decisão.",
+    "invalidStatus": "Status inválido.",
+    "participantLimitCannotBeLessThanNumberOfAttendingUsers": "O limite de participantes não pode ser menor do que o número de usuários comparecendo.",
+    "somethingWentWrong": "Algo deu errado!"
+  }
+}

@@ -1,5 +1,6 @@
 const { fetchEventsByCriteria } = require('../services/event-service')
 const { ActionRowBuilder, StringSelectMenuBuilder } = require('discord.js')
+const { getLocalizedValue } = require('../utils/localization')
 
 function getCriteria(commandName, guildId, userId) {
   const criteriaMap = {
@@ -11,7 +12,7 @@ function getCriteria(commandName, guildId, userId) {
       userDiscordID: userId,
       userStatus: 'attending',
     },
-    'update-event': { guild: guildId, statuses: ['not-started'], creator: userId },
+    'update-event': { guild: guildId, statuses: ['not-started', 'ready-to-start'], creator: userId },
     'cancel-event': { guild: guildId, statuses: ['not-started'], creator: userId },
     'start-event': { guild: guildId, statuses: ['ready-to-start'], creator: userId },
     'finish-event': { guild: guildId, statuses: ['ongoing'], creator: userId },
@@ -21,17 +22,19 @@ function getCriteria(commandName, guildId, userId) {
   return criteriaMap[commandName]
 }
 
-function getSelectionPromptMessage(commandName) {
+function getSelectionPromptMessage(commandName, language) {
+  const selections = getLocalizedValue(language, 'selections')
+
   const messageMap = {
-    'invite-event': 'Please select an event to invite others to:',
-    'join-event': 'Please select an event to join:',
-    'leave-event': 'Please select an event to leave:',
-    'update-event': 'Please select an event to update:',
-    'cancel-event': 'Please select an event to cancel:',
-    'start-event': 'Please select an event to start:',
-    'finish-event': 'Please select an event to finish:',
-    events: 'Please select an event to view:',
-    'active-events': 'Please select an active event to view:',
+    'invite-event': selections.inviteEvent,
+    'join-event': selections.joinEvent,
+    'leave-event': selections.leaveEvent,
+    'update-event': selections.updateEvent,
+    'cancel-event': selections.cancelEvent,
+    'start-event': selections.startEvent,
+    'finish-event': selections.finishEvent,
+    events: selections.events,
+    'active-events': selections.activeEvents,
   }
 
   return messageMap[commandName]
@@ -57,7 +60,7 @@ async function prepareEventSelection(interaction, commandName) {
 
     const eventOptions = events.map((event) => ({
       label: event.title,
-      description: `Start: ${new Date(event.startTime).toLocaleString('en-GB', {
+      description: `Start: ${new Date(event.startTime).toLocaleString(interaction.locale, {
         year: 'numeric',
         month: '2-digit',
         day: '2-digit',
@@ -69,32 +72,36 @@ async function prepareEventSelection(interaction, commandName) {
       emoji: statusEmojis[event.status] || '📅',
     }))
 
+    const selectAnEvent = getLocalizedValue(interaction.locale, 'commons.selectAnEvent')
+
     const eventRow = new ActionRowBuilder().addComponents(
       new StringSelectMenuBuilder()
         .setCustomId(`select-event-for-:${commandName}`)
-        .setPlaceholder('Select an event')
+        .setPlaceholder(selectAnEvent)
         .addOptions(eventOptions)
     )
 
     await interaction.reply({
-      content: getSelectionPromptMessage(commandName),
+      content: getSelectionPromptMessage(commandName, interaction.locale),
       components: [eventRow],
       ephemeral: true,
     })
   } catch (error) {
     console.log('prepareEventSelection error:', error)
 
-    content = 'An error occurred while fetching the events.'
+    const noEvents = getLocalizedValue(interaction.locale, 'noEvents')
 
-    if (error.response && error.response.data && error.response.data.error === 'No events found') {
+    content = getLocalizedValue(interaction.locale, 'anErrorOccurredWhileFetchingTheEvents')
+
+    if (error.response && error.response.data && error.response.data.error === 'noEventsFound') {
       const contentMap = {
-        'invite-event': 'No events available to invite others to.',
-        'join-event': 'No events available to join.',
-        'leave-event': 'No events available to leave.',
-        'update-event': 'No events available to update.',
-        'cancel-event': 'No events available to cancel.',
-        'start-event': 'No events available to start.',
-        'finish-event': 'No events available to finish.',
+        'invite-event': noEvents.inviteEvent,
+        'join-event': noEvents.joinEvent,
+        'leave-event': noEvents.leaveEvent,
+        'update-event': noEvents.updateEvent,
+        'cancel-event': noEvents.cancelEvent,
+        'start-event': noEvents.startEvent,
+        'finish-event': noEvents.finishEvent,
       }
       content = contentMap[commandName]
     }

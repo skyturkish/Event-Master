@@ -1,10 +1,13 @@
 const { ActionRowBuilder, ButtonBuilder } = require('discord.js')
+const { getLocalizedValue } = require('../utils/localization')
 
-function createButtons() {
+function createButtons({ language }) {
+  const buttons = getLocalizedValue(language, 'buttons')
+
   return new ActionRowBuilder().addComponents(
-    new ButtonBuilder().setCustomId('attending').setLabel('Attend').setStyle('Success'),
-    new ButtonBuilder().setCustomId('declined').setLabel('Decline').setStyle('Danger'),
-    new ButtonBuilder().setCustomId('considering').setLabel('Considering').setStyle('Secondary')
+    new ButtonBuilder().setCustomId('attending').setLabel(buttons.attend).setStyle('Success'),
+    new ButtonBuilder().setCustomId('declined').setLabel(buttons.decline).setStyle('Danger'),
+    new ButtonBuilder().setCustomId('considering').setLabel(buttons.considering).setStyle('Secondary')
   )
 }
 

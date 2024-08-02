@@ -1,0 +1,120 @@
+{
+  "commons": {
+    "eventId": "ID eveniment",
+    "startTime": "Ora de început",
+    "participants": "Participanți",
+    "status": "Stare",
+    "attending": "Participă",
+    "waitlist": "Listă de așteptare",
+    "details": "Detalii",
+    "noDescription": "Nicio descriere oferită.",
+    "selectUsersToInvite": "Selectați utilizatorii de invitat",
+    "selectAnEvent": "Selectați un eveniment",
+    "createEvent": "Creează Eveniment",
+    "updateEvent": "Actualizează Eveniment"
+  },
+  "buttons": {
+    "attend": "Participă",
+    "decline": "Refuză",
+    "considering": "În considerare"
+  },
+  "status": {
+    "attending": "Participă",
+    "decline": "Refuzat",
+    "considering": "În considerare",
+    "invited": "Invitat - așteaptă răspuns",
+    "waitlist": "Listă de așteptare"
+  },
+  "eventStatus": {
+    "notStarted": "Neînceput",
+    "readyToStart": "Gata de început",
+    "ongoing": "În desfășurare",
+    "finished": "Finalizat",
+    "canceled": "Anulat"
+  },
+  "modal": {
+    "labels": {
+      "eventTitle": "Titlu Eveniment",
+      "eventDescription": "Descriere Eveniment",
+      "participantLimit": "Limită Participanți",
+      "eventStartDate": "Data Începerii Evenimentului (AAAA-LL-ZZ)",
+      "eventStartDatePlaceHolder": "Format: AAAA-LL-ZZ",
+      "eventStartTime": "Ora Începerii Evenimentului (HH:MM)",
+      "eventStartTimePlaceHolder": "Format: HH:MM"
+    }
+  },
+  "dynamic": {
+    "thisEventIsCreatedBy": "Acest eveniment este creat de ${creator.username}",
+    "sorryTheEventIsCanceled": "Ne pare rău, evenimentul ${event.title} la care urma să participați a fost anulat de ${event.creator}. Iată participanții care urmau să participe: ${participants}.",
+    "youSelectedEvent": "Ați selectat ${event.title}. În curând! Puteți vedea acest eveniment pe site-ul nostru!",
+    "eventWithIdNotFound": "Evenimentul cu ID-ul ${eventId} nu a fost găsit.",
+    "weHaveHitTheMagicNumber": "Am atins numărul magic de participanți! 🎉 Evenimentul poate începe de îndată ce sosește timpul! Iată participanții minunați: ${participants} ",
+    "actionMessages": {
+      "youHaveJoinedTheEvent": "Ați participat la evenimentul ${event.title}. Vă rugăm să confirmați starea dvs. de participare mai jos.",
+      "youHaveLeftTheEvent": "Ați părăsit evenimentul ${event.title}. Vă rugăm să confirmați starea dvs. de participare mai jos.",
+      "youHaveUpdatedTheEvent": "Ați actualizat evenimentul ${event.title}. Vă rugăm să confirmați starea dvs. de participare mai jos.",
+      "youHaveCreatedTheEvent": "Ați creat evenimentul ${event.title}. Vă rugăm să confirmați starea dvs. de participare mai jos.",
+      "youHaveStartedTheEvent": "Ați început evenimentul ${event.title}. Vă rugăm să confirmați starea dvs. de participare mai jos.",
+      "youHaveFinishedTheEvent": "Ați finalizat evenimentul ${event.title}. Vă rugăm să confirmați starea dvs. de participare mai jos.",
+      "youHaveCanceledTheEvent": "Ați anulat evenimentul ${event.title}. Vă rugăm să confirmați starea dvs. de participare mai jos.",
+      "youHaveSelectedTheEvent": "Ați selectat evenimentul ${event.title}. Vă rugăm să confirmați starea dvs. de participare mai jos.",
+      "allTheUsersYouInvitedHaveAlreadyResponded": "Toți utilizatorii pe care i-ați invitat au răspuns deja și nu au fost re-invitați: ${selectedUsers}. Vă rugăm să verificați lista de mai jos pentru starea actuală."
+    },
+    "pleaseWait": "Vă rugăm să așteptați încă ${timeLeft} secundă(e) înainte de a reutiliza comanda ${command.data.name}.",
+    "theFollowingUsersHaveBeenSuccessfullyInvited": "Următorii utilizatori au fost invitați cu succes la eveniment: ${invitedUsers}.",
+    "howeverTheFollowingUsersHadAlreadyResponded": "Totuși, următorii utilizatori au răspuns deja la invitație și nu au fost re-invitați: ${notInvitedUsers}. Vă rugăm să verificați lista de mai jos pentru starea lor actuală.",
+    "eventSelected": "Evenimentul ${event.title} selectat. Acum, selectați utilizatorii de invitat:"
+  },
+  "anErrorOccurredWhileHandlingTheInteraction": "A apărut o eroare la gestionarea interacțiunii. Vă rugăm să încercați din nou mai târziu.",
+  "anErrorOccurred": "A apărut o eroare. Vă rugăm să încercați din nou mai târziu.",
+  "eventUpdatedSuccessfully": "Eveniment actualizat cu succes.",
+  "anErrorOccuredWhileUpdatingTheEvent": "A apărut o eroare la actualizarea evenimentului. Vă rugăm să încercați din nou mai târziu.",
+  "anErrorOccurredWhileCreatingTheEvent": "A apărut o eroare la crearea evenimentului. Vă rugăm să încercați din nou mai târziu.",
+  "anUnexpectedErrorOccurred": "A apărut o eroare neașteptată. Vă rugăm să încercați din nou mai târziu.",
+  "anErrorOccurredWhileProcessingYourRequest": "A apărut o eroare la procesarea cererii dvs. Vă rugăm să încercați din nou mai târziu.",
+  "anErrorOccurredWhileFetchingTheEvents": "A apărut o eroare la preluarea evenimentelor.",
+  "selections": {
+    "inviteEvent": "Vă rugăm să selectați un eveniment pentru a invita alții:",
+    "joinEvent": "Vă rugăm să selectați un eveniment la care să participați:",
+    "leaveEvent": "Vă rugăm să selectați un eveniment de la care să vă retrageți:",
+    "updateEvent": "Vă rugăm să selectați un eveniment de actualizat:",
+    "cancelEvent": "Vă rugăm să selectați un eveniment de anulat:",
+    "startEvent": "Vă rugăm să selectați un eveniment de început:",
+    "finishEvent": "Vă rugăm să selectați un eveniment de finalizat:",
+    "events": "Vă rugăm să selectați un eveniment de vizualizat:",
+    "activeEvents": "Vă rugăm să selectați un eveniment activ de vizualizat:"
+  },
+  "noEvents": {
+    "inviteEvent": "Nu există evenimente disponibile pentru a invita alții.",
+    "joinEvent": "Nu există evenimente disponibile pentru a participa.",
+    "leaveEvent": "Nu există evenimente disponibile pentru a vă retrage.",
+    "updateEvent": "Nu există evenimente disponibile pentru a actualiza.",
+    "cancelEvent": "Nu există evenimente disponibile pentru a anula.",
+    "startEvent": "Nu există evenimente disponibile pentru a începe.",
+    "finishEvent": "Nu există evenimente disponibile pentru a finaliza."
+  },
+  "backendErrors": {
+    "participantLimitMustBeANumberBetween1And1024": "Limita de participanți trebuie să fie un număr între 1 și 1024.",
+    "invalidStartTimeFormat": "Formatul orei de început este invalid. Vă rugăm să folosiți formatul HH:MM.",
+    "cannotInteractWithEventInThePast": "Nu puteți interacționa cu un eveniment din trecut.",
+    "cannotCreateEventMoreThan45DaysInAdvance": "Nu puteți crea un eveniment cu mai mult de 45 de zile în avans.",
+    "cannotChangeStatusToNotStarted": "Nu puteți schimba starea înapoi la neînceput.",
+    "participantLimitMustEqualAttendingUsersToMarkReady": "Limita de participanți trebuie să fie egală cu numărul actual de utilizatori care participă pentru a marca gata de început.",
+    "onlyNotStartedEventsCanBeMarkedReady": "Doar evenimentele care nu au început încă pot fi marcate ca gata de început.",
+    "cannotStartEventNotReady": "Nu puteți începe un eveniment care nu este gata de început.",
+    "cannotStartFinishedEvent": "Nu puteți începe un eveniment finalizat.",
+    "cannotStartCanceledEvent": "Nu puteți începe un eveniment anulat.",
+    "cannotFinishNotStartedEvent": "Nu puteți finaliza un eveniment care nu a început încă.",
+    "cannotFinishCanceledEvent": "Nu puteți finaliza un eveniment anulat.",
+    "cannotCancelOngoingEvent": "Nu puteți anula un eveniment în desfășurare.",
+    "cannotCancelFinishedEvent": "Nu puteți anula un eveniment finalizat.",
+    "eventNotFound": "Evenimentul nu a fost găsit.",
+    "noEventsFound": "Nu au fost găsite evenimente.",
+    "thisEventIsCurrentlyOngoing": "Acest eveniment este în desfășurare, nu mai puteți lua o decizie.",
+    "thisEventHasAlreadyFinished": "Acest eveniment s-a terminat deja, nu mai puteți lua o decizie.",
+    "thisEventHasBeenCanceled": "Acest eveniment a fost anulat, nu mai puteți lua o decizie.",
+    "invalidStatus": "Stare invalidă.",
+    "participantLimitCannotBeLessThanNumberOfAttendingUsers": "Limita de participanți nu poate fi mai mică decât numărul de utilizatori care participă.",
+    "somethingWentWrong": "Ceva nu a mers bine!"
+  }
+}

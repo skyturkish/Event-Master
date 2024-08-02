@@ -2,6 +2,7 @@ const { SlashCommandBuilder, ModalBuilder, TextInputBuilder, ActionRowBuilder, T
 const { createEvent } = require('../services/event-service')
 const { handleEventAction } = require('../utils/handle-event-action')
 const { showModalWithInputs, handleModalSubmit } = require('../utils/modal-utils')
+const { getLocalizedValue } = require('../utils/localization')
 
 module.exports = {
   cooldown: 300,
@@ -44,13 +45,13 @@ module.exports = {
     }),
   async execute(interaction) {
     console.log('create-event')
-    await showModalWithInputs(interaction, 'eventModal', 'Create Event')
+    await showModalWithInputs(interaction, 'eventModal', getLocalizedValue(interaction.locale, 'commons.createEvent'))
 
     const filter = (i) => i.customId === 'eventModal'
     interaction
       .awaitModalSubmit({ filter, time: 60000 })
       .then(async (modalInteraction) => {
-        const eventData = handleModalSubmit(modalInteraction)
+        const eventData = handleModalSubmit(modalInteraction, interaction.locale)
         if (eventData.error) {
           return modalInteraction.reply({ content: eventData.error, ephemeral: true })
         }
@@ -66,14 +67,22 @@ module.exports = {
           if (!modalInteraction.replied) {
             await handleEventAction(modalInteraction, 'create-event', event._id)
           } else {
-            await modalInteraction.followUp({ content: 'Event updated successfully.', ephemeral: true })
+            const eventUpdatedSuccessfully = getLocalizedValue(interaction.locale, 'eventUpdatedSuccessfully')
+
+            await modalInteraction.followUp({ content: eventUpdatedSuccessfully, ephemeral: true })
           }
         } catch (error) {
+          console.error('Error creating event:', error)
+
+          let errorMessage = getLocalizedValue(interaction.locale, 'anErrorOccurredWhileCreatingTheEvent')
+
+          if (error.response && error.response.data && error.response.data.error) {
+            backendErrors = getLocalizedValue(interaction.locale, 'backendErrors')
+            errorMessage = backendErrors[error.response.data.error]
+          }
+
           return modalInteraction.reply({
-            content:
-              error.response && error.response.data
-                ? error.response.data.error
-                : 'An error occurred while creating the event.',
+            content: errorMessage,
             ephemeral: true,
           })
         }

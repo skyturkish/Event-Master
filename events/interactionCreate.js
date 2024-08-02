@@ -1,10 +1,10 @@
-// events/interactionCreate.js
 const { prepareUserSelection } = require('../utils/prepare-user-selection')
 const { handleEventAction } = require('../utils/handle-event-action')
 const { handleUserSelection } = require('../utils/handle-user-selection')
 const { handleEventCancel } = require('../utils/handle-event-cancel')
 const { Events } = require('discord.js')
 const { cooldowns } = require('../utils/cooldowns')
+const { getLocalizedValue } = require('../utils/localization')
 
 module.exports = {
   name: Events.InteractionCreate,
@@ -29,10 +29,13 @@ module.exports = {
 
           if (now < expirationTime) {
             const timeLeft = (expirationTime - now) / 1000
+            const pleaseWait = getLocalizedValue(interaction.locale, 'dynamic.pleaseWait', {
+              timeLeft: timeLeft.toFixed(1),
+              'command.data.name': command.data.name,
+            })
+
             return interaction.reply({
-              content: `Please wait ${timeLeft.toFixed(1)} more second(s) before reusing the \`${
-                command.data.name
-              }\` command.`,
+              content: pleaseWait,
               ephemeral: true,
             })
           }

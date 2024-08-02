@@ -1,0 +1,120 @@
+{
+  "commons": {
+    "eventId": "Tapahtuman ID",
+    "startTime": "Aloitusaika",
+    "participants": "Osallistujat",
+    "status": "Tila",
+    "attending": "Osallistuu",
+    "waitlist": "Jonotuslista",
+    "details": "Yksityiskohdat",
+    "noDescription": "Kuvausta ei annettu.",
+    "selectUsersToInvite": "Valitse kutsuttavat käyttäjät",
+    "selectAnEvent": "Valitse tapahtuma",
+    "createEvent": "Luo tapahtuma",
+    "updateEvent": "Päivitä tapahtuma"
+  },
+  "buttons": {
+    "attend": "Osallistu",
+    "decline": "Kieltäydy",
+    "considering": "Harkinnassa"
+  },
+  "status": {
+    "attending": "Osallistuu",
+    "decline": "Kieltäytyi",
+    "considering": "Harkinnassa",
+    "invited": "Kutsuttu - odotetaan vastausta",
+    "waitlist": "Jonotuslista"
+  },
+  "eventStatus": {
+    "notStarted": "Ei aloitettu",
+    "readyToStart": "Valmis aloittamaan",
+    "ongoing": "Meneillään",
+    "finished": "Valmis",
+    "canceled": "Peruutettu"
+  },
+  "modal": {
+    "labels": {
+      "eventTitle": "Tapahtuman nimi",
+      "eventDescription": "Tapahtuman kuvaus",
+      "participantLimit": "Osallistujaraja",
+      "eventStartDate": "Tapahtuman aloituspäivämäärä (VVVV-KK-PP)",
+      "eventStartDatePlaceHolder": "Muoto: VVVV-KK-PP",
+      "eventStartTime": "Tapahtuman aloitusaika (HH:MM)",
+      "eventStartTimePlaceHolder": "Muoto: HH:MM"
+    }
+  },
+  "dynamic": {
+    "thisEventIsCreatedBy": "Tämän tapahtuman loi ${creator.username}",
+    "sorryTheEventIsCanceled": "Valitettavasti tapahtuma ${event.title}, johon aiot osallistua, on peruutettu ${event.creator}. Tässä ovat osallistujat, jotka olivat osallistumassa: ${participants}.",
+    "youSelectedEvent": "Valitsit tapahtuman ${event.title}. Tulossa pian! Näet tämän tapahtuman verkkosivustollamme!",
+    "eventWithIdNotFound": "Tapahtumaa ID:llä ${eventId} ei löytynyt.",
+    "weHaveHitTheMagicNumber": "Olemme saavuttaneet osallistujien taikaluukun! 🎉 Tapahtuma voi alkaa heti, kun aika koittaa! Tässä ovat mahtavat osallistujat: ${participants}",
+    "actionMessages": {
+      "youHaveJoinedTheEvent": "Olet liittynyt tapahtumaan ${event.title}. Vahvista osallistumisesi tila alla.",
+      "youHaveLeftTheEvent": "Olet poistunut tapahtumasta ${event.title}. Vahvista osallistumisesi tila alla.",
+      "youHaveUpdatedTheEvent": "Olet päivittänyt tapahtuman ${event.title}. Vahvista osallistumisesi tila alla.",
+      "youHaveCreatedTheEvent": "Olet luonut tapahtuman ${event.title}. Vahvista osallistumisesi tila alla.",
+      "youHaveStartedTheEvent": "Olet aloittanut tapahtuman ${event.title}. Vahvista osallistumisesi tila alla.",
+      "youHaveFinishedTheEvent": "Olet päättänyt tapahtuman ${event.title}. Vahvista osallistumisesi tila alla.",
+      "youHaveCanceledTheEvent": "Olet peruutanut tapahtuman ${event.title}. Vahvista osallistumisesi tila alla.",
+      "youHaveSelectedTheEvent": "Olet valinnut tapahtuman ${event.title}. Vahvista osallistumisesi tila alla.",
+      "allTheUsersYouInvitedHaveAlreadyResponded": "Kaikki kutsumasi käyttäjät ovat jo vastanneet eivätkä heitä kutsuttu uudelleen: ${selectedUsers}. Tarkista alla olevasta listasta nykyinen tila."
+    },
+    "pleaseWait": "Odota ${timeLeft} sekuntia ennen ${command.data.name} komennon uudelleenkäyttöä.",
+    "theFollowingUsersHaveBeenSuccessfullyInvited": "Seuraavat käyttäjät on onnistuneesti kutsuttu tapahtumaan: ${invitedUsers}.",
+    "howeverTheFollowingUsersHadAlreadyResponded": "Kuitenkin seuraavat käyttäjät olivat jo vastanneet kutsuun eivätkä heitä kutsuttu uudelleen: ${notInvitedUsers}. Tarkista alla oleva lista heidän nykyisestä tilastaan.",
+    "eventSelected": "Tapahtuma ${event.title} valittu. Nyt, valitse käyttäjät kutsuttavaksi:"
+  },
+  "anErrorOccurredWhileHandlingTheInteraction": "Virhe käsiteltäessä vuorovaikutusta. Yritä myöhemmin uudelleen.",
+  "anErrorOccurred": "Tapahtui virhe. Yritä myöhemmin uudelleen.",
+  "eventUpdatedSuccessfully": "Tapahtuma päivitetty onnistuneesti.",
+  "anErrorOccuredWhileUpdatingTheEvent": "Tapahtui virhe päivitettäessä tapahtumaa. Yritä myöhemmin uudelleen.",
+  "anErrorOccurredWhileCreatingTheEvent": "Tapahtui virhe luotaessa tapahtumaa. Yritä myöhemmin uudelleen.",
+  "anUnexpectedErrorOccurred": "Tapahtui odottamaton virhe. Yritä myöhemmin uudelleen.",
+  "anErrorOccurredWhileProcessingYourRequest": "Tapahtui virhe käsiteltäessä pyyntöäsi. Yritä myöhemmin uudelleen.",
+  "anErrorOccurredWhileFetchingTheEvents": "Tapahtui virhe haettaessa tapahtumia.",
+  "selections": {
+    "inviteEvent": "Valitse tapahtuma kutsuaksesi muita:",
+    "joinEvent": "Valitse tapahtuma liittyäksesi:",
+    "leaveEvent": "Valitse tapahtuma poistuaksesi:",
+    "updateEvent": "Valitse tapahtuma päivittääksesi:",
+    "cancelEvent": "Valitse tapahtuma peruuttaaksesi:",
+    "startEvent": "Valitse tapahtuma aloittaaksesi:",
+    "finishEvent": "Valitse tapahtuma päättääksesi:",
+    "events": "Valitse tapahtuma katsottavaksi:",
+    "activeEvents": "Valitse aktiivinen tapahtuma katsottavaksi:"
+  },
+  "noEvents": {
+    "inviteEvent": "Ei tapahtumia, joihin kutsua muita.",
+    "joinEvent": "Ei tapahtumia, joihin liittyä.",
+    "leaveEvent": "Ei tapahtumia, joista poistua.",
+    "updateEvent": "Ei tapahtumia, joita päivittää.",
+    "cancelEvent": "Ei tapahtumia, joita peruuttaa.",
+    "startEvent": "Ei tapahtumia, joita aloittaa.",
+    "finishEvent": "Ei tapahtumia, joita päättää."
+  },
+  "backendErrors": {
+    "participantLimitMustBeANumberBetween1And1024": "Osallistujarajan on oltava luku väliltä 1 ja 1024.",
+    "invalidStartTimeFormat": "Virheellinen aloitusajan muoto. Käytä muotoa HH:MM.",
+    "cannotInteractWithEventInThePast": "Et voi olla vuorovaikutuksessa menneessä tapahtumassa.",
+    "cannotCreateEventMoreThan45DaysInAdvance": "Et voi luoda tapahtumaa yli 45 päivää etukäteen.",
+    "cannotChangeStatusToNotStarted": "Et voi muuttaa tilaa takaisin 'ei aloitettu'.",
+    "participantLimitMustEqualAttendingUsersToMarkReady": "Osallistujarajan on oltava yhtä suuri kuin nykyisten osallistujien lukumäärä, jotta tapahtuma voidaan merkitä valmiiksi aloittamaan.",
+    "onlyNotStartedEventsCanBeMarkedReady": "Vain tapahtumat, joita ei ole vielä aloitettu, voidaan merkitä valmiiksi aloittamaan.",
+    "cannotStartEventNotReady": "Et voi aloittaa tapahtumaa, joka ei ole valmis aloittamaan.",
+    "cannotStartFinishedEvent": "Et voi aloittaa päättynyttä tapahtumaa.",
+    "cannotStartCanceledEvent": "Et voi aloittaa peruutettua tapahtumaa.",
+    "cannotFinishNotStartedEvent": "Et voi päättää tapahtumaa, jota ei ole vielä aloitettu.",
+    "cannotFinishCanceledEvent": "Et voi päättää peruutettua tapahtumaa.",
+    "cannotCancelOngoingEvent": "Et voi peruuttaa meneillään olevaa tapahtumaa.",
+    "cannotCancelFinishedEvent": "Et voi peruuttaa päättynyttä tapahtumaa.",
+    "eventNotFound": "Tapahtumaa ei löytynyt.",
+    "noEventsFound": "Tapahtumia ei löytynyt.",
+    "thisEventIsCurrentlyOngoing": "Tämä tapahtuma on meneillään, et voi enää tehdä päätöstä.",
+    "thisEventHasAlreadyFinished": "Tämä tapahtuma on jo päättynyt, et voi enää tehdä päätöstä.",
+    "thisEventHasBeenCanceled": "Tämä tapahtuma on peruutettu, et voi enää tehdä päätöstä.",
+    "invalidStatus": "Virheellinen tila.",
+    "participantLimitCannotBeLessThanNumberOfAttendingUsers": "Osallistujaraja ei voi olla pienempi kuin osallistujien lukumäärä.",
+    "somethingWentWrong": "Jotain meni pieleen!"
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "commons": {
+    "eventId": "Begivenheds ID",
+    "startTime": "Starttidspunkt",
+    "participants": "Deltagere",
+    "status": "Status",
+    "attending": "Deltager",
+    "waitlist": "Venteliste",
+    "details": "Detaljer",
+    "noDescription": "Ingen beskrivelse givet.",
+    "selectUsersToInvite": "Vælg brugere at invitere",
+    "selectAnEvent": "Vælg en begivenhed",
+    "createEvent": "Opret Begivenhed",
+    "updateEvent": "Opdater Begivenhed"
+  },
+  "buttons": {
+    "attend": "Deltag",
+    "decline": "Afslå",
+    "considering": "Overvejer"
+  },
+  "status": {
+    "attending": "Deltager",
+    "decline": "Afslået",
+    "considering": "Overvejer",
+    "invited": "Inviteret - venter på svar",
+    "waitlist": "Venteliste"
+  },
+  "eventStatus": {
+    "notStarted": "Ikke Startet",
+    "readyToStart": "Klar til at starte",
+    "ongoing": "I gang",
+    "finished": "Afsluttet",
+    "canceled": "Annulleret"
+  },
+  "modal": {
+    "labels": {
+      "eventTitle": "Begivenhedstitel",
+      "eventDescription": "Begivenhedsbeskrivelse",
+      "participantLimit": "Deltagerbegrænsning",
+      "eventStartDate": "Begivenheds Startdato (ÅÅÅÅ-MM-DD)",
+      "eventStartDatePlaceHolder": "Format: ÅÅÅÅ-MM-DD",
+      "eventStartTime": "Begivenheds Starttid (TT:MM)",
+      "eventStartTimePlaceHolder": "Format: TT:MM"
+    }
+  },
+  "dynamic": {
+    "thisEventIsCreatedBy": "Denne begivenhed er oprettet af ${creator.username}",
+    "sorryTheEventIsCanceled": "Beklager, begivenheden ${event.title}, som du skulle deltage i, er blevet annulleret af ${event.creator}. Her er de deltagere, der skulle deltage: ${participants}.",
+    "youSelectedEvent": "Du valgte ${event.title}. Kommer snart! Du kan se denne begivenhed på vores hjemmeside!",
+    "eventWithIdNotFound": "Begivenhed med ID ${eventId} ikke fundet.",
+    "weHaveHitTheMagicNumber": "Vi har ramt det magiske antal deltagere! 🎉 Begivenheden kan starte, så snart tiden er inde! Her er de fantastiske deltagere: ${participants} ",
+    "actionMessages": {
+      "youHaveJoinedTheEvent": "Du har tilsluttet dig begivenheden ${event.title}. Bekræft venligst din deltagelsesstatus nedenfor.",
+      "youHaveLeftTheEvent": "Du har forladt begivenheden ${event.title}. Bekræft venligst din deltagelsesstatus nedenfor.",
+      "youHaveUpdatedTheEvent": "Du har opdateret begivenheden ${event.title}. Bekræft venligst din deltagelsesstatus nedenfor.",
+      "youHaveCreatedTheEvent": "Du har oprettet begivenheden ${event.title}. Bekræft venligst din deltagelsesstatus nedenfor.",
+      "youHaveStartedTheEvent": "Du har startet begivenheden ${event.title}. Bekræft venligst din deltagelsesstatus nedenfor.",
+      "youHaveFinishedTheEvent": "Du har afsluttet begivenheden ${event.title}. Bekræft venligst din deltagelsesstatus nedenfor.",
+      "youHaveCanceledTheEvent": "Du har annulleret begivenheden ${event.title}. Bekræft venligst din deltagelsesstatus nedenfor.",
+      "youHaveSelectedTheEvent": "Du har valgt begivenheden ${event.title}. Bekræft venligst din deltagelsesstatus nedenfor.",
+      "allTheUsersYouInvitedHaveAlreadyResponded": "Alle de brugere, du inviterede, har allerede svaret og blev ikke geninviteret: ${selectedUsers}. Tjek venligst listen nedenfor for den aktuelle status."
+    },
+    "pleaseWait": "Vent venligst ${timeLeft} flere sekund(er), før du bruger kommandoen ${command.data.name} igen.",
+    "theFollowingUsersHaveBeenSuccessfullyInvited": "Følgende brugere er blevet inviteret til begivenheden: ${invitedUsers}.",
+    "howeverTheFollowingUsersHadAlreadyResponded": "Men følgende brugere havde allerede svaret på invitationen og blev ikke geninviteret: ${notInvitedUsers}. Tjek venligst listen nedenfor for deres aktuelle status.",
+    "eventSelected": "Begivenhed ${event.title} valgt. Vælg nu brugere at invitere:"
+  },
+  "anErrorOccurredWhileHandlingTheInteraction": "Der opstod en fejl under håndteringen af interaktionen. Prøv igen senere.",
+  "anErrorOccurred": "Der opstod en fejl. Prøv igen senere.",
+  "eventUpdatedSuccessfully": "Begivenhed opdateret med succes.",
+  "anErrorOccuredWhileUpdatingTheEvent": "Der opstod en fejl under opdatering af begivenheden. Prøv igen senere.",
+  "anErrorOccurredWhileCreatingTheEvent": "Der opstod en fejl under oprettelse af begivenheden. Prøv igen senere.",
+  "anUnexpectedErrorOccurred": "Der opstod en uventet fejl. Prøv igen senere.",
+  "anErrorOccurredWhileProcessingYourRequest": "Der opstod en fejl under behandling af din anmodning. Prøv igen senere.",
+  "anErrorOccurredWhileFetchingTheEvents": "Der opstod en fejl under hentning af begivenhederne.",
+  "selections": {
+    "inviteEvent": "Vælg venligst en begivenhed at invitere andre til:",
+    "joinEvent": "Vælg venligst en begivenhed at deltage i:",
+    "leaveEvent": "Vælg venligst en begivenhed at forlade:",
+    "updateEvent": "Vælg venligst en begivenhed at opdatere:",
+    "cancelEvent": "Vælg venligst en begivenhed at annullere:",
+    "startEvent": "Vælg venligst en begivenhed at starte:",
+    "finishEvent": "Vælg venligst en begivenhed at afslutte:",
+    "events": "Vælg venligst en begivenhed at se:",
+    "activeEvents": "Vælg venligst en aktiv begivenhed at se:"
+  },
+  "noEvents": {
+    "inviteEvent": "Ingen begivenheder tilgængelige at invitere andre til.",
+    "joinEvent": "Ingen begivenheder tilgængelige at deltage i.",
+    "leaveEvent": "Ingen begivenheder tilgængelige at forlade.",
+    "updateEvent": "Ingen begivenheder tilgængelige at opdatere.",
+    "cancelEvent": "Ingen begivenheder tilgængelige at annullere.",
+    "startEvent": "Ingen begivenheder tilgængelige at starte.",
+    "finishEvent": "Ingen begivenheder tilgængelige at afslutte."
+  },
+  "backendErrors": {
+    "participantLimitMustBeANumberBetween1And1024": "Deltagerbegrænsningen skal være et tal mellem 1 og 1024.",
+    "invalidStartTimeFormat": "Ugyldigt starttidsformat. Brug venligst formatet TT:MM.",
+    "cannotInteractWithEventInThePast": "Du kan ikke interagere med en begivenhed i fortiden.",
+    "cannotCreateEventMoreThan45DaysInAdvance": "Du kan ikke oprette en begivenhed mere end 45 dage i forvejen.",
+    "cannotChangeStatusToNotStarted": "Du kan ikke ændre status tilbage til ikke-startet.",
+    "participantLimitMustEqualAttendingUsersToMarkReady": "Deltagerbegrænsningen skal være lig med det aktuelle antal deltagende brugere for at markere som klar til start.",
+    "onlyNotStartedEventsCanBeMarkedReady": "Kun begivenheder, der endnu ikke er startet, kan markeres som klar til start.",
+    "cannotStartEventNotReady": "Du kan ikke starte en begivenhed, der ikke er klar til at starte.",
+    "cannotStartFinishedEvent": "Du kan ikke starte en afsluttet begivenhed.",
+    "cannotStartCanceledEvent": "Du kan ikke starte en annulleret begivenhed.",
+    "cannotFinishNotStartedEvent": "Du kan ikke afslutte en begivenhed, der endnu ikke er startet.",
+    "cannotFinishCanceledEvent": "Du kan ikke afslutte en annulleret begivenhed.",
+    "cannotCancelOngoingEvent": "Du kan ikke annullere en igangværende begivenhed.",
+    "cannotCancelFinishedEvent": "Du kan ikke annullere en afsluttet begivenhed.",
+    "eventNotFound": "Begivenhed ikke fundet.",
+    "noEventsFound": "Ingen begivenheder fundet.",
+    "thisEventIsCurrentlyOngoing": "Denne begivenhed er i øjeblikket i gang, du kan ikke længere træffe en beslutning.",
+    "thisEventHasAlreadyFinished": "Denne begivenhed er allerede afsluttet, du kan ikke længere træffe en beslutning.",
+    "thisEventHasBeenCanceled": "Denne begivenhed er blevet annulleret, du kan ikke længere træffe en beslutning.",
+    "invalidStatus": "Ugyldig status.",
+    "participantLimitCannotBeLessThanNumberOfAttendingUsers": "Deltagerbegrænsningen kan ikke være mindre end antallet af deltagende brugere.",
+    "somethingWentWrong": "Noget gik galt!"
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "commons": {
+    "eventId": "Hendelses ID",
+    "startTime": "Starttid",
+    "participants": "Deltakere",
+    "status": "Status",
+    "attending": "Deltar",
+    "waitlist": "Venteliste",
+    "details": "Detaljer",
+    "noDescription": "Ingen beskrivelse gitt.",
+    "selectUsersToInvite": "Velg brukere å invitere",
+    "selectAnEvent": "Velg en hendelse",
+    "createEvent": "Opprett hendelse",
+    "updateEvent": "Oppdater hendelse"
+  },
+  "buttons": {
+    "attend": "Delta",
+    "decline": "Avslå",
+    "considering": "Vurderer"
+  },
+  "status": {
+    "attending": "Deltar",
+    "decline": "Avslått",
+    "considering": "Vurderer",
+    "invited": "Invitert - venter på svar",
+    "waitlist": "Venteliste"
+  },
+  "eventStatus": {
+    "notStarted": "Ikke startet",
+    "readyToStart": "Klar til å starte",
+    "ongoing": "Pågående",
+    "finished": "Avsluttet",
+    "canceled": "Avlyst"
+  },
+  "modal": {
+    "labels": {
+      "eventTitle": "Hendelsestittel",
+      "eventDescription": "Hendelsesbeskrivelse",
+      "participantLimit": "Deltakergrense",
+      "eventStartDate": "Hendelsens startdato (YYYY-MM-DD)",
+      "eventStartDatePlaceHolder": "Format: YYYY-MM-DD",
+      "eventStartTime": "Hendelsens starttid (HH:MM)",
+      "eventStartTimePlaceHolder": "Format: HH:MM"
+    }
+  },
+  "dynamic": {
+    "thisEventIsCreatedBy": "Denne hendelsen er opprettet av ${creator.username}",
+    "sorryTheEventIsCanceled": "Beklager, hendelsen ${event.title} du skulle delta på har blitt avlyst av ${event.creator}. Her er deltakerne som skulle delta: ${participants}.",
+    "youSelectedEvent": "Du har valgt ${event.title}. Kommer snart! Du kan se denne hendelsen på vår nettside!",
+    "eventWithIdNotFound": "Hendelse med ID ${eventId} ikke funnet.",
+    "weHaveHitTheMagicNumber": "Vi har nådd det magiske antallet deltakere! 🎉 Hendelsen kan starte så snart tiden er inne! Her er de fantastiske deltakerne: ${participants} ",
+    "actionMessages": {
+      "youHaveJoinedTheEvent": "Du har deltatt i hendelsen ${event.title}. Vennligst bekreft din deltakelsesstatus nedenfor.",
+      "youHaveLeftTheEvent": "Du har forlatt hendelsen ${event.title}. Vennligst bekreft din deltakelsesstatus nedenfor.",
+      "youHaveUpdatedTheEvent": "Du har oppdatert hendelsen ${event.title}. Vennligst bekreft din deltakelsesstatus nedenfor.",
+      "youHaveCreatedTheEvent": "Du har opprettet hendelsen ${event.title}. Vennligst bekreft din deltakelsesstatus nedenfor.",
+      "youHaveStartedTheEvent": "Du har startet hendelsen ${event.title}. Vennligst bekreft din deltakelsesstatus nedenfor.",
+      "youHaveFinishedTheEvent": "Du har avsluttet hendelsen ${event.title}. Vennligst bekreft din deltakelsesstatus nedenfor.",
+      "youHaveCanceledTheEvent": "Du har avlyst hendelsen ${event.title}. Vennligst bekreft din deltakelsesstatus nedenfor.",
+      "youHaveSelectedTheEvent": "Du har valgt hendelsen ${event.title}. Vennligst bekreft din deltakelsesstatus nedenfor.",
+      "allTheUsersYouInvitedHaveAlreadyResponded": "Alle brukerne du inviterte har allerede svart og ble ikke re-invitert: ${selectedUsers}. Vennligst sjekk listen nedenfor for den nåværende statusen."
+    },
+    "pleaseWait": "Vennligst vent ${timeLeft} sekunder før du bruker ${command.data.name}-kommandoen igjen.",
+    "theFollowingUsersHaveBeenSuccessfullyInvited": "Følgende brukere har blitt invitert til hendelsen: ${invitedUsers}.",
+    "howeverTheFollowingUsersHadAlreadyResponded": "Imidlertid hadde følgende brukere allerede svart på invitasjonen og ble ikke re-invitert: ${notInvitedUsers}. Vennligst sjekk listen nedenfor for deres nåværende status.",
+    "eventSelected": "Hendelsen ${event.title} valgt. Nå, velg brukere å invitere:"
+  },
+  "anErrorOccurredWhileHandlingTheInteraction": "Det oppstod en feil under håndteringen av interaksjonen. Vennligst prøv igjen senere.",
+  "anErrorOccurred": "Det oppstod en feil. Vennligst prøv igjen senere.",
+  "eventUpdatedSuccessfully": "Hendelsen ble oppdatert vellykket.",
+  "anErrorOccuredWhileUpdatingTheEvent": "Det oppstod en feil under oppdateringen av hendelsen. Vennligst prøv igjen senere.",
+  "anErrorOccurredWhileCreatingTheEvent": "Det oppstod en feil under opprettelsen av hendelsen. Vennligst prøv igjen senere.",
+  "anUnexpectedErrorOccurred": "En uventet feil oppstod. Vennligst prøv igjen senere.",
+  "anErrorOccurredWhileProcessingYourRequest": "Det oppstod en feil under behandlingen av forespørselen din. Vennligst prøv igjen senere.",
+  "anErrorOccurredWhileFetchingTheEvents": "Det oppstod en feil under henting av hendelsene.",
+  "selections": {
+    "inviteEvent": "Vennligst velg en hendelse å invitere andre til:",
+    "joinEvent": "Vennligst velg en hendelse å delta på:",
+    "leaveEvent": "Vennligst velg en hendelse å forlate:",
+    "updateEvent": "Vennligst velg en hendelse å oppdatere:",
+    "cancelEvent": "Vennligst velg en hendelse å avlyse:",
+    "startEvent": "Vennligst velg en hendelse å starte:",
+    "finishEvent": "Vennligst velg en hendelse å avslutte:",
+    "events": "Vennligst velg en hendelse å se:",
+    "activeEvents": "Vennligst velg en aktiv hendelse å se:"
+  },
+  "noEvents": {
+    "inviteEvent": "Ingen hendelser tilgjengelige å invitere andre til.",
+    "joinEvent": "Ingen hendelser tilgjengelige å delta på.",
+    "leaveEvent": "Ingen hendelser tilgjengelige å forlate.",
+    "updateEvent": "Ingen hendelser tilgjengelige å oppdatere.",
+    "cancelEvent": "Ingen hendelser tilgjengelige å avlyse.",
+    "startEvent": "Ingen hendelser tilgjengelige å starte.",
+    "finishEvent": "Ingen hendelser tilgjengelige å avslutte."
+  },
+  "backendErrors": {
+    "participantLimitMustBeANumberBetween1And1024": "Deltakergrensen må være et tall mellom 1 og 1024.",
+    "invalidStartTimeFormat": "Ugyldig starttidsformat. Vennligst bruk formatet HH:MM.",
+    "cannotInteractWithEventInThePast": "Du kan ikke interagere med en hendelse i fortiden.",
+    "cannotCreateEventMoreThan45DaysInAdvance": "Du kan ikke opprette en hendelse mer enn 45 dager i forveien.",
+    "cannotChangeStatusToNotStarted": "Du kan ikke endre status tilbake til ikke-startet.",
+    "participantLimitMustEqualAttendingUsersToMarkReady": "Deltakergrensen må være lik antallet deltakende brukere for å markere som klar til å starte.",
+    "onlyNotStartedEventsCanBeMarkedReady": "Bare hendelser som ikke har startet ennå kan merkes som klare til å starte.",
+    "cannotStartEventNotReady": "Du kan ikke starte hendelsen som ikke er klar til å starte.",
+    "cannotStartFinishedEvent": "Du kan ikke starte en avsluttet hendelse.",
+    "cannotStartCanceledEvent": "Du kan ikke starte en avlyst hendelse.",
+    "cannotFinishNotStartedEvent": "Du kan ikke avslutte en hendelse som ikke har startet ennå.",
+    "cannotFinishCanceledEvent": "Du kan ikke avslutte en avlyst hendelse.",
+    "cannotCancelOngoingEvent": "Du kan ikke avlyse en pågående hendelse.",
+    "cannotCancelFinishedEvent": "Du kan ikke avlyse en avsluttet hendelse.",
+    "eventNotFound": "Hendelse ikke funnet.",
+    "noEventsFound": "Ingen hendelser funnet.",
+    "thisEventIsCurrentlyOngoing": "Denne hendelsen pågår for øyeblikket, du kan ikke lenger ta en beslutning.",
+    "thisEventHasAlreadyFinished": "Denne hendelsen er allerede avsluttet, du kan ikke lenger ta en beslutning.",
+    "thisEventHasBeenCanceled": "Denne hendelsen har blitt avlyst, du kan ikke lenger ta en beslutning.",
+    "invalidStatus": "Ugyldig status.",
+    "participantLimitCannotBeLessThanNumberOfAttendingUsers": "Deltakergrensen kan ikke være mindre enn antallet deltakende brukere.",
+    "somethingWentWrong": "Noe gikk galt!"
+  }
+}

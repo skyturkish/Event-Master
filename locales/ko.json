@@ -1,0 +1,120 @@
+{
+  "commons": {
+    "eventId": "이벤트 ID",
+    "startTime": "시작 시간",
+    "participants": "참가자",
+    "status": "상태",
+    "attending": "참석",
+    "waitlist": "대기자 명단",
+    "details": "세부 사항",
+    "noDescription": "설명이 제공되지 않았습니다.",
+    "selectUsersToInvite": "초대할 사용자 선택",
+    "selectAnEvent": "이벤트 선택",
+    "createEvent": "이벤트 생성",
+    "updateEvent": "이벤트 업데이트"
+  },
+  "buttons": {
+    "attend": "참석",
+    "decline": "거절",
+    "considering": "고려 중"
+  },
+  "status": {
+    "attending": "참석 중",
+    "decline": "거절됨",
+    "considering": "고려 중",
+    "invited": "초대됨 - 응답 대기 중",
+    "waitlist": "대기자 명단"
+  },
+  "eventStatus": {
+    "notStarted": "시작되지 않음",
+    "readyToStart": "시작 준비 완료",
+    "ongoing": "진행 중",
+    "finished": "종료됨",
+    "canceled": "취소됨"
+  },
+  "modal": {
+    "labels": {
+      "eventTitle": "이벤트 제목",
+      "eventDescription": "이벤트 설명",
+      "participantLimit": "참가자 제한",
+      "eventStartDate": "이벤트 시작 날짜 (YYYY-MM-DD)",
+      "eventStartDatePlaceHolder": "형식: YYYY-MM-DD",
+      "eventStartTime": "이벤트 시작 시간 (HH:MM)",
+      "eventStartTimePlaceHolder": "형식: HH:MM"
+    }
+  },
+  "dynamic": {
+    "thisEventIsCreatedBy": "이 이벤트는 ${creator.username}에 의해 생성되었습니다",
+    "sorryTheEventIsCanceled": "죄송합니다, ${event.creator}이(가) 취소한 ${event.title} 이벤트에 참석할 예정이었습니다. 참석 예정이었던 참가자는 다음과 같습니다: ${participants}.",
+    "youSelectedEvent": "당신은 ${event.title} 이벤트를 선택했습니다. 곧 도착합니다! 이 이벤트는 우리 웹사이트에서 볼 수 있습니다!",
+    "eventWithIdNotFound": "ID가 ${eventId}인 이벤트를 찾을 수 없습니다.",
+    "weHaveHitTheMagicNumber": "참가자의 마법 숫자에 도달했습니다! 🎉 시간이 되면 이벤트를 시작할 수 있습니다! 멋진 참가자는 다음과 같습니다: ${participants} ",
+    "actionMessages": {
+      "youHaveJoinedTheEvent": "당신은 ${event.title} 이벤트에 참가했습니다. 아래에서 참가 상태를 확인하십시오.",
+      "youHaveLeftTheEvent": "당신은 ${event.title} 이벤트를 떠났습니다. 아래에서 참가 상태를 확인하십시오.",
+      "youHaveUpdatedTheEvent": "당신은 ${event.title} 이벤트를 업데이트했습니다. 아래에서 참가 상태를 확인하십시오.",
+      "youHaveCreatedTheEvent": "당신은 ${event.title} 이벤트를 생성했습니다. 아래에서 참가 상태를 확인하십시오.",
+      "youHaveStartedTheEvent": "당신은 ${event.title} 이벤트를 시작했습니다. 아래에서 참가 상태를 확인하십시오.",
+      "youHaveFinishedTheEvent": "당신은 ${event.title} 이벤트를 종료했습니다. 아래에서 참가 상태를 확인하십시오.",
+      "youHaveCanceledTheEvent": "당신은 ${event.title} 이벤트를 취소했습니다. 아래에서 참가 상태를 확인하십시오.",
+      "youHaveSelectedTheEvent": "당신은 ${event.title} 이벤트를 선택했습니다. 아래에서 참가 상태를 확인하십시오.",
+      "allTheUsersYouInvitedHaveAlreadyResponded": "당신이 초대한 모든 사용자는 이미 응답했으며 재초대되지 않았습니다: ${selectedUsers}. 현재 상태는 아래 목록에서 확인하십시오."
+    },
+    "pleaseWait": "다시 ${command.data.name} 명령어를 사용하기 전에 ${timeLeft} 초를 더 기다려 주십시오.",
+    "theFollowingUsersHaveBeenSuccessfullyInvited": "다음 사용자는 이벤트에 성공적으로 초대되었습니다: ${invitedUsers}.",
+    "howeverTheFollowingUsersHadAlreadyResponded": "그러나 다음 사용자는 이미 응답했으며 재초대되지 않았습니다: ${notInvitedUsers}. 현재 상태는 아래 목록에서 확인하십시오.",
+    "eventSelected": "${event.title} 이벤트가 선택되었습니다. 이제 초대할 사용자를 선택하십시오:"
+  },
+  "anErrorOccurredWhileHandlingTheInteraction": "상호 작용을 처리하는 동안 오류가 발생했습니다. 나중에 다시 시도해 주십시오.",
+  "anErrorOccurred": "오류가 발생했습니다. 나중에 다시 시도해 주십시오.",
+  "eventUpdatedSuccessfully": "이벤트가 성공적으로 업데이트되었습니다.",
+  "anErrorOccuredWhileUpdatingTheEvent": "이벤트를 업데이트하는 동안 오류가 발생했습니다. 나중에 다시 시도해 주십시오.",
+  "anErrorOccurredWhileCreatingTheEvent": "이벤트를 생성하는 동안 오류가 발생했습니다. 나중에 다시 시도해 주십시오.",
+  "anUnexpectedErrorOccurred": "예기치 않은 오류가 발생했습니다. 나중에 다시 시도해 주십시오.",
+  "anErrorOccurredWhileProcessingYourRequest": "요청을 처리하는 동안 오류가 발생했습니다. 나중에 다시 시도해 주십시오.",
+  "anErrorOccurredWhileFetchingTheEvents": "이벤트를 가져오는 동안 오류가 발생했습니다.",
+  "selections": {
+    "inviteEvent": "다른 사람을 초대할 이벤트를 선택하십시오:",
+    "joinEvent": "참가할 이벤트를 선택하십시오:",
+    "leaveEvent": "떠날 이벤트를 선택하십시오:",
+    "updateEvent": "업데이트할 이벤트를 선택하십시오:",
+    "cancelEvent": "취소할 이벤트를 선택하십시오:",
+    "startEvent": "시작할 이벤트를 선택하십시오:",
+    "finishEvent": "종료할 이벤트를 선택하십시오:",
+    "events": "볼 이벤트를 선택하십시오:",
+    "activeEvents": "볼 활성 이벤트를 선택하십시오:"
+  },
+  "noEvents": {
+    "inviteEvent": "다른 사람을 초대할 이벤트가 없습니다.",
+    "joinEvent": "참가할 이벤트가 없습니다.",
+    "leaveEvent": "떠날 이벤트가 없습니다.",
+    "updateEvent": "업데이트할 이벤트가 없습니다.",
+    "cancelEvent": "취소할 이벤트가 없습니다.",
+    "startEvent": "시작할 이벤트가 없습니다.",
+    "finishEvent": "종료할 이벤트가 없습니다."
+  },
+  "backendErrors": {
+    "participantLimitMustBeANumberBetween1And1024": "참가자 제한은 1에서 1024 사이의 숫자여야 합니다.",
+    "invalidStartTimeFormat": "잘못된 시작 시간 형식입니다. 형식은 HH:MM입니다.",
+    "cannotInteractWithEventInThePast": "과거의 이벤트와 상호 작용할 수 없습니다.",
+    "cannotCreateEventMoreThan45DaysInAdvance": "45일 이상 미리 이벤트를 생성할 수 없습니다.",
+    "cannotChangeStatusToNotStarted": "상태를 다시 '시작되지 않음'으로 변경할 수 없습니다.",
+    "participantLimitMustEqualAttendingUsersToMarkReady": "참가자 제한은 '시작 준비 완료'로 표시하려면 현재 참석 중인 사용자 수와 같아야 합니다.",
+    "onlyNotStartedEventsCanBeMarkedReady": "아직 시작되지 않은 이벤트만 '시작 준비 완료'로 표시할 수 있습니다.",
+    "cannotStartEventNotReady": "시작 준비가 되지 않은 이벤트를 시작할 수 없습니다.",
+    "cannotStartFinishedEvent": "종료된 이벤트를 시작할 수 없습니다.",
+    "cannotStartCanceledEvent": "취소된 이벤트를 시작할 수 없습니다.",
+    "cannotFinishNotStartedEvent": "아직 시작되지 않은 이벤트를 종료할 수 없습니다.",
+    "cannotFinishCanceledEvent": "취소된 이벤트를 종료할 수 없습니다.",
+    "cannotCancelOngoingEvent": "진행 중인 이벤트를 취소할 수 없습니다.",
+    "cannotCancelFinishedEvent": "종료된 이벤트를 취소할 수 없습니다.",
+    "eventNotFound": "이벤트를 찾을 수 없습니다.",
+    "noEventsFound": "이벤트를 찾을 수 없습니다.",
+    "thisEventIsCurrentlyOngoing": "이 이벤트는 현재 진행 중이며, 더 이상 결정을 내릴 수 없습니다.",
+    "thisEventHasAlreadyFinished": "이 이벤트는 이미 종료되었으며, 더 이상 결정을 내릴 수 없습니다.",
+    "thisEventHasBeenCanceled": "이 이벤트는 취소되었으며, 더 이상 결정을 내릴 수 없습니다.",
+    "invalidStatus": "잘못된 상태입니다.",
+    "participantLimitCannotBeLessThanNumberOfAttendingUsers": "참가자 제한은 현재 참석 중인 사용자 수보다 적을 수 없습니다.",
+    "somethingWentWrong": "문제가 발생했습니다!"
+  }
+}
