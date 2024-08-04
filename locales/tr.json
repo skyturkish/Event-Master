@@ -5,7 +5,7 @@
     "participants": "Katılımcılar",
     "status": "Durum",
     "attending": "Katılıyor",
-    "waitlist": "Bekleme Listesi",
+    "waitlist": "Bekleme Sırası",
     "details": "Detaylar",
     "noDescription": "Açıklama sağlanmadı.",
     "selectUsersToInvite": "Davet edilecek kullanıcıları seçin",
@@ -16,14 +16,14 @@
   "buttons": {
     "attend": "Katıl",
     "decline": "Reddet",
-    "considering": "Düşünüyor"
+    "considering": "Beklet"
   },
   "status": {
-    "attending": "Katılıyor",
-    "decline": "Reddetti",
-    "considering": "Düşünüyor",
-    "invited": "Davet Edildi - cevap bekleniyor",
-    "waitlist": "Bekleme Listesi"
+    "attending": "Katılanlar",
+    "decline": "Reddedenler",
+    "considering": "Değerlendirenler",
+    "invited": "Davet Edildi - Cevap bekleniyor",
+    "waitlist": "Bekleme Sırası"
   },
   "eventStatus": {
     "notStarted": "Başlamadı",
@@ -45,34 +45,34 @@
   },
   "dynamic": {
     "thisEventIsCreatedBy": "Bu etkinlik ${creator.username} tarafından oluşturuldu",
-    "sorryTheEventIsCanceled": "Üzgünüz, ${event.creator} tarafından iptal edilen ${event.title} etkinliğine katılacaktınız. Katılacak katılımcılar şunlardı: ${participants}.",
+    "sorryTheEventIsCanceled": "Üzgünüz, ${event.creator} tarafından ${event.title} iptal edildi. Katılacak katılımcılar şunlardı: ${participants}.",
     "youSelectedEvent": "${event.title} etkinliğini seçtiniz. Yakında! Bu etkinliği web sitemizde görebilirsiniz!",
     "eventWithIdNotFound": "${eventId} kimliğine sahip etkinlik bulunamadı.",
-    "weHaveHitTheMagicNumber": "Katılımcıların büyülü sayısına ulaştık! 🎉 Etkinlik zaman geldiğinde başlayabilir! İşte muhteşem katılımcılar: ${participants} ",
+    "weHaveHitTheMagicNumber": "Gerekli olan büyülü sayıya ulaştık! 🎉 Etkinlik zaman geldiğinde başlayabilir! İşte muhteşem katılımcılar: ${participants} ",
     "actionMessages": {
-      "youHaveJoinedTheEvent": "${event.title} etkinliğine katıldınız. Lütfen katılım durumunuzu aşağıda onaylayın.",
-      "youHaveLeftTheEvent": "${event.title} etkinliğinden ayrıldınız. Lütfen katılım durumunuzu aşağıda onaylayın.",
-      "youHaveUpdatedTheEvent": "${event.title} etkinliğini güncellediniz. Lütfen katılım durumunuzu aşağıda onaylayın.",
-      "youHaveCreatedTheEvent": "${event.title} etkinliğini oluşturdunuz. Lütfen katılım durumunuzu aşağıda onaylayın.",
-      "youHaveStartedTheEvent": "${event.title} etkinliğini başlattınız. Lütfen katılım durumunuzu aşağıda onaylayın.",
-      "youHaveFinishedTheEvent": "${event.title} etkinliğini tamamladınız. Lütfen katılım durumunuzu aşağıda onaylayın.",
-      "youHaveCanceledTheEvent": "${event.title} etkinliğini iptal ettiniz. Lütfen katılım durumunuzu aşağıda onaylayın.",
-      "youHaveSelectedTheEvent": "${event.title} etkinliğini seçtiniz. Lütfen katılım durumunuzu aşağıda onaylayın.",
+      "youHaveJoinedTheEvent": "${event.title} etkinliğine katıldınız. Katılım durumunuzu aşağıdan takip edebilirsiniz.",
+      "youHaveLeftTheEvent": "${event.title} etkinliğinden ayrıldınız. Katılım durumunuzu aşağıdan takip edebilirsiniz.",
+      "youHaveUpdatedTheEvent": "${event.title} etkinliğini güncellediniz. Katılım durumunuzu aşağıdan takip edebilirsiniz.",
+      "youHaveCreatedTheEvent": "${event.title} etkinliğini oluşturdunuz. Katılım durumunuzu aşağıdan takip edebilirsiniz.",
+      "youHaveStartedTheEvent": "${event.title} etkinliğini başlattınız. Katılım durumunuzu aşağıdan takip edebilirsiniz.",
+      "youHaveFinishedTheEvent": "${event.title} etkinliğini tamamladınız. Katılım durumunuzu aşağıdan takip edebilirsiniz.",
+      "youHaveCanceledTheEvent": "${event.title} etkinliğini iptal ettiniz. Katılım durumunuzu aşağıdan takip edebilirsiniz.",
+      "youHaveSelectedTheEvent": "${event.title} etkinliğini seçtiniz. Katılım durumunuzu aşağıdan takip edebilirsiniz.",
       "allTheUsersYouInvitedHaveAlreadyResponded": "Davet ettiğiniz tüm kullanıcılar zaten yanıt verdi ve yeniden davet edilmedi: ${selectedUsers}. Lütfen aşağıdaki listede mevcut durumu kontrol edin."
     },
     "pleaseWait": "Lütfen ${command.data.name} komutunu tekrar kullanmadan önce ${timeLeft} saniye bekleyin.",
     "theFollowingUsersHaveBeenSuccessfullyInvited": "Aşağıdaki kullanıcılar başarıyla etkinliğe davet edildi: ${invitedUsers}.",
-    "howeverTheFollowingUsersHadAlreadyResponded": "Ancak, aşağıdaki kullanıcılar zaten davete yanıt verdi ve yeniden davet edilmedi: ${notInvitedUsers}. Lütfen mevcut durumu kontrol etmek için aşağıdaki listeyi kontrol edin.",
+    "howeverTheFollowingUsersHadAlreadyResponded": "Ancak, aşağıdaki kullanıcılar zaten davete yanıt verdi ve yeniden davet edilmedi: ${notInvitedUsers}. Lütfen mevcut durum için aşağıdaki listeyi kontrol edin.",
     "eventSelected": "Etkinlik ${event.title} seçildi. Şimdi davet edilecek kullanıcıları seçin:"
   },
-  "anErrorOccurredWhileHandlingTheInteraction": "Etkileşimi işlerken bir hata oluştu. Lütfen daha sonra tekrar deneyin.",
+  "anErrorOccurredWhileHandlingTheInteraction": "Etkileşim işlenirken bir hata oluştu. Lütfen daha sonra tekrar deneyin.",
   "anErrorOccurred": "Bir hata oluştu. Lütfen daha sonra tekrar deneyin.",
   "eventUpdatedSuccessfully": "Etkinlik başarıyla güncellendi.",
   "anErrorOccuredWhileUpdatingTheEvent": "Etkinliği güncellerken bir hata oluştu. Lütfen daha sonra tekrar deneyin.",
   "anErrorOccurredWhileCreatingTheEvent": "Etkinliği oluştururken bir hata oluştu. Lütfen daha sonra tekrar deneyin.",
   "anUnexpectedErrorOccurred": "Beklenmeyen bir hata oluştu. Lütfen daha sonra tekrar deneyin.",
-  "anErrorOccurredWhileProcessingYourRequest": "İsteğinizi işlerken bir hata oluştu. Lütfen daha sonra tekrar deneyin.",
-  "anErrorOccurredWhileFetchingTheEvents": "Etkinlikleri çekerken bir hata oluştu.",
+  "anErrorOccurredWhileProcessingYourRequest": "Talebiniz işlenirken bir hata oluştu. Lütfen daha sonra tekrar deneyin.",
+  "anErrorOccurredWhileFetchingTheEvents": "Etkinlikler kontrol edilirken bir hata oluştu.",
   "selections": {
     "inviteEvent": "Lütfen başkalarını davet etmek için bir etkinlik seçin:",
     "joinEvent": "Lütfen katılmak için bir etkinlik seçin:",
