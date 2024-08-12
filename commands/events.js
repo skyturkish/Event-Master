@@ -2,7 +2,6 @@ const { SlashCommandBuilder } = require('discord.js')
 const { prepareEventSelection } = require('../utils/prepare-event-selection')
 
 module.exports = {
-  cooldown: 10,
   data: new SlashCommandBuilder().setName('events').setDescription('See all events').setDescriptionLocalizations({
     id: 'Lihat semua acara',
     da: 'Se alle begivenheder',

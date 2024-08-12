@@ -5,7 +5,6 @@ const { showModalWithInputs, handleModalSubmit } = require('../utils/modal-utils
 const { getLocalizedValue } = require('../utils/localization')
 
 module.exports = {
-  cooldown: 300,
   data: new SlashCommandBuilder()
     .setName('create-event')
     .setDescription('Create an event')
