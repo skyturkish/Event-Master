@@ -2,7 +2,6 @@ const { SlashCommandBuilder } = require('discord.js')
 const { prepareEventSelection } = require('../utils/prepare-event-selection')
 
 module.exports = {
-  cooldown: 30,
   data: new SlashCommandBuilder()
     .setName('leave-event')
     .setDescription('Leave an event you are currently participating in')
