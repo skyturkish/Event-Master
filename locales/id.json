@@ -91,7 +91,8 @@
     "updateEvent": "Tiada acara yang boleh dikemaskini.",
     "cancelEvent": "Tiada acara yang boleh dibatalkan.",
     "startEvent": "Tiada acara yang boleh dimulakan.",
-    "finishEvent": "Tiada acara yang boleh ditamatkan."
+    "finishEvent": "Tiada acara yang boleh ditamatkan.",
+    "events": "Tidak ada acara yang tersedia untuk ditampilkan."
   },
   "backendErrors": {
     "participantLimitMustBeANumberBetween1And1024": "Had peserta mesti nombor antara 1 dan 1024.",

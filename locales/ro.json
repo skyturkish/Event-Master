@@ -91,7 +91,8 @@
     "updateEvent": "Nu există evenimente disponibile pentru a actualiza.",
     "cancelEvent": "Nu există evenimente disponibile pentru a anula.",
     "startEvent": "Nu există evenimente disponibile pentru a începe.",
-    "finishEvent": "Nu există evenimente disponibile pentru a finaliza."
+    "finishEvent": "Nu există evenimente disponibile pentru a finaliza.",
+    "events": "Nu există evenimente disponibile de afișat."
   },
   "backendErrors": {
     "participantLimitMustBeANumberBetween1And1024": "Limita de participanți trebuie să fie un număr între 1 și 1024.",

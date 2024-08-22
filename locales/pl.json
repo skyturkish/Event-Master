@@ -91,7 +91,8 @@
     "updateEvent": "Brak dostępnych wydarzeń, które można zaktualizować.",
     "cancelEvent": "Brak dostępnych wydarzeń, które można anulować.",
     "startEvent": "Brak dostępnych wydarzeń, które można rozpocząć.",
-    "finishEvent": "Brak dostępnych wydarzeń, które można zakończyć."
+    "finishEvent": "Brak dostępnych wydarzeń, które można zakończyć.",
+    "events": "Brak dostępnych wydarzeń do wyświetlenia."
   },
   "backendErrors": {
     "participantLimitMustBeANumberBetween1And1024": "Limit uczestników musi być liczbą między 1 a 1024.",

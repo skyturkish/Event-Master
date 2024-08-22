@@ -91,7 +91,8 @@
     "updateEvent": "Nessun evento disponibile da aggiornare.",
     "cancelEvent": "Nessun evento disponibile da annullare.",
     "startEvent": "Nessun evento disponibile da iniziare.",
-    "finishEvent": "Nessun evento disponibile da terminare."
+    "finishEvent": "Nessun evento disponibile da terminare.",
+    "events": "Nessun evento disponibile da visualizzare."
   },
   "backendErrors": {
     "participantLimitMustBeANumberBetween1And1024": "Il limite dei partecipanti deve essere un numero tra 1 e 1024.",

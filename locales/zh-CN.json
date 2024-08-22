@@ -91,7 +91,8 @@
     "updateEvent": "没有可更新的事件。",
     "cancelEvent": "没有可取消的事件。",
     "startEvent": "没有可开始的事件。",
-    "finishEvent": "没有可结束的事件。"
+    "finishEvent": "没有可结束的事件。",
+    "events": "没有可显示的事件。"
   },
   "backendErrors": {
     "participantLimitMustBeANumberBetween1And1024": "参与者限制必须是介于 1 和 1024 之间的数字。",

@@ -91,7 +91,8 @@
     "updateEvent": "Ei tapahtumia, joita päivittää.",
     "cancelEvent": "Ei tapahtumia, joita peruuttaa.",
     "startEvent": "Ei tapahtumia, joita aloittaa.",
-    "finishEvent": "Ei tapahtumia, joita päättää."
+    "finishEvent": "Ei tapahtumia, joita päättää.",
+    "events": "Ei tapahtumia näytettävänä."
   },
   "backendErrors": {
     "participantLimitMustBeANumberBetween1And1024": "Osallistujarajan on oltava luku väliltä 1 ja 1024.",

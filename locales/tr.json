@@ -91,7 +91,8 @@
     "updateEvent": "Güncellemek için mevcut etkinlik yok.",
     "cancelEvent": "İptal etmek için mevcut etkinlik yok.",
     "startEvent": "Başlatmak için mevcut etkinlik yok.",
-    "finishEvent": "Bitirmek için mevcut etkinlik yok."
+    "finishEvent": "Bitirmek için mevcut etkinlik yok.",
+    "events": "Gösterilecek mevcut etkinlik yok."
   },
   "backendErrors": {
     "participantLimitMustBeANumberBetween1And1024": "Katılımcı limiti 1 ile 1024 arasında bir sayı olmalıdır.",

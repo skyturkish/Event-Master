@@ -91,7 +91,8 @@
     "updateEvent": "Geen evenementen beschikbaar om bij te werken.",
     "cancelEvent": "Geen evenementen beschikbaar om te annuleren.",
     "startEvent": "Geen evenementen beschikbaar om te starten.",
-    "finishEvent": "Geen evenementen beschikbaar om af te ronden."
+    "finishEvent": "Geen evenementen beschikbaar om af te ronden.",
+    "events": "Geen evenementen beschikbaar om te tonen."
   },
   "backendErrors": {
     "participantLimitMustBeANumberBetween1And1024": "Deelnemerslimiet moet een getal zijn tussen 1 en 1024.",

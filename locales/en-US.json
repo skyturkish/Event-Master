@@ -91,7 +91,8 @@
     "updateEvent": "No events available to update.",
     "cancelEvent": "No events available to cancel.",
     "startEvent": "No events available to start.",
-    "finishEvent": "No events available to finish."
+    "finishEvent": "No events available to finish.",
+    "events": "No events available to display."
   },
   "backendErrors": {
     "participantLimitMustBeANumberBetween1And1024": "Participant limit must be a number between 1 and 1024.",
