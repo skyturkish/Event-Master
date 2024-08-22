@@ -91,7 +91,8 @@
     "updateEvent": "Keine Veranstaltungen verfügbar, die Sie aktualisieren können.",
     "cancelEvent": "Keine Veranstaltungen verfügbar, die Sie absagen können.",
     "startEvent": "Keine Veranstaltungen verfügbar, die Sie starten können.",
-    "finishEvent": "Keine Veranstaltungen verfügbar, die Sie beenden können."
+    "finishEvent": "Keine Veranstaltungen verfügbar, die Sie beenden können.",
+    "events": "Keine verfügbaren Ereignisse zum Anzeigen."
   },
   "backendErrors": {
     "participantLimitMustBeANumberBetween1And1024": "Die Teilnehmergrenze muss eine Zahl zwischen 1 und 1024 sein.",

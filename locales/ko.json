@@ -91,7 +91,8 @@
     "updateEvent": "업데이트할 이벤트가 없습니다.",
     "cancelEvent": "취소할 이벤트가 없습니다.",
     "startEvent": "시작할 이벤트가 없습니다.",
-    "finishEvent": "종료할 이벤트가 없습니다."
+    "finishEvent": "종료할 이벤트가 없습니다.",
+    "events": "표시할 수 있는 이벤트가 없습니다."
   },
   "backendErrors": {
     "participantLimitMustBeANumberBetween1And1024": "참가자 제한은 1에서 1024 사이의 숫자여야 합니다.",

@@ -91,7 +91,8 @@
     "updateEvent": "Nema dostupnih događaja za ažuriranje.",
     "cancelEvent": "Nema dostupnih događaja za otkazivanje.",
     "startEvent": "Nema dostupnih događaja za početak.",
-    "finishEvent": "Nema dostupnih događaja za završetak."
+    "finishEvent": "Nema dostupnih događaja za završetak.",
+    "events": "Nema dostupnih događaja za prikaz."
   },
   "backendErrors": {
     "participantLimitMustBeANumberBetween1And1024": "Limit sudionika mora biti broj između 1 i 1024.",

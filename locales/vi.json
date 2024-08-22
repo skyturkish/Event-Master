@@ -91,7 +91,8 @@
     "updateEvent": "Không có sự kiện nào để cập nhật.",
     "cancelEvent": "Không có sự kiện nào để hủy.",
     "startEvent": "Không có sự kiện nào để bắt đầu.",
-    "finishEvent": "Không có sự kiện nào để kết thúc."
+    "finishEvent": "Không có sự kiện nào để kết thúc.",
+    "events": "Không có sự kiện nào để hiển thị."
   },
   "backendErrors": {
     "participantLimitMustBeANumberBetween1And1024": "Giới hạn người tham gia phải là một số từ 1 đến 1024.",

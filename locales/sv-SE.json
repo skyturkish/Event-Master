@@ -91,7 +91,8 @@
     "updateEvent": "Inga event tillgängliga att uppdatera.",
     "cancelEvent": "Inga event tillgängliga att avbryta.",
     "startEvent": "Inga event tillgängliga att starta.",
-    "finishEvent": "Inga event tillgängliga att avsluta."
+    "finishEvent": "Inga event tillgängliga att avsluta.",
+    "events": "Inga tillgängliga händelser att visa."
   },
   "backendErrors": {
     "participantLimitMustBeANumberBetween1And1024": "Deltagargräns måste vara ett nummer mellan 1 och 1024.",

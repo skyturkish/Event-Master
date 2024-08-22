@@ -91,7 +91,8 @@
     "updateEvent": "Nėra renginių, kuriuos būtų galima atnaujinti.",
     "cancelEvent": "Nėra renginių, kuriuos būtų galima atšaukti.",
     "startEvent": "Nėra renginių, kuriuos būtų galima pradėti.",
-    "finishEvent": "Nėra renginių, kuriuos būtų galima baigti."
+    "finishEvent": "Nėra renginių, kuriuos būtų galima baigti.",
+    "events": "Nėra jokių įvykių, kuriuos būtų galima rodyti."
   },
   "backendErrors": {
     "participantLimitMustBeANumberBetween1And1024": "Dalyvių limitas turi būti skaičius tarp 1 ir 1024.",

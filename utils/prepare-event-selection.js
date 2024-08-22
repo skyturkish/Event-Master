@@ -93,7 +93,7 @@ async function prepareEventSelection(interaction, commandName) {
 
     content = getLocalizedValue(interaction.locale, 'anErrorOccurredWhileFetchingTheEvents')
 
-    if (error.response && error.response.data && error.response.data.error === 'noEventsFound') {
+    if (error.response && error.response.data && error.response.data.error == 'noEventsFound') {
       const contentMap = {
         'invite-event': noEvents.inviteEvent,
         'join-event': noEvents.joinEvent,
@@ -102,6 +102,7 @@ async function prepareEventSelection(interaction, commandName) {
         'cancel-event': noEvents.cancelEvent,
         'start-event': noEvents.startEvent,
         'finish-event': noEvents.finishEvent,
+        events: noEvents.events,
       }
       content = contentMap[commandName]
     }
