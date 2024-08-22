@@ -91,7 +91,8 @@
     "updateEvent": "Ingen begivenheder tilgængelige at opdatere.",
     "cancelEvent": "Ingen begivenheder tilgængelige at annullere.",
     "startEvent": "Ingen begivenheder tilgængelige at starte.",
-    "finishEvent": "Ingen begivenheder tilgængelige at afslutte."
+    "finishEvent": "Ingen begivenheder tilgængelige at afslutte.",
+    "events": "Ingen tilgængelige begivenheder at vise."
   },
   "backendErrors": {
     "participantLimitMustBeANumberBetween1And1024": "Deltagerbegrænsningen skal være et tal mellem 1 og 1024.",

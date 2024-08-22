@@ -91,7 +91,8 @@
     "updateEvent": "Nincs elérhető esemény a frissítéshez.",
     "cancelEvent": "Nincs elérhető esemény a törléshez.",
     "startEvent": "Nincs elérhető esemény az indításhoz.",
-    "finishEvent": "Nincs elérhető esemény a befejezéshez."
+    "finishEvent": "Nincs elérhető esemény a befejezéshez.",
+    "events": "Nincs elérhető esemény a megjelenítéshez."
   },
   "backendErrors": {
     "participantLimitMustBeANumberBetween1And1024": "A résztvevők korlátozásának egy 1 és 1024 közötti számnak kell lennie.",

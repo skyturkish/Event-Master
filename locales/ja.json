@@ -91,7 +91,8 @@
     "updateEvent": "更新するイベントはありません。",
     "cancelEvent": "キャンセルするイベントはありません。",
     "startEvent": "開始するイベントはありません。",
-    "finishEvent": "終了するイベントはありません。"
+    "finishEvent": "終了するイベントはありません。",
+    "events": "表示できるイベントはありません。"
   },
   "backendErrors": {
     "participantLimitMustBeANumberBetween1And1024": "参加者制限は1から1024の間の数値でなければなりません。",

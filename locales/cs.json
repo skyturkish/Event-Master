@@ -91,7 +91,8 @@
     "updateEvent": "Žádné události nejsou k dispozici pro aktualizaci.",
     "cancelEvent": "Žádné události nejsou k dispozici pro zrušení.",
     "startEvent": "Žádné události nejsou k dispozici pro zahájení.",
-    "finishEvent": "Žádné události nejsou k dispozici pro dokončení."
+    "finishEvent": "Žádné události nejsou k dispozici pro dokončení.",
+    "events": "Nejsou k dispozici žádné události k zobrazení."
   },
   "backendErrors": {
     "participantLimitMustBeANumberBetween1And1024": "Limit účastníků musí být číslo mezi 1 a 1024.",

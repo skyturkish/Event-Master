@@ -91,7 +91,8 @@
     "updateEvent": "Ingen hendelser tilgjengelige å oppdatere.",
     "cancelEvent": "Ingen hendelser tilgjengelige å avlyse.",
     "startEvent": "Ingen hendelser tilgjengelige å starte.",
-    "finishEvent": "Ingen hendelser tilgjengelige å avslutte."
+    "finishEvent": "Ingen hendelser tilgjengelige å avslutte.",
+    "events": "Ingen tilgjengelige hendelser å vise."
   },
   "backendErrors": {
     "participantLimitMustBeANumberBetween1And1024": "Deltakergrensen må være et tall mellom 1 og 1024.",
